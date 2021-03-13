@@ -11,8 +11,9 @@ public class ResourcesManagmentScript
         return reader;
     }
 
-    public void WriteDataToResource(string path)
+    public StreamWriter WriteDataToResource(string path)
     {
         StreamWriter writer = new StreamWriter(path, false);
+        return writer;
     }
 }

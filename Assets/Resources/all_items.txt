@@ -1,0 +1,3 @@
+{"toolbarIndex":0, "empty":false, "name":"sword_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_335", "isWeapon":true, "isBow":false}
+{"toolbarIndex":0, "empty":false, "name":"bow_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_69", "isWeapon":true, "isBow":true}
+{"toolbarIndex":0, "empty":false, "name":"wood", "isCountable":true, "countItems":1, "spriteName":"spritesheet_349", "isWeapon":false, "isBow":false}

@@ -59,7 +59,7 @@ public class DroppedItemScript : MonoBehaviour
         transform.position = player.transform.position + itemPos;
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {

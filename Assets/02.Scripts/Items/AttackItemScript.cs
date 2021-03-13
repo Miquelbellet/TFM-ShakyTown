@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class AttackItemScript : MonoBehaviour
 {
     public GameObject playerHandItem;
+    [HideInInspector] public Vector2 mousePosition;
 
-    private Vector2 mousePosition;
     private bool toolIsBow;
     private float swordAngleCorrection = 135;
     private float bowAngleCorrection = 225;

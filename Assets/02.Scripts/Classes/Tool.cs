@@ -29,4 +29,9 @@ public class Tool
     {
         return JsonUtility.FromJson<Tool>(jsonString);
     }
+
+    public static string CreateFromObject(Tool toolObject)
+    {
+        return JsonUtility.ToJson(toolObject);
+    }
 }

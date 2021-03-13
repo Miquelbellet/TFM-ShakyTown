@@ -16,7 +16,10 @@ public class UIControllerScript : MonoBehaviour
     public GameObject mapLevelObject;
 
     [Header("Tool Bar Objects")]
-    public GameObject imagesObjectsParent;
+    public GameObject toolsImagesObjectsParent;
+
+    [Header("Chest Bar Objects")]
+    public GameObject chestImagesObjectsParent;
 
     private bool menuActivated;
     private bool mapActivated;
@@ -32,16 +35,40 @@ public class UIControllerScript : MonoBehaviour
 
     public void SetToolBarItem(Sprite toolSprite, Tool tool)
     {
-        imagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetComponent<Image>().sprite = toolSprite;
+        toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetComponent<Image>().sprite = toolSprite;
         if (tool.isCountable)
         {
-            imagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(true);
-            imagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
+            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(true);
+            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
         }
         else
         {
-            imagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(false);
+            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(false);
         }
+    }
+
+    public void SetChestToolBarItem(Sprite toolSprite, Tool tool)
+    {
+        chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetComponent<Image>().sprite = toolSprite;
+        if (tool.isCountable)
+        {
+            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(true);
+            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
+        }
+        else
+        {
+            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(false);
+        }
+    }
+
+    public void ActivateChestUI()
+    {
+        chestImagesObjectsParent.SetActive(true);
+    }
+
+    public void DeactivateChestUI()
+    {
+        chestImagesObjectsParent.SetActive(false);
     }
 
     public void InputMap(InputAction.CallbackContext context)
