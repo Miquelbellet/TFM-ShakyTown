@@ -55,4 +55,12 @@ public class PlayerScript : MonoBehaviour
             chestObject = null;
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            GetComponent<PlayerMovementScript>().stopRollMove = true;
+        }
+    }
 }

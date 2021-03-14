@@ -2893,7 +2893,7 @@ GameObject:
   - component: {fileID: 174001594}
   - component: {fileID: 174001593}
   - component: {fileID: 174001592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChestWood_2
   m_TagString: Chest
   m_Icon: {fileID: 0}
@@ -3065,7 +3065,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174001591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.411, y: -0.132, z: 0}
+  m_LocalPosition: {x: 1.263, y: -0.135, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24161,9 +24161,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 1
-  rollMovementForce: 0.3
-  cooldownRollTimer: 1
+  rollMovementForce: 0.4
+  rollForceTimer: 0.1
+  rollCooldownTimer: 1.5
   playerOrientation: {x: 0, y: 0}
+  stopRollMove: 0
 --- !u!114 &1273526778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25957,7 +25959,7 @@ GameObject:
   - component: {fileID: 1355789812}
   - component: {fileID: 1355789811}
   - component: {fileID: 1355789814}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChestWood_1
   m_TagString: Chest
   m_Icon: {fileID: 0}

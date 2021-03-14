@@ -7,14 +7,15 @@ public class PlayerMovementScript : MonoBehaviour
 {
     public float playerSpeed;
     public float rollMovementForce;
-    public float cooldownRollTimer;
+    public float rollForceTimer;
+    public float rollCooldownTimer;
     [HideInInspector] public Vector2 playerOrientation;
-
+    [HideInInspector] public bool stopRollMove;
 
     private Animator playerAnimator;
 
     private Vector2 playerMovement;
-    private bool cooldownRoll = true;
+    private bool cooldownRoll;
 
     void Start()
     {
@@ -79,18 +80,32 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void InputRoll(InputAction.CallbackContext context)
     {
-        if (context.performed && cooldownRoll)
+        if (context.performed && !cooldownRoll)
         {
-            playerAnimator.SetTrigger("roll");
+            cooldownRoll = true;
+            stopRollMove = false;
+            Vector3 startPos = transform.position;
             Vector3 rollPos = playerOrientation * rollMovementForce;
-            transform.position += rollPos;
-            cooldownRoll = false;
-            Invoke("RestartRoll", cooldownRollTimer);
+            Vector3 finalPos = startPos + rollPos;
+            StartCoroutine(rollMovement(startPos, finalPos, rollForceTimer));
+            Invoke("restartCooldownRoll", rollCooldownTimer);
         }
     }
 
-    private void RestartRoll()
+    IEnumerator rollMovement(Vector3 StartPos, Vector3 EndPos, float LerpTime)
     {
-        cooldownRoll = true;
+        float StartTime = Time.time;
+        float EndTime = StartTime + LerpTime;
+        while (Time.time < EndTime)
+        {
+            float timeProgressed = (Time.time - StartTime) / LerpTime;
+            if(!stopRollMove) transform.position = Vector3.Lerp(StartPos, EndPos, timeProgressed);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    void restartCooldownRoll()
+    {
+        cooldownRoll = false;
     }
 }
