@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class AttackItemScript : MonoBehaviour
 {
-    public GameObject playerHandItem;
+    public GameObject secundaryItem;
     [HideInInspector] public Vector2 mousePosition;
 
     private bool toolIsBow;
@@ -28,8 +28,17 @@ public class AttackItemScript : MonoBehaviour
         Vector2 newObjectPos = new Vector2(mousePosition.x - object_pos.x, mousePosition.y - object_pos.y);
         float angle = Mathf.Atan2(newObjectPos.y, newObjectPos.x) * Mathf.Rad2Deg;
 
-        if (toolIsBow) transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - bowAngleCorrection));
-        else transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - swordAngleCorrection));
+        var swordRotation = Quaternion.Euler(new Vector3(0, 0, angle - swordAngleCorrection));
+        secundaryItem.transform.rotation = swordRotation;
+        if (toolIsBow)
+        {
+            var bowRotation = Quaternion.Euler(new Vector3(0, 0, angle - bowAngleCorrection));
+            transform.rotation = bowRotation;
+        }
+        else
+        {
+            transform.rotation = swordRotation;
+        }
     }
 
     public void SetPlayerHandItem(string toolJSON, Sprite[] toolsSprites)

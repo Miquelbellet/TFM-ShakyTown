@@ -48,3 +48,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3498926387
+    locked: 0
+  - name: Decoration
+    uniqueID: 47162927
+    locked: 0
+  - name: NPCs
+    uniqueID: 1814983065
+    locked: 0
+  - name: Player
+    uniqueID: 33699311
+    locked: 0
+  - name: Items
+    uniqueID: 912741
+    locked: 0

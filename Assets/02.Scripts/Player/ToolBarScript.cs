@@ -264,12 +264,25 @@ public class ToolBarScript : MonoBehaviour
 
     public bool SetNewItemTool(Tool newTool)
     {
-        for (int i = 0; i <= toolsList.Length; i++)
+        for (int i = 0; i < toolsList.Length; i++)
         {
-            if (toolsList[i].empty)
+            if (!toolsList[i].empty)
             {
-                newTool.toolbarIndex = i;
-                toolsList[i] = newTool;
+                if (toolsList[i].isCountable && toolsList[i].name == newTool.name)
+                {
+                    toolsList[i].countItems += newTool.countItems;
+                    SetToolbarItemUI(toolsList[i]);
+                    return true;
+                }
+            }
+        }
+
+        for (int n = 0; n < toolsList.Length; n++)
+        {
+            if (toolsList[n].empty)
+            {
+                newTool.toolbarIndex = n;
+                toolsList[n] = newTool;
                 SetToolbarItemUI(newTool);
                 return true;
             }
