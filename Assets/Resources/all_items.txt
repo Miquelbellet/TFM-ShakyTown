@@ -1,3 +1,14 @@
-{"toolbarIndex":0, "empty":false, "name":"sword_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_335", "isWeapon":true, "isBow":false}
-{"toolbarIndex":0, "empty":false, "name":"bow_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_69", "isWeapon":true, "isBow":true}
+/* SWORDS */
+{"toolbarIndex":0, "empty":false, "name":"sword_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_334", "isWeapon":true, "isBow":false}
+{"toolbarIndex":0, "empty":false, "name":"sword_2", "isCountable":false, "countItems":0, "spriteName":"spritesheet_335", "isWeapon":true, "isBow":false}
+
+/* BOWS */
+{"toolbarIndex":0, "empty":false, "name":"bow_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_68", "isWeapon":true, "isBow":true}
+{"toolbarIndex":0, "empty":false, "name":"bow_2", "isCountable":false, "countItems":0, "spriteName":"spritesheet_69", "isWeapon":true, "isBow":true}
+
+/* ARROWS */
+{"toolbarIndex":0, "empty":false, "name":"arrow_1", "isCountable":true, "countItems":1, "spriteName":"spritesheet_5", "isWeapon":false, "isBow":false}
+{"toolbarIndex":0, "empty":false, "name":"arrow_2", "isCountable":true, "countItems":1, "spriteName":"spritesheet_6", "isWeapon":false, "isBow":false}
+
+/* RESOURCES */
 {"toolbarIndex":0, "empty":false, "name":"wood", "isCountable":true, "countItems":1, "spriteName":"spritesheet_349", "isWeapon":false, "isBow":false}

@@ -57,9 +57,9 @@ TagManager:
   - name: NPCs
     uniqueID: 1814983065
     locked: 0
-  - name: Player
-    uniqueID: 33699311
-    locked: 0
   - name: Items
     uniqueID: 912741
+    locked: 0
+  - name: Player
+    uniqueID: 33699311
     locked: 0
