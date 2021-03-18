@@ -7,17 +7,27 @@ public class DroppedItemScript : MonoBehaviour
     public float throwItemForce;
     public float floatingTimer;
     public float floatingAcceleration;
+    public Tool droppedTool;
 
     GameObject player;
     GameObject gameManager;
-    Tool droppedTool;
 
     private float time;
+    private Sprite[] toolsSprites;
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("GameController");
+        toolsSprites = Resources.LoadAll<Sprite>("Tools");
+    }
+
+    private void Start()
+    {
+        if (!droppedTool.empty && droppedTool.spriteName != "")
+        {
+            SetItem(droppedTool);
+        }
     }
 
     void Update()
@@ -37,7 +47,7 @@ public class DroppedItemScript : MonoBehaviour
         }
     }
 
-    public void SetItem(Tool tool, Sprite[] toolsSprites)
+    public void SetItem(Tool tool)
     {
         droppedTool = tool;
         if (!tool.empty)

@@ -11,6 +11,7 @@ TagManager:
   - ToolbarItem
   - ChestImagesParent
   - ToolbarItemChest
+  - TextBox
   layers:
   - Default
   - TransparentFX

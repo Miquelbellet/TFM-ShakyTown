@@ -234,7 +234,7 @@ public class ChestScript : MonoBehaviour
         if (!itemGrabbed.empty)
         {
             GameObject dropedItem = Instantiate(droppedItemPrefab);
-            dropedItem.GetComponent<DroppedItemScript>().SetItem(itemGrabbed, toolsSprites);
+            dropedItem.GetComponent<DroppedItemScript>().SetItem(itemGrabbed);
             dropedItem.GetComponent<DroppedItemScript>().ThrowItemToFloor();
             RemoveItemFromToolbar(itemGrabbed.toolbarIndex);
         }

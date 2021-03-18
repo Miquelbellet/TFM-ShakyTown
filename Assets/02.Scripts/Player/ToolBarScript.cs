@@ -204,7 +204,7 @@ public class ToolBarScript : MonoBehaviour
             if (!toolsList[toolNumberSelected].empty)
             {
                 GameObject dropedItem = Instantiate(droppedItemPrefab);
-                dropedItem.GetComponent<DroppedItemScript>().SetItem(toolsList[toolNumberSelected], toolsSprites);
+                dropedItem.GetComponent<DroppedItemScript>().SetItem(toolsList[toolNumberSelected]);
                 dropedItem.GetComponent<DroppedItemScript>().ThrowItemToFloor();
                 RemoveItemFromToolbar(toolNumberSelected);
             }
@@ -214,7 +214,7 @@ public class ToolBarScript : MonoBehaviour
             if (!itemGrabbed.empty)
             {
                 GameObject dropedItem = Instantiate(droppedItemPrefab);
-                dropedItem.GetComponent<DroppedItemScript>().SetItem(itemGrabbed, toolsSprites);
+                dropedItem.GetComponent<DroppedItemScript>().SetItem(itemGrabbed);
                 dropedItem.GetComponent<DroppedItemScript>().ThrowItemToFloor();
                 RemoveItemFromToolbar(itemGrabbed.toolbarIndex);
             }
@@ -304,7 +304,10 @@ public class ToolBarScript : MonoBehaviour
     {
         if (context.performed)
         {
-
+            if (GetComponent<UIControllerScript>().dialogActivated)
+            {
+                GetComponent<UIControllerScript>().EndDialog();
+            }
         }
     }
 

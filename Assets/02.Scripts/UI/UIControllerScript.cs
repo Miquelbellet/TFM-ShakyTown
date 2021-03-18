@@ -14,6 +14,8 @@ public class UIControllerScript : MonoBehaviour
     public GameObject mapObject;
     public GameObject closeMapBtn;
     public GameObject mapLevelObject;
+    public GameObject menuNotesObject;
+    public GameObject closeNotesBtn;
 
     [Header("Tool Bar Objects")]
     public GameObject toolsImagesObjectsParent;
@@ -21,17 +23,13 @@ public class UIControllerScript : MonoBehaviour
     [Header("Chest Bar Objects")]
     public GameObject chestImagesObjectsParent;
 
+    [Header("Dialog Text Objects")]
+    public GameObject dialogTextParent;
+    public GameObject dialogTextObject;
+    [HideInInspector] public bool dialogActivated;
+
     private bool menuActivated;
     private bool mapActivated;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void SetToolBarItem(Sprite toolSprite, Tool tool)
     {
@@ -69,6 +67,32 @@ public class UIControllerScript : MonoBehaviour
     public void DeactivateChestUI()
     {
         chestImagesObjectsParent.SetActive(false);
+    }
+
+    public void ShowDialogText(string text)
+    {
+        dialogActivated = true;
+        dialogTextParent.SetActive(true);
+        Time.timeScale = 0;
+        StopAllCoroutines();
+        StartCoroutine(WriteSentence(text));
+    }
+
+    IEnumerator WriteSentence(string text)
+    {
+        dialogTextObject.GetComponent<TextMeshProUGUI>().text = "";
+        foreach (char letter in text.ToCharArray())
+        {
+            dialogTextObject.GetComponent<TextMeshProUGUI>().text += letter;
+            yield return new WaitForSecondsRealtime(0.05f);
+        }
+    }
+
+    public void EndDialog()
+    {
+        dialogActivated = false;
+        dialogTextParent.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void InputMap(InputAction.CallbackContext context)
@@ -136,8 +160,26 @@ public class UIControllerScript : MonoBehaviour
     {
         menuObject.SetActive(false);
         closeMenuBtn.SetActive(false);
+        menuNotesObject.SetActive(false);
+        closeNotesBtn.SetActive(false);
         menuActivated = false;
         Time.timeScale = 1;
+    }
+
+    public void OpenNotesMenu()
+    {
+        menuObject.SetActive(false);
+        closeMenuBtn.SetActive(false);
+        menuNotesObject.SetActive(true);
+        closeNotesBtn.SetActive(true);
+    }
+
+    public void CloseNotesMenu()
+    {
+        menuObject.SetActive(true);
+        closeMenuBtn.SetActive(true);
+        menuNotesObject.SetActive(false);
+        closeNotesBtn.SetActive(false);
     }
 
     public void ConfigurationBtn()

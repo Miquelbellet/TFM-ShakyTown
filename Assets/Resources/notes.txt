@@ -1,0 +1,3 @@
+{"index":0, "name":"arrowsDamage", "text":"You can deal more damage depending on the arrows or bows that you use."}
+{"index":1, "name":"collectibles", "text":"You can collect some items to buy different weapons or potions."}
+{"index":2, "name":"rollAction", "text":"If you press the button 'shift' you can quickly roll to the direction you are facing."}
