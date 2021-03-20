@@ -1,0 +1,4 @@
+3
+{"index":0, "name":"buyWeapons", "text":"You can buy any weapon if you can pay for it."}
+{"index":1, "name":"swordsDamage", "text":"The swords deal more damage than some bows but you have to get closer to the enemie."}
+{"index":2, "name":"materialsAndPayment", "text":"If you want a new weapon you have to give me the materials and pay me for my work."}

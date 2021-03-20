@@ -304,10 +304,7 @@ public class ToolBarScript : MonoBehaviour
     {
         if (context.performed)
         {
-            if (GetComponent<UIControllerScript>().dialogActivated)
-            {
-                GetComponent<UIControllerScript>().EndDialog();
-            }
+            if (GetComponent<UIControllerScript>().dialogActivated) GetComponent<UIControllerScript>().EndDialog();
         }
     }
 

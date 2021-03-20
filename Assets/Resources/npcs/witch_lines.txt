@@ -1,0 +1,4 @@
+3
+{"index":0, "name":"rareResources", "text":"To make potions you have to find rare resources."}
+{"index":1, "name":"resources", "text":"You can buy all the potions that you want if you have the resources."}
+{"index":2, "name":"rollAction", "text":"You can take the health potion to increase your health immediately."}

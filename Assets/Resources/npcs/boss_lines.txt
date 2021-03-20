@@ -1,0 +1,4 @@
+3
+{"index":0, "name":"prosperTogether", "text":"I have to control all the town so we can prosper together."}
+{"index":1, "name":"townNotWork", "text":"If it weren't for me, the town wouldn't work."}
+{"index":2, "name":"helpPeople", "text":"I can help all the people that lives in here."}

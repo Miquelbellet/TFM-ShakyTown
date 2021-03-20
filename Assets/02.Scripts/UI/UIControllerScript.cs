@@ -17,11 +17,10 @@ public class UIControllerScript : MonoBehaviour
     public GameObject menuNotesObject;
     public GameObject closeNotesBtn;
 
-    [Header("Tool Bar Objects")]
+    [Header("Items Objects")]
     public GameObject toolsImagesObjectsParent;
-
-    [Header("Chest Bar Objects")]
     public GameObject chestImagesObjectsParent;
+    public GameObject blacksmithShop;
 
     [Header("Dialog Text Objects")]
     public GameObject dialogTextParent;
@@ -30,6 +29,8 @@ public class UIControllerScript : MonoBehaviour
 
     private bool menuActivated;
     private bool mapActivated;
+    private bool showingDialog;
+    private string dialogText;
 
     public void SetToolBarItem(Sprite toolSprite, Tool tool)
     {
@@ -72,6 +73,8 @@ public class UIControllerScript : MonoBehaviour
     public void ShowDialogText(string text)
     {
         dialogActivated = true;
+        showingDialog = true;
+        dialogText = text;
         dialogTextParent.SetActive(true);
         Time.timeScale = 0;
         StopAllCoroutines();
@@ -86,13 +89,23 @@ public class UIControllerScript : MonoBehaviour
             dialogTextObject.GetComponent<TextMeshProUGUI>().text += letter;
             yield return new WaitForSecondsRealtime(0.05f);
         }
+        showingDialog = false;
     }
 
     public void EndDialog()
     {
-        dialogActivated = false;
-        dialogTextParent.SetActive(false);
-        Time.timeScale = 1;
+        if (showingDialog)
+        {
+            StopAllCoroutines();
+            dialogTextObject.GetComponent<TextMeshProUGUI>().text = dialogText;
+            showingDialog = false;
+        }
+        else
+        {
+            dialogActivated = false;
+            dialogTextParent.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
     public void InputMap(InputAction.CallbackContext context)
@@ -180,6 +193,18 @@ public class UIControllerScript : MonoBehaviour
         closeMenuBtn.SetActive(true);
         menuNotesObject.SetActive(false);
         closeNotesBtn.SetActive(false);
+    }
+
+    public void OpenBlacksmithShop()
+    {
+        Time.timeScale = 0;
+        blacksmithShop.SetActive(true);
+    }
+
+    public void CloseBlacksmithShop()
+    {
+        blacksmithShop.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void ConfigurationBtn()

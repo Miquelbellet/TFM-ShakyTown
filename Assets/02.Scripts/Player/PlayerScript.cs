@@ -6,24 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
 
+    private GameObject interactableObject;
     private bool openChest;
-    private GameObject chestObject;
+    private bool momTalk;
+    private bool bossTalk;
+    private bool blacksmithTalk;
+    private bool witchTalk;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-    void ActionChest()
-    {
-        if (chestObject.GetComponent<ChestScript>().chestOpened) chestObject.GetComponent<ChestScript>().CloseChest();
-        else chestObject.GetComponent<ChestScript>().OpenChest();
-    }
 
     public void InputAction(InputAction.CallbackContext context)
     {
@@ -31,17 +20,54 @@ public class PlayerScript : MonoBehaviour
         {
             if (openChest)
             {
-                ActionChest();
+                if (interactableObject.GetComponent<ChestScript>().chestOpened) interactableObject.GetComponent<ChestScript>().CloseChest();
+                else interactableObject.GetComponent<ChestScript>().OpenChest();
+            }
+            else if (momTalk)
+            {
+                interactableObject.GetComponent<MomControllerScript>().ShowDialog();
+            }
+            else if (bossTalk)
+            {
+                interactableObject.GetComponent<BossControllerScript>().ShowDialog();
+            }
+            else if (blacksmithTalk)
+            {
+                interactableObject.GetComponent<BlacksmithControllerScript>().ShowDialog();
+            }
+            else if (witchTalk)
+            {
+                interactableObject.GetComponent<WitchControllerScript>().ShowDialog();
             }
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Chest")
         {
             openChest = true;
-            chestObject = other.gameObject;
+            interactableObject = other.gameObject;
+        }
+        else if (other.tag == "Mom")
+        {
+            momTalk = true;
+            interactableObject = other.gameObject;
+        }
+        else if (other.tag == "Boss")
+        {
+            bossTalk = true;
+            interactableObject = other.gameObject;
+        }
+        else if (other.tag == "Blacksmith")
+        {
+            blacksmithTalk = true;
+            interactableObject = other.gameObject;
+        }
+        else if (other.tag == "Witch")
+        {
+            witchTalk = true;
+            interactableObject = other.gameObject;
         }
     }
 
@@ -49,10 +75,29 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.tag == "Chest")
         {
-            try { chestObject.GetComponent<ChestScript>().CloseChest(); }
-            catch { }
+            try { interactableObject.GetComponent<ChestScript>().CloseChest(); } catch { }
             openChest = false;
-            chestObject = null;
+            interactableObject = null;
+        }
+        else if (other.tag == "Mom")
+        {
+            momTalk = false;
+            interactableObject = null;
+        }
+        else if (other.tag == "Boss")
+        {
+            bossTalk = false;
+            interactableObject = null;
+        }
+        else if (other.tag == "Blacksmith")
+        {
+            blacksmithTalk = false;
+            interactableObject = null;
+        }
+        else if (other.tag == "Witch")
+        {
+            witchTalk = false;
+            interactableObject = null;
         }
     }
 

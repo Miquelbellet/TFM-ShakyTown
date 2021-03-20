@@ -43,13 +43,13 @@ public class NotesScript : MonoBehaviour
     void SetNoteItem()
     {
         StreamReader notesDocument = resourcesManagmentScript.ReadDataFromResource("Assets/Resources/notes.txt");
-        for (int i = 0; i <= noteIndex; i++)
+        string numberLines = notesDocument.ReadLine();
+        int.TryParse(numberLines, out int numLines);
+        for (int i = 0; i < numLines; i++)
         {
-            if (noteIndex == i)
-            {
-                string noteStr = notesDocument.ReadLine();
-                note = Note.CreateFromJSON(noteStr);
-            }
+            string noteStr = notesDocument.ReadLine();
+            Note newNote = Note.CreateFromJSON(noteStr);
+            if (newNote.index == noteIndex) note = newNote;
         }
         notesDocument.Close();
     }
