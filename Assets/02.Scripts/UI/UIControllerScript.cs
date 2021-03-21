@@ -20,17 +20,29 @@ public class UIControllerScript : MonoBehaviour
     [Header("Items Objects")]
     public GameObject toolsImagesObjectsParent;
     public GameObject chestImagesObjectsParent;
+
+    [Header("Blacksmith Shop")]
     public GameObject blacksmithShop;
+    public GameObject confirmBlacksmithBuy;
+    public GameObject confirmBuyButton;
+    public GameObject noteEnoughItemsText;
+    public GameObject[] costItemImages;
 
     [Header("Dialog Text Objects")]
     public GameObject dialogTextParent;
     public GameObject dialogTextObject;
     [HideInInspector] public bool dialogActivated;
 
+    private Sprite[] toolsSprites;
     private bool menuActivated;
     private bool mapActivated;
     private bool showingDialog;
     private string dialogText;
+
+    private void Start()
+    {
+        toolsSprites = Resources.LoadAll<Sprite>("Tools");
+    }
 
     public void SetToolBarItem(Sprite toolSprite, Tool tool)
     {
@@ -106,6 +118,73 @@ public class UIControllerScript : MonoBehaviour
             dialogTextParent.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+
+    public void SetConfirmBuy(Tool[] costItem, bool haveItems)
+    {
+        for (int i = 0; i < costItem.Length; i++)
+        {
+            if (!costItem[i].empty)
+            {
+                foreach (Sprite toolSp in toolsSprites)
+                {
+                    if (toolSp.name == costItem[i].spriteName)
+                    {
+                        costItemImages[i].GetComponent<Image>().sprite = toolSp;
+                        if (costItem[i].isCountable)
+                        {
+                            costItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(true);
+                            costItemImages[i].transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
+                        }
+                        else costItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+        confirmBlacksmithBuy.SetActive(true);
+        if (haveItems)
+        {
+            confirmBuyButton.GetComponent<Button>().interactable = true;
+            noteEnoughItemsText.SetActive(false);
+        }
+        else
+        {
+            confirmBuyButton.GetComponent<Button>().interactable = false;
+            noteEnoughItemsText.SetActive(true);
+        }
+    }
+
+    public void SetSellingImageItem(Tool tool, Transform imageTransform)
+    {
+        if (!tool.empty)
+        {
+            foreach (Sprite toolSp in toolsSprites)
+            {
+                if (toolSp.name == tool.spriteName)
+                {
+                    imageTransform.GetComponent<Image>().sprite = toolSp;
+                    if (tool.isCountable)
+                    {
+                        imageTransform.GetChild(0).transform.gameObject.SetActive(true);
+                        imageTransform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
+                    }
+                    else
+                    {
+                        imageTransform.GetChild(0).transform.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+        else
+        {
+            imageTransform.GetComponent<Image>().sprite = null;
+            imageTransform.GetChild(0).transform.gameObject.SetActive(false);
+        }
+    }
+
+    public void CloseConfirmBlacksmithBuy()
+    {
+        confirmBlacksmithBuy.SetActive(false);
     }
 
     public void InputMap(InputAction.CallbackContext context)

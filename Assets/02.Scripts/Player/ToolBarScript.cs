@@ -14,13 +14,14 @@ public class ToolBarScript : MonoBehaviour
     public GameObject droppedItemPrefab;
     [HideInInspector] public bool grabbingItem;
     [HideInInspector] public Tool itemGrabbed;
+    [HideInInspector] public Tool[] toolsList;
 
     ResourcesManagmentScript resourcesManagmentScript;
     GameObject playerHandItem;
     GameObject canvasObject;
     GameObject[] chestsInScene;
+    GameObject blacksmithObject;
 
-    private Tool[] toolsList;
     private Sprite[] toolsSprites;
     private int numberOfToolsTotal;
     private int toolNumberSelected = 0;
@@ -33,6 +34,7 @@ public class ToolBarScript : MonoBehaviour
         playerHandItem = GameObject.FindGameObjectWithTag("HandItem");
         canvasObject = GameObject.FindGameObjectWithTag("Canvas");
         chestsInScene = GameObject.FindGameObjectsWithTag("Chest");
+        blacksmithObject = GameObject.FindGameObjectWithTag("Blacksmith");
         toolsSprites = Resources.LoadAll<Sprite>("Tools");
         SetObjectBorders();
         SetToolsForBar();
@@ -122,6 +124,14 @@ public class ToolBarScript : MonoBehaviour
         toolsBar.Close();
     }
 
+    public void RefreshToolbarItems()
+    {
+        for (int i = 0; i < toolsList.Length; i++)
+        {
+            SetToolbarItemUI(toolsList[i]);
+        }
+    }
+
     public void SelectItemInToolbar(int itemIndex)
     {
         toolNumberSelected = itemIndex;
@@ -189,6 +199,12 @@ public class ToolBarScript : MonoBehaviour
                             chest.GetComponent<ChestScript>().DropItemToToolbarChest(res.gameObject.transform.GetSiblingIndex(), true);
                         }
                     }
+                    itemDropped = true;
+                    DestroyGrabbingItem();
+                }
+                else if (res.gameObject.tag == "SellItemShop")
+                {
+                    blacksmithObject.GetComponent<BlacksmithControllerScript>().SetSellingItem(res.gameObject.transform.GetSiblingIndex(), itemGrabbed);
                     itemDropped = true;
                     DestroyGrabbingItem();
                 }

@@ -1,12 +1,12 @@
-{"toolbarIndex":0, "empty":false, "name":"sword_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_335", "isWeapon":true, "isBow":false}
-{"toolbarIndex":1, "empty":false, "name":"bow_1", "isCountable":false, "countItems":0, "spriteName":"spritesheet_69", "isWeapon":true, "isBow":true}
-{"toolbarIndex":2, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":3, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":4, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":5, "empty":false, "name":"wood", "isCountable":true, "countItems":5, "spriteName":"spritesheet_349", "isWeapon":false, "isBow":false}
-{"toolbarIndex":6, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":7, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":8, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":9, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":10, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
-{"toolbarIndex":11, "empty":true, "name":"", "isCountable":false, "countItems":0, "spriteName":"", "isWeapon":false, "isBow":false}
+{"toolbarIndex":0, "empty":false, "name":"sword_1", "spriteName":"spritesheet_334", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "goldValue":4}
+{"toolbarIndex":1,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":2, "empty":false, "name":"bow_2", "spriteName":"spritesheet_69", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "goldValue":5}
+{"toolbarIndex":3,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":4,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":5,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":6,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":7,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":8,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":9,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":10,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}
+{"toolbarIndex":11,"empty":true,"name":"","isCountable":false,"countItems":0,"spriteName":""}

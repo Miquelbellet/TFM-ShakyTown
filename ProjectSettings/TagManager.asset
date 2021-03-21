@@ -16,6 +16,7 @@ TagManager:
   - Blacksmith
   - Boss
   - Witch
+  - SellItemShop
   layers:
   - Default
   - TransparentFX
