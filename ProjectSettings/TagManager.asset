@@ -17,6 +17,7 @@ TagManager:
   - Boss
   - Witch
   - SellItemShop
+  - Enemie
   layers:
   - Default
   - TransparentFX
@@ -63,9 +64,15 @@ TagManager:
   - name: NPCs
     uniqueID: 1814983065
     locked: 0
+  - name: Enemies
+    uniqueID: 314999697
+    locked: 0
   - name: Items
     uniqueID: 912741
     locked: 0
   - name: Player
     uniqueID: 33699311
+    locked: 0
+  - name: DecorationAbove
+    uniqueID: 2867359699
     locked: 0

@@ -321,6 +321,7 @@ public class ToolBarScript : MonoBehaviour
         if (context.performed)
         {
             if (GetComponent<UIControllerScript>().dialogActivated) GetComponent<UIControllerScript>().EndDialog();
+            else if (attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemie) attackItemScript.GetComponent<AttackItemScript>().AttackEnemie();
         }
     }
 

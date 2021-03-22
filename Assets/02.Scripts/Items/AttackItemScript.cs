@@ -7,10 +7,13 @@ public class AttackItemScript : MonoBehaviour
 {
     public GameObject secundaryItem;
     [HideInInspector] public Vector2 mousePosition;
+    [HideInInspector] public bool isSwordInEnemie;
 
+    private Tool usingTool;
     private bool toolIsBow;
     private float swordAngleCorrection = 135;
     private float bowAngleCorrection = 225;
+    private GameObject enemieObject;
 
     void Start()
     {
@@ -46,6 +49,7 @@ public class AttackItemScript : MonoBehaviour
         Tool tool = Tool.CreateFromJSON(toolJSON);
         if (tool.isWeapon)
         {
+            usingTool = tool;
             foreach (Sprite toolSp in toolsSprites)
             {
                 if (toolSp.name == tool.spriteName) GetComponent<SpriteRenderer>().sprite = toolSp;
@@ -56,11 +60,35 @@ public class AttackItemScript : MonoBehaviour
         else
         {
             GetComponent<SpriteRenderer>().sprite = null;
+            usingTool = null;
         }
+    }
+
+    public void AttackEnemie()
+    {
+        enemieObject.GetComponent<EnemyControllerScript>().Hitted(usingTool.damage);
     }
 
     public void InputMousePosition(InputAction.CallbackContext context)
     {
         mousePosition = context.ReadValue<Vector2>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemie")
+        {
+            isSwordInEnemie = true;
+            enemieObject = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemie")
+        {
+            isSwordInEnemie = false;
+            enemieObject = null;
+        }
     }
 }

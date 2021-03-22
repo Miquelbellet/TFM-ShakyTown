@@ -42,7 +42,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Chest")
         {
@@ -106,6 +106,15 @@ public class PlayerScript : MonoBehaviour
         if(collision.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             GetComponent<PlayerMovementScript>().stopRollMove = true;
+        }
+
+        if (collision.gameObject.tag == "Enemie")
+        {
+            if (GetComponent<PlayerHealthScript>().canRecieveDamage)
+            {
+                float damage = collision.gameObject.GetComponent<EnemyControllerScript>().damage;
+                GetComponent<PlayerHealthScript>().PlayerHitted(damage);
+            }
         }
     }
 }
