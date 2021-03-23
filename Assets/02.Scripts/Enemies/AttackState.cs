@@ -13,11 +13,17 @@ public class AttackState : IEnemyState
 
     public void UpdateState()
     {
-        GoToAlertState();
+        if (myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        {
+            GoToAlertState();
+        }
     }
 
     public void GoToAlertState()
     {
+        myEnemy.enemyAnimator.speed = 1.3f;
+        myEnemy.enemyAnimator.SetBool("attack", false);
+        myEnemy.enemyAnimator.SetBool("walk", true);
         myEnemy.currentState = myEnemy.alertState;
     }
 
@@ -51,7 +57,7 @@ public class AttackState : IEnemyState
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionStay2D(Collision2D collision)
     {
 
     }

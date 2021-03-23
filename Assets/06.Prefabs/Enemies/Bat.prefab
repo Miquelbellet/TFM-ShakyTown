@@ -192,3 +192,5 @@ MonoBehaviour:
   playerDetectionRadius: 1.5
   player: {fileID: 0}
   initEnemyPosition: {x: 0, y: 0}
+  enemyAnimator: {fileID: 0}
+  enemySprite: {fileID: 0}

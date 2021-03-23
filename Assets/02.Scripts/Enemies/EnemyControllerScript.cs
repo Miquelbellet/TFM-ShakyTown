@@ -22,22 +22,26 @@ public class EnemyControllerScript : MonoBehaviour
     [HideInInspector] public AlertState alertState;
     [HideInInspector] public AttackState attackState;
 
-    [HideInInspector] public GameObject player;
     [HideInInspector] public IEnemyState currentState;
+    [HideInInspector] public GameObject player;
     [HideInInspector] public Vector2 initEnemyPosition;
+    [HideInInspector] public Animator enemyAnimator;
+    [HideInInspector] public SpriteRenderer enemySprite;
 
     private bool dead;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
+        enemyAnimator = GetComponent<Animator>();
+        enemySprite = GetComponent<SpriteRenderer>();
+        GetComponent<CircleCollider2D>().radius = playerDetectionRadius;
+        initEnemyPosition = transform.position;
+        
         patrolState = new PatrolState(this);
         alertState = new AlertState(this);
         attackState = new AttackState(this);
         currentState = patrolState;
-        initEnemyPosition = transform.position;
-        GetComponent<CircleCollider2D>().radius = playerDetectionRadius;
     }
 
     void Update()
@@ -46,6 +50,40 @@ public class EnemyControllerScript : MonoBehaviour
         if (health < 0 && !dead)
         {
 
+        }
+    }
+
+    public void CheckPlayerDirection(Vector2 followPos)
+    {
+        enemyAnimator.SetBool("side", false);
+        enemyAnimator.SetBool("down", false);
+        enemyAnimator.SetBool("up", false);
+
+        Vector2 enemyPos = transform.position;
+        Vector3 dir = (enemyPos - followPos).normalized;
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if (dir.x > 0)
+            {
+                enemyAnimator.SetBool("side", true);
+                enemySprite.flipX = true;
+            }
+            else
+            {
+                enemyAnimator.SetBool("side", true);
+                enemySprite.flipX = false;
+            }
+        }
+        else
+        {
+            if (dir.y > 0)
+            {
+                enemyAnimator.SetBool("down", true);
+            }
+            else
+            {
+                enemyAnimator.SetBool("up", true);
+            }
         }
     }
 
@@ -70,8 +108,8 @@ public class EnemyControllerScript : MonoBehaviour
         if (!dead) currentState.OnTriggerExit2D(collision);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!dead) currentState.OnCollisionEnter2D(collision);
+        if (!dead) currentState.OnCollisionStay2D(collision);
     }
 }

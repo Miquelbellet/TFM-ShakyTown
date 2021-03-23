@@ -107,14 +107,5 @@ public class PlayerScript : MonoBehaviour
         {
             GetComponent<PlayerMovementScript>().stopRollMove = true;
         }
-
-        if (collision.gameObject.tag == "Enemie")
-        {
-            if (GetComponent<PlayerHealthScript>().canRecieveDamage)
-            {
-                float damage = collision.gameObject.GetComponent<EnemyControllerScript>().damage;
-                GetComponent<PlayerHealthScript>().PlayerHitted(damage);
-            }
-        }
     }
 }

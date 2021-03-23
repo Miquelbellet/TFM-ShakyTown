@@ -12,7 +12,6 @@ public class PatrolState : IEnemyState
     public PatrolState(EnemyControllerScript enemy)
     {
         myEnemy = enemy;
-        SetNewPosition();
     }
 
     public void UpdateState()
@@ -20,15 +19,21 @@ public class PatrolState : IEnemyState
         if (myEnemy.canWalk)
         {
             GoToRandomPoint();
+            myEnemy.enemyAnimator.SetBool("walk", true);
+        }
+        else
+        {
+            myEnemy.enemyAnimator.SetBool("walk", false);
         }
     }
 
-    void SetNewPosition()
+    public void SetNewPosition()
     {
         time = 0;
         float posX = myEnemy.initEnemyPosition.x + Random.Range(myEnemy.walkableArea, -myEnemy.walkableArea);
         float posY = myEnemy.initEnemyPosition.y + Random.Range(myEnemy.walkableArea, -myEnemy.walkableArea);
         newPos = new Vector2(posX, posY);
+        myEnemy.CheckPlayerDirection(newPos);
     }
 
     void GoToRandomPoint()
@@ -48,6 +53,7 @@ public class PatrolState : IEnemyState
 
     public void GoToAlertState()
     {
+        myEnemy.enemyAnimator.speed = 1.3f;
         myEnemy.currentState = myEnemy.alertState;
     }
 
@@ -79,7 +85,7 @@ public class PatrolState : IEnemyState
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
