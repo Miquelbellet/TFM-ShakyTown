@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthScript : MonoBehaviour
 {
-    public int playerLifes;
+    [Header("Lifes configuration")]
+    public float currentPlayerLifes;
+    [Range(2, 24)] public int actualFullPlayerLifes;
     public float intervalBetweenDamage;
+    
+    [Header("Hearts Objects")]
+    public GameObject heartsParent;
+    public Sprite[] heartsSprites;
 
     [HideInInspector] public bool canRecieveDamage = true;
+    [HideInInspector] public bool playerDead;
 
+    private int maxNumberLifes = 24;
     private bool immunePlayer;
 
     void Start()
     {
-        
+        SetPlayerHearts();
     }
 
     void Update()
@@ -21,6 +30,29 @@ public class PlayerHealthScript : MonoBehaviour
         if (!canRecieveDamage && !immunePlayer)
         {
             StartCoroutine(PlayerImmune());
+        }
+    }
+
+    public void SetPlayerHearts()
+    {
+        for (int i = 0; i < heartsParent.transform.childCount; i++)
+        {
+            if (i+1 <= currentPlayerLifes / 2)
+            {
+                heartsParent.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = heartsSprites[0];
+            }
+            else if (i+1 == (currentPlayerLifes / 2) + 0.5f)
+            {
+                heartsParent.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = heartsSprites[1];
+            }
+            else if (i+1 <= actualFullPlayerLifes / 2)
+            {
+                heartsParent.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = heartsSprites[2];
+            }
+            else
+            {
+                heartsParent.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
     }
 
@@ -37,9 +69,22 @@ public class PlayerHealthScript : MonoBehaviour
 
     public void PlayerHitted(float damage)
     {
-        Debug.Log("Player hitted, damage: "+damage);
-        canRecieveDamage = false;
-        Invoke("CanRecieveDamage", intervalBetweenDamage);
+        currentPlayerLifes -= damage;
+        SetPlayerHearts();
+        if (currentPlayerLifes <= 0)
+        {
+            PlayerDied();
+        }
+        else
+        {
+            canRecieveDamage = false;
+            Invoke("CanRecieveDamage", intervalBetweenDamage);
+        }
+    }
+
+    void PlayerDied()
+    {
+        playerDead = true;
     }
 
     void CanRecieveDamage()

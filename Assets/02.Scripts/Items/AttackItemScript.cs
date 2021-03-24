@@ -66,7 +66,7 @@ public class AttackItemScript : MonoBehaviour
 
     public void AttackEnemie()
     {
-        enemieObject.GetComponent<EnemyControllerScript>().Hitted(usingTool.damage);
+        if(enemieObject) enemieObject.GetComponent<EnemyControllerScript>().Hitted(usingTool.damage);
     }
 
     public void InputMousePosition(InputAction.CallbackContext context)

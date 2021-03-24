@@ -27,7 +27,7 @@ public class Tool
         isBow = false;
         damage = 0;
         goldValue = 1;
-}
+    }
 
     public static Tool CreateFromJSON(string jsonString)
     {

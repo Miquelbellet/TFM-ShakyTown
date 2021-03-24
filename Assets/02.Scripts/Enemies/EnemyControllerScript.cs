@@ -4,40 +4,36 @@ using UnityEngine;
 
 public class EnemyControllerScript : MonoBehaviour
 {
-    [Header("Enemy type")]
     public EnemyType enemyType;
-    public float damage;
-    public float health;
-    public bool canWalk;
-
-    [Header("Enemy caracteristics")]
-    public float walkSpeed;
-    public float runSpeed;
-    public float walkableArea;
-    public float maxTimeWalking;
-    public float playerDetectionRadius;
+    public EnemySettings batSettings;
     
     [HideInInspector] public enum EnemyType { Bat }
+    [HideInInspector] public EnemySettings enemySettings;
+
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public AlertState alertState;
     [HideInInspector] public AttackState attackState;
-
     [HideInInspector] public IEnemyState currentState;
+
     [HideInInspector] public GameObject player;
     [HideInInspector] public Vector2 initEnemyPosition;
     [HideInInspector] public Animator enemyAnimator;
     [HideInInspector] public SpriteRenderer enemySprite;
 
     private bool dead;
+    private float enemylifes;
 
     void Start()
     {
+        if (enemyType == EnemyType.Bat) enemySettings = batSettings;
+
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnimator = GetComponent<Animator>();
         enemySprite = GetComponent<SpriteRenderer>();
-        GetComponent<CircleCollider2D>().radius = playerDetectionRadius;
+        GetComponent<CircleCollider2D>().radius = enemySettings.playerDetectionRadius;
         initEnemyPosition = transform.position;
-        
+        enemylifes = enemySettings.health;
+
         patrolState = new PatrolState(this);
         alertState = new AlertState(this);
         attackState = new AttackState(this);
@@ -47,10 +43,6 @@ public class EnemyControllerScript : MonoBehaviour
     void Update()
     {
         currentState.UpdateState();
-        if (health < 0 && !dead)
-        {
-
-        }
     }
 
     public void CheckPlayerDirection(Vector2 followPos)
@@ -89,8 +81,17 @@ public class EnemyControllerScript : MonoBehaviour
 
     public void Hitted(float damage)
     {
-        health -= damage;
+        enemylifes -= damage;
         currentState.Hit();
+        if (enemylifes <= 0)
+        {
+            EnemyDead();
+        }
+    }
+
+    void EnemyDead()
+    {
+        Destroy(gameObject, 0.3f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

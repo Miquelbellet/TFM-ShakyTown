@@ -16,7 +16,7 @@ public class PatrolState : IEnemyState
 
     public void UpdateState()
     {
-        if (myEnemy.canWalk)
+        if (myEnemy.enemySettings.canWalk)
         {
             GoToRandomPoint();
             myEnemy.enemyAnimator.SetBool("walk", true);
@@ -30,8 +30,8 @@ public class PatrolState : IEnemyState
     public void SetNewPosition()
     {
         time = 0;
-        float posX = myEnemy.initEnemyPosition.x + Random.Range(myEnemy.walkableArea, -myEnemy.walkableArea);
-        float posY = myEnemy.initEnemyPosition.y + Random.Range(myEnemy.walkableArea, -myEnemy.walkableArea);
+        float posX = myEnemy.initEnemyPosition.x + Random.Range(myEnemy.enemySettings.walkableArea, -myEnemy.enemySettings.walkableArea);
+        float posY = myEnemy.initEnemyPosition.y + Random.Range(myEnemy.enemySettings.walkableArea, -myEnemy.enemySettings.walkableArea);
         newPos = new Vector2(posX, posY);
         myEnemy.CheckPlayerDirection(newPos);
     }
@@ -39,8 +39,8 @@ public class PatrolState : IEnemyState
     void GoToRandomPoint()
     {
         time += Time.deltaTime;
-        myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, newPos, myEnemy.walkSpeed * Time.deltaTime);
-        if (Vector2.Distance(myEnemy.transform.position, newPos) < 0.2 || time > myEnemy.maxTimeWalking)
+        myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, newPos, myEnemy.enemySettings.walkSpeed * Time.deltaTime);
+        if (Vector2.Distance(myEnemy.transform.position, newPos) < 0.2 || time > myEnemy.enemySettings.maxTimeWalking)
         {
             SetNewPosition();
         }
@@ -64,6 +64,8 @@ public class PatrolState : IEnemyState
 
     public void Hit()
     {
+        myEnemy.enemyAnimator.SetBool("walk", false);
+        myEnemy.enemyAnimator.SetBool("hit", true);
         GoToAlertState();
     }
 

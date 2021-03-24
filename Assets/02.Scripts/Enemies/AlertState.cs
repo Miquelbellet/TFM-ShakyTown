@@ -13,10 +13,19 @@ public class AlertState : IEnemyState
 
     public void UpdateState()
     {
-        if (!myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        if (!myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && !myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit"))
         {
-            myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, myEnemy.player.transform.position, myEnemy.runSpeed * Time.deltaTime);
+            myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, myEnemy.player.transform.position, myEnemy.enemySettings.runSpeed * Time.deltaTime);
             myEnemy.CheckPlayerDirection(myEnemy.player.transform.position);
+        }
+        else if (myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit"))
+        {
+            myEnemy.enemyAnimator.SetBool("hit", false);
+            myEnemy.enemyAnimator.SetBool("walk", true);
+        }
+        if (myEnemy.player.GetComponent<PlayerHealthScript>().playerDead)
+        {
+            GoToPatrolState();
         }
     }
 
@@ -42,7 +51,8 @@ public class AlertState : IEnemyState
 
     public void Hit()
     {
-
+        myEnemy.enemyAnimator.SetBool("walk", false);
+        myEnemy.enemyAnimator.SetBool("hit", true);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -67,9 +77,9 @@ public class AlertState : IEnemyState
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (myEnemy.player.GetComponent<PlayerHealthScript>().canRecieveDamage)
+            if (myEnemy.player.GetComponent<PlayerHealthScript>().canRecieveDamage && !myEnemy.player.GetComponent<PlayerHealthScript>().playerDead)
             {
-                myEnemy.player.GetComponent<PlayerHealthScript>().PlayerHitted(myEnemy.damage);
+                myEnemy.player.GetComponent<PlayerHealthScript>().PlayerHitted(myEnemy.enemySettings.damage);
                 GoToAttackState();
             }
         }
