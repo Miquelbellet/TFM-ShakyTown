@@ -5,19 +5,25 @@ using UnityEngine.InputSystem;
 
 public class AttackItemScript : MonoBehaviour
 {
-    public GameObject secundaryItem;
-    [HideInInspector] public Vector2 mousePosition;
-    [HideInInspector] public bool isSwordInEnemie;
+    public GameObject secondaryItem;
+    public GameObject arrowShotPrefab;
 
-    private Tool usingTool;
+    [HideInInspector] public Vector2 mousePosition;
+    [HideInInspector] public bool isSwordInEnemy;
+    [HideInInspector] public Tool usingTool;
+
+    GameObject player;
+
     private bool toolIsBow;
     private float swordAngleCorrection = 135;
     private float bowAngleCorrection = 225;
-    private GameObject enemieObject;
+    private GameObject enemyObject;
+    private Sprite[] toolsItemSprites;
+    private Tool bowArrow;
 
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("GameController");
     }
 
     void Update()
@@ -32,7 +38,7 @@ public class AttackItemScript : MonoBehaviour
         float angle = Mathf.Atan2(newObjectPos.y, newObjectPos.x) * Mathf.Rad2Deg;
 
         var swordRotation = Quaternion.Euler(new Vector3(0, 0, angle - swordAngleCorrection));
-        secundaryItem.transform.rotation = swordRotation;
+        secondaryItem.transform.rotation = swordRotation;
         if (toolIsBow)
         {
             var bowRotation = Quaternion.Euler(new Vector3(0, 0, angle - bowAngleCorrection));
@@ -50,6 +56,17 @@ public class AttackItemScript : MonoBehaviour
         if (tool.isWeapon)
         {
             usingTool = tool;
+            toolsItemSprites = toolsSprites;
+            if (tool.isBow)
+            {
+                SetSecondaryItem();
+            }
+            else
+            {
+                secondaryItem.SetActive(false);
+                bowArrow = null;
+            }
+
             foreach (Sprite toolSp in toolsSprites)
             {
                 if (toolSp.name == tool.spriteName) GetComponent<SpriteRenderer>().sprite = toolSp;
@@ -60,13 +77,64 @@ public class AttackItemScript : MonoBehaviour
         else
         {
             GetComponent<SpriteRenderer>().sprite = null;
+            secondaryItem.SetActive(false);
             usingTool = null;
+            bowArrow = null;
         }
     }
 
-    public void AttackEnemie()
+    public void AttackEnemySword()
     {
-        if(enemieObject) enemieObject.GetComponent<EnemyControllerScript>().Hitted(usingTool.damage);
+        if(enemyObject) enemyObject.GetComponent<EnemyControllerScript>().Hitted(usingTool.damage);
+    }
+
+    public void AttackEnemyBow()
+    {
+        if(bowArrow != null)
+        {
+            GameObject arrowPrefab = Instantiate(arrowShotPrefab, transform.position, secondaryItem.transform.rotation);
+            arrowPrefab.GetComponent<SpriteRenderer>().sprite = secondaryItem.GetComponent<SpriteRenderer>().sprite;
+            arrowPrefab.GetComponent<ArrowShotScript>().arrow = bowArrow;
+
+            Tool[] newToolList = player.GetComponent<ToolBarScript>().toolsList;
+            bowArrow.countItems--;
+            if(bowArrow.countItems > 0)
+            {
+                newToolList[bowArrow.toolbarIndex] = bowArrow;
+                player.GetComponent<ToolBarScript>().toolsList = newToolList;
+            }
+            else
+            {
+                Tool emptyTool = new Tool();
+                emptyTool.toolbarIndex = bowArrow.toolbarIndex;
+                newToolList[bowArrow.toolbarIndex] = emptyTool;
+                player.GetComponent<ToolBarScript>().toolsList = newToolList;
+                secondaryItem.SetActive(false);
+                bowArrow = null;
+            }
+            SetSecondaryItem();
+            player.GetComponent<ToolBarScript>().RefreshToolbarItems();
+        }
+    }
+
+    void SetSecondaryItem()
+    {
+        Tool[] toolsList = player.GetComponent<ToolBarScript>().toolsList;
+        for (int n = 0; n < toolsList.Length; n++)
+        {
+            if (!toolsList[n].empty)
+            {
+                if (toolsList[n].isArrow && toolsList[n].countItems > 0)
+                {
+                    secondaryItem.SetActive(true);
+                    bowArrow = toolsList[n];
+                    foreach (Sprite toolSp in toolsItemSprites)
+                    {
+                        if (toolSp.name == toolsList[n].spriteName) secondaryItem.GetComponent<SpriteRenderer>().sprite = toolSp;
+                    }
+                }
+            }
+        }
     }
 
     public void InputMousePosition(InputAction.CallbackContext context)
@@ -76,19 +144,19 @@ public class AttackItemScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemie")
+        if(collision.tag == "Enemy")
         {
-            isSwordInEnemie = true;
-            enemieObject = collision.gameObject;
+            isSwordInEnemy = true;
+            enemyObject = collision.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Enemie")
+        if (collision.tag == "Enemy")
         {
-            isSwordInEnemie = false;
-            enemieObject = null;
+            isSwordInEnemy = false;
+            enemyObject = null;
         }
     }
 }

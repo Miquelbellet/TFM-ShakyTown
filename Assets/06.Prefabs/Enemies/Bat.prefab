@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 825490066102978738}
   m_Layer: 0
   m_Name: Bat
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -182,14 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
-  damage: 1
-  health: 20
-  canWalk: 1
-  walkSpeed: 0.3
-  runSpeed: 0.7
-  walkableArea: 2
-  maxTimeWalking: 5
-  playerDetectionRadius: 1.5
+  batSettings: {fileID: 11400000, guid: 9aedaba29bc0a4041a7212778b2ba1cc, type: 2}
+  enemySettings: {fileID: 0}
   player: {fileID: 0}
   initEnemyPosition: {x: 0, y: 0}
   enemyAnimator: {fileID: 0}

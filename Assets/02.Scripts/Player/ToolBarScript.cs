@@ -306,6 +306,23 @@ public class ToolBarScript : MonoBehaviour
         return false;
     }
 
+    bool CheckPlayerForArrows()
+    {
+        bool haveArrows = false;
+        for (int n = 0; n < toolsList.Length; n++)
+        {
+            if (!toolsList[n].empty)
+            {
+                if (toolsList[n].isArrow && toolsList[n].countItems > 0)
+                {
+                    haveArrows = true;
+                }
+
+            }
+        }
+        return haveArrows;
+    }
+
     public void InputMouseScroll(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -321,7 +338,21 @@ public class ToolBarScript : MonoBehaviour
         if (context.performed)
         {
             if (GetComponent<UIControllerScript>().dialogActivated) GetComponent<UIControllerScript>().EndDialog();
-            else if (attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemie) attackItemScript.GetComponent<AttackItemScript>().AttackEnemie();
+            else if (attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemy && attackItemScript.GetComponent<AttackItemScript>().usingTool != null)
+            {
+                if (attackItemScript.GetComponent<AttackItemScript>().usingTool.isWeapon && !attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow)
+                {
+                    attackItemScript.GetComponent<AttackItemScript>().AttackEnemySword();
+                }
+            }
+            else if (attackItemScript.GetComponent<AttackItemScript>().usingTool != null)
+            {
+                if(attackItemScript.GetComponent<AttackItemScript>().usingTool.isWeapon && attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow)
+                {
+                    bool playerHaveArrows = CheckPlayerForArrows();
+                    if(playerHaveArrows) attackItemScript.GetComponent<AttackItemScript>().AttackEnemyBow();
+                }
+            }
         }
     }
 

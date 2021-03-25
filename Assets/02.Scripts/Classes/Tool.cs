@@ -12,6 +12,7 @@ public class Tool
     public int countItems;
     public bool isWeapon;
     public bool isBow;
+    public bool isArrow;
     public int damage;
     public int goldValue;
 
@@ -25,6 +26,7 @@ public class Tool
         countItems = 0;
         isWeapon = false;
         isBow = false;
+        isArrow = false;
         damage = 0;
         goldValue = 1;
     }

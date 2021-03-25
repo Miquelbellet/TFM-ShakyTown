@@ -17,7 +17,7 @@ TagManager:
   - Boss
   - Witch
   - SellItemShop
-  - Enemie
+  - Enemy
   layers:
   - Default
   - TransparentFX
