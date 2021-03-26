@@ -19,8 +19,8 @@ public class EnemyControllerScript : MonoBehaviour
     [HideInInspector] public Vector2 initEnemyPosition;
     [HideInInspector] public Animator enemyAnimator;
     [HideInInspector] public SpriteRenderer enemySprite;
+    [HideInInspector] public bool dead;
 
-    private bool dead;
     private float enemylifes;
 
     void Start()
@@ -30,7 +30,6 @@ public class EnemyControllerScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnimator = GetComponent<Animator>();
         enemySprite = GetComponent<SpriteRenderer>();
-        GetComponent<CircleCollider2D>().radius = enemySettings.playerDetectionRadius;
         initEnemyPosition = transform.position;
         enemylifes = enemySettings.health;
 
@@ -92,21 +91,6 @@ public class EnemyControllerScript : MonoBehaviour
     void EnemyDead()
     {
         Destroy(gameObject, 0.3f);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!dead) currentState.OnTriggerEnter2D(collision);
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (!dead) currentState.OnTriggerStay2D(collision);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!dead) currentState.OnTriggerExit2D(collision);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

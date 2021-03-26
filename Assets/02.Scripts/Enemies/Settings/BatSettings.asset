@@ -19,4 +19,4 @@ MonoBehaviour:
   runSpeed: 0.7
   walkableArea: 2
   maxTimeWalking: 5
-  playerDetectionRadius: 1.5
+  playerDetectionRadius: 2.5

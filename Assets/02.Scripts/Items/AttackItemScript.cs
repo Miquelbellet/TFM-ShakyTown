@@ -95,6 +95,7 @@ public class AttackItemScript : MonoBehaviour
             GameObject arrowPrefab = Instantiate(arrowShotPrefab, transform.position, secondaryItem.transform.rotation);
             arrowPrefab.GetComponent<SpriteRenderer>().sprite = secondaryItem.GetComponent<SpriteRenderer>().sprite;
             arrowPrefab.GetComponent<ArrowShotScript>().arrow = bowArrow;
+            arrowPrefab.GetComponent<ArrowShotScript>().bowObject = usingTool;
 
             Tool[] newToolList = player.GetComponent<ToolBarScript>().toolsList;
             bowArrow.countItems--;

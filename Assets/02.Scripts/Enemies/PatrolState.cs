@@ -25,6 +25,7 @@ public class PatrolState : IEnemyState
         {
             myEnemy.enemyAnimator.SetBool("walk", false);
         }
+        CheckForPlayerDistance();
     }
 
     public void SetNewPosition()
@@ -43,6 +44,15 @@ public class PatrolState : IEnemyState
         if (Vector2.Distance(myEnemy.transform.position, newPos) < 0.2 || time > myEnemy.enemySettings.maxTimeWalking)
         {
             SetNewPosition();
+        }
+    }
+
+    void CheckForPlayerDistance()
+    {
+        float playerDistance = Vector2.Distance(myEnemy.transform.position, myEnemy.player.transform.position);
+        if (playerDistance < myEnemy.enemySettings.playerDetectionRadius)
+        {
+            GoToAlertState();
         }
     }
 
@@ -67,24 +77,6 @@ public class PatrolState : IEnemyState
         myEnemy.enemyAnimator.SetBool("walk", false);
         myEnemy.enemyAnimator.SetBool("hit", true);
         GoToAlertState();
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            GoToAlertState();
-        }
-    }
-
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-
     }
 
     public void OnCollisionStay2D(Collision2D collision)

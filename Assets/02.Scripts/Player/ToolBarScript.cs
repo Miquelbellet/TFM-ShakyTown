@@ -338,20 +338,23 @@ public class ToolBarScript : MonoBehaviour
         if (context.performed)
         {
             if (GetComponent<UIControllerScript>().dialogActivated) GetComponent<UIControllerScript>().EndDialog();
-            else if (attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemy && attackItemScript.GetComponent<AttackItemScript>().usingTool != null)
+            else if (
+                attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemy && 
+                attackItemScript.GetComponent<AttackItemScript>().usingTool != null &&
+                attackItemScript.GetComponent<AttackItemScript>().usingTool.isWeapon && 
+                !attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow
+                )
             {
-                if (attackItemScript.GetComponent<AttackItemScript>().usingTool.isWeapon && !attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow)
-                {
-                    attackItemScript.GetComponent<AttackItemScript>().AttackEnemySword();
-                }
+                attackItemScript.GetComponent<AttackItemScript>().AttackEnemySword();
             }
-            else if (attackItemScript.GetComponent<AttackItemScript>().usingTool != null)
+            else if (
+                attackItemScript.GetComponent<AttackItemScript>().usingTool != null &&
+                attackItemScript.GetComponent<AttackItemScript>().usingTool.isWeapon && 
+                attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow
+                )
             {
-                if(attackItemScript.GetComponent<AttackItemScript>().usingTool.isWeapon && attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow)
-                {
-                    bool playerHaveArrows = CheckPlayerForArrows();
-                    if(playerHaveArrows) attackItemScript.GetComponent<AttackItemScript>().AttackEnemyBow();
-                }
+                bool playerHaveArrows = CheckPlayerForArrows();
+                if (playerHaveArrows) attackItemScript.GetComponent<AttackItemScript>().AttackEnemyBow();
             }
         }
     }

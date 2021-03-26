@@ -13,17 +13,27 @@ public class AlertState : IEnemyState
 
     public void UpdateState()
     {
-        if (!myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && !myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit"))
+        if (!myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && !myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit") && !myEnemy.dead)
         {
             myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, myEnemy.player.transform.position, myEnemy.enemySettings.runSpeed * Time.deltaTime);
             myEnemy.CheckPlayerDirection(myEnemy.player.transform.position);
         }
-        else if (myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit"))
+        else if (myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit") && !myEnemy.dead)
         {
             myEnemy.enemyAnimator.SetBool("hit", false);
             myEnemy.enemyAnimator.SetBool("walk", true);
         }
         if (myEnemy.player.GetComponent<PlayerHealthScript>().playerDead)
+        {
+            GoToPatrolState();
+        }
+        CheckForPlayerDistance();
+    }
+
+    void CheckForPlayerDistance()
+    {
+        float playerDistance = Vector2.Distance(myEnemy.transform.position, myEnemy.player.transform.position);
+        if (playerDistance > myEnemy.enemySettings.playerDetectionRadius)
         {
             GoToPatrolState();
         }
@@ -53,24 +63,6 @@ public class AlertState : IEnemyState
     {
         myEnemy.enemyAnimator.SetBool("walk", false);
         myEnemy.enemyAnimator.SetBool("hit", true);
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-
-    }
-
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-            GoToPatrolState();
-        }
     }
 
     public void OnCollisionStay2D(Collision2D collision)
