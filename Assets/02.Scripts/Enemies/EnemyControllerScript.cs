@@ -88,9 +88,18 @@ public class EnemyControllerScript : MonoBehaviour
         }
     }
 
+    public void RespawnEnemy()
+    {
+        transform.position = initEnemyPosition;
+        enemylifes = enemySettings.health;
+        currentState = patrolState;
+        gameObject.SetActive(true);
+    }
+
     void EnemyDead()
     {
-        Destroy(gameObject, 0.3f);
+        dead = true;
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

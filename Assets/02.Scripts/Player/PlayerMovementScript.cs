@@ -87,12 +87,12 @@ public class PlayerMovementScript : MonoBehaviour
             Vector3 startPos = transform.position;
             Vector3 rollPos = playerOrientation * rollMovementForce;
             Vector3 finalPos = startPos + rollPos;
-            StartCoroutine(rollMovement(startPos, finalPos, rollForceTimer));
-            Invoke("restartCooldownRoll", rollCooldownTimer);
+            StartCoroutine(RollMovement(startPos, finalPos, rollForceTimer));
+            Invoke("RestartCooldownRoll", rollCooldownTimer);
         }
     }
 
-    IEnumerator rollMovement(Vector3 StartPos, Vector3 EndPos, float LerpTime)
+    IEnumerator RollMovement(Vector3 StartPos, Vector3 EndPos, float LerpTime)
     {
         float StartTime = Time.time;
         float EndTime = StartTime + LerpTime;
@@ -104,7 +104,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
-    void restartCooldownRoll()
+    void RestartCooldownRoll()
     {
         cooldownRoll = false;
     }

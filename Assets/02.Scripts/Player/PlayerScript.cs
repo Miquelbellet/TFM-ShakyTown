@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
 
+    private GameObject gameController;
     private GameObject interactableObject;
     private bool openChest;
     private bool momTalk;
@@ -13,6 +14,10 @@ public class PlayerScript : MonoBehaviour
     private bool blacksmithTalk;
     private bool witchTalk;
 
+    private void Start()
+    {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+    }
 
     public void InputAction(InputAction.CallbackContext context)
     {
@@ -68,6 +73,22 @@ public class PlayerScript : MonoBehaviour
         {
             witchTalk = true;
             interactableObject = other.gameObject;
+        }
+        else if (other.tag == "Trigger1")
+        {
+            gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(1);
+        }
+        else if (other.tag == "Trigger2")
+        {
+            gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(2);
+        }
+        else if (other.tag == "Trigger3")
+        {
+            gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(3);
+        }
+        else if (other.tag == "Trigger4")
+        {
+            gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(4);
         }
     }
 

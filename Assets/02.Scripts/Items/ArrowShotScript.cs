@@ -14,7 +14,7 @@ public class ArrowShotScript : MonoBehaviour
 
     void Start()
     {
-        
+        transform.position += (transform.up - transform.right) * 0.1f;
     }
 
     void Update()
