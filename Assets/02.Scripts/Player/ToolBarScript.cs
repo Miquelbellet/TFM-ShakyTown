@@ -132,6 +132,20 @@ public class ToolBarScript : MonoBehaviour
         }
     }
 
+    public void DropAllItems()
+    {
+        for (int i = 0; i < toolsList.Length; i++)
+        {
+            if (!toolsList[i].empty)
+            {                
+                GameObject dropedItem = Instantiate(droppedItemPrefab);
+                dropedItem.GetComponent<DroppedItemScript>().SetItem(toolsList[i]);
+                dropedItem.GetComponent<DroppedItemScript>().ThrowItemToFloor(true);
+                RemoveItemFromToolbar(i);
+            }
+        }
+    }
+
     public void SelectItemInToolbar(int itemIndex)
     {
         toolNumberSelected = itemIndex;

@@ -8,6 +8,7 @@ public class LevelControllerScript : MonoBehaviour
     public float timeChangingLevel;
     public GameObject backgroundImage;
     public GameObject[] levelsObjects;
+    public GameObject[] levelsEnemiesObjects;
 
     [Header("Player Level Positions")]
     public Vector2 playerPosHouse;
@@ -25,6 +26,7 @@ public class LevelControllerScript : MonoBehaviour
 
     private GameObject player;
     private bool changingLevel;
+    private bool resetingPlayer;
     private int colliderNumber;
 
     void Start()
@@ -48,8 +50,16 @@ public class LevelControllerScript : MonoBehaviour
 
     public void FadeInFinished()
     {
-        RespawnAllEnemies();
-        SetNewLevel();
+        if(!resetingPlayer) SetNewLevel();
+        else
+        {
+            resetingPlayer = false;
+            SetActiveLevel(1);
+            player.transform.position = playerPosHouse;
+            Camera.main.transform.position = new Vector3(playerPosHouse.x, playerPosHouse.y, Camera.main.transform.position.z);
+            currentLevel = Levels.Level_1;
+            player.GetComponent<PlayerHealthScript>().ResetPlayerLife();
+        }
         backgroundImage.GetComponent<Animator>().SetTrigger("fade_out");
     }
 
@@ -58,6 +68,16 @@ public class LevelControllerScript : MonoBehaviour
         changingLevel = false;
         backgroundImage.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void ResetPlayer()
+    {
+        resetingPlayer = true;
+        changingLevel = true;
+        Time.timeScale = 0;
+        player.GetComponent<PlayerMovementScript>().stopRollMove = true;
+        backgroundImage.SetActive(true);
+        backgroundImage.GetComponent<Animator>().SetTrigger("fade_in");
     }
 
     void SetNewLevel()
@@ -129,17 +149,18 @@ public class LevelControllerScript : MonoBehaviour
     {
         for (int i = 0; i < levelsObjects.Length; i++)
         {
-            if (levelNum == i+1) levelsObjects[i].SetActive(true);
-            else levelsObjects[i].SetActive(false);
-        }
-    }
-
-    void RespawnAllEnemies()
-    {
-        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in allEnemies)
-        {
-            enemy.GetComponent<EnemyControllerScript>().RespawnEnemy();
+            if (levelNum == i+1)
+            {
+                for (int n = 0; n < levelsEnemiesObjects[i].transform.childCount; n++)
+                {
+                    levelsEnemiesObjects[i].transform.GetChild(n).gameObject.GetComponent<EnemyControllerScript>().RespawnEnemy();
+                }
+                levelsObjects[i].SetActive(true);
+            }
+            else
+            {
+                levelsObjects[i].SetActive(false);
+            }
         }
     }
 }

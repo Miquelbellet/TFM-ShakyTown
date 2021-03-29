@@ -62,9 +62,21 @@ public class DroppedItemScript : MonoBehaviour
         }
     }
 
-    public void ThrowItemToFloor()
+    public void ThrowItemToFloor(bool allItems = default(bool))
     {
-        Vector2 playerOrientation = player.GetComponent<PlayerMovementScript>().playerOrientation;
+        Vector2 playerOrientation;
+        if (!allItems)
+        {
+            playerOrientation = player.GetComponent<PlayerMovementScript>().playerOrientation;
+        }
+        else
+        {
+            int randomX = Random.Range(-1, 2);
+            int randomY;
+            if (randomX != 0) randomY = 0;
+            else randomY = Random.Range(-1, 2);
+            playerOrientation = new Vector2(randomX, randomY);
+        }
         Vector3 itemPos = playerOrientation * throwItemForce;
         transform.position = player.transform.position + itemPos;
     }

@@ -16,7 +16,7 @@ public class EnemyControllerScript : MonoBehaviour
     [HideInInspector] public IEnemyState currentState;
 
     [HideInInspector] public GameObject player;
-    [HideInInspector] public Vector2 initEnemyPosition;
+    [HideInInspector] public Vector2 initEnemyPosition = Vector2.zero;
     [HideInInspector] public Animator enemyAnimator;
     [HideInInspector] public SpriteRenderer enemySprite;
     [HideInInspector] public bool dead;
@@ -30,7 +30,7 @@ public class EnemyControllerScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnimator = GetComponent<Animator>();
         enemySprite = GetComponent<SpriteRenderer>();
-        initEnemyPosition = transform.position;
+        if(initEnemyPosition == Vector2.zero) initEnemyPosition = transform.position;
         enemylifes = enemySettings.health;
 
         patrolState = new PatrolState(this);
@@ -90,6 +90,8 @@ public class EnemyControllerScript : MonoBehaviour
 
     public void RespawnEnemy()
     {
+        Start();
+        dead = false;
         transform.position = initEnemyPosition;
         enemylifes = enemySettings.health;
         currentState = patrolState;
