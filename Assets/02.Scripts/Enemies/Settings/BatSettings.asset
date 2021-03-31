@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   health: 20
+  dificultyLevel: 1
   canWalk: 1
   walkSpeed: 0.3
   runSpeed: 0.7

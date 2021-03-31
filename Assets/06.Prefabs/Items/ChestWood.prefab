@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 912741
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -5581046057798961653, guid: 284df37f0665f4146b693b8352e4e4ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,7 +147,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.3
 --- !u!50 &7796412005052776253
 Rigidbody2D:
   serializedVersion: 4
@@ -188,8 +188,11 @@ MonoBehaviour:
     toolbarIndex: 0
     empty: 1
     name: 
+    spriteName: 
     isCountable: 0
     countItems: 0
-    spriteName: 
     isWeapon: 0
     isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 1

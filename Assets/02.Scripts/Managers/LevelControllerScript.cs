@@ -60,6 +60,7 @@ public class LevelControllerScript : MonoBehaviour
             currentLevel = Levels.Level_1;
             player.GetComponent<PlayerHealthScript>().ResetPlayerLife();
         }
+        SaveGame();
         backgroundImage.GetComponent<Animator>().SetTrigger("fade_out");
     }
 
@@ -161,6 +162,16 @@ public class LevelControllerScript : MonoBehaviour
             {
                 levelsObjects[i].SetActive(false);
             }
+        }
+    }
+
+    void SaveGame()
+    {
+        GetComponent<ToolBarScript>().SaveBarTools();
+        GameObject[] allChests = GameObject.FindGameObjectsWithTag("Chest");
+        foreach (GameObject chest in allChests)
+        {
+            chest.GetComponent<ChestScript>().SaveChestItems();
         }
     }
 }

@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   batSettings: {fileID: 11400000, guid: 9aedaba29bc0a4041a7212778b2ba1cc, type: 2}
+  droppedItemPrefab: {fileID: 7964616484997607905, guid: c777870699f6d7d49b2e59ec2ce08f9a, type: 3}
   enemySettings: {fileID: 0}
   player: {fileID: 0}
   initEnemyPosition: {x: 0, y: 0}

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 912741
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 8
   m_Sprite: {fileID: -8450034330120072285, guid: 0b5b0105408e00a41b7500244083dbb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,11 +104,81 @@ MonoBehaviour:
     toolbarIndex: 0
     empty: 1
     name: 
+    spriteName: 
     isCountable: 0
     countItems: 0
-    spriteName: 
     isWeapon: 0
     isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 1
+  resourcesTools:
+  - toolbarIndex: 0
+    empty: 0
+    name: gold
+    spriteName: spritesheet_107
+    isCountable: 1
+    countItems: 0
+    isWeapon: 0
+    isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 1
+  - toolbarIndex: 0
+    empty: 0
+    name: wood
+    spriteName: spritesheet_349
+    isCountable: 1
+    countItems: 0
+    isWeapon: 0
+    isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 1
+  - toolbarIndex: 0
+    empty: 0
+    name: iron
+    spriteName: spritesheet_333
+    isCountable: 1
+    countItems: 0
+    isWeapon: 0
+    isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 2
+  - toolbarIndex: 0
+    empty: 0
+    name: goldGem
+    spriteName: spritesheet_150
+    isCountable: 1
+    countItems: 0
+    isWeapon: 0
+    isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 3
+  - toolbarIndex: 0
+    empty: 0
+    name: blueGem
+    spriteName: spritesheet_224
+    isCountable: 1
+    countItems: 0
+    isWeapon: 0
+    isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 4
+  - toolbarIndex: 0
+    empty: 0
+    name: rubiGem
+    spriteName: spritesheet_279
+    isCountable: 1
+    countItems: 0
+    isWeapon: 0
+    isBow: 0
+    isArrow: 0
+    damage: 0
+    goldValue: 5
 --- !u!61 &-3759259087230921862
 BoxCollider2D:
   m_ObjectHideFlags: 0

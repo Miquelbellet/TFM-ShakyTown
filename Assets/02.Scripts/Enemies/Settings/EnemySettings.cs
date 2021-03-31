@@ -8,6 +8,7 @@ public class EnemySettings : ScriptableObject
     [Header("Enemy basic")]
     public float damage;
     public float health;
+    public int dificultyLevel;
     public bool canWalk;
 
     [Header("Walkable settings")]

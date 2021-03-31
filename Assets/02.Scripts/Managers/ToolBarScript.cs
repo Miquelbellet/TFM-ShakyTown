@@ -124,6 +124,20 @@ public class ToolBarScript : MonoBehaviour
         toolsBar.Close();
     }
 
+    public void SaveBarTools()
+    {
+        string path = "Assets/Resources/tools_bar.txt";
+        StreamWriter toolsBar = resourcesManagmentScript.WriteDataToResource(path);
+        foreach (Tool toolObj in toolsList)
+        {
+            string toolStr = Tool.CreateFromObject(toolObj);
+            toolsBar.WriteLine(toolStr);
+        }
+        toolsBar.Close();
+        AssetDatabase.ImportAsset(path);
+        AssetDatabase.Refresh();
+    }
+
     public void RefreshToolbarItems()
     {
         for (int i = 0; i < toolsList.Length; i++)
