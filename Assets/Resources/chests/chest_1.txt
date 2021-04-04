@@ -11,10 +11,10 @@
 {"toolbarIndex":10,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":11,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":12,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
-{"toolbarIndex":13,"empty":false,"name":"gold","spriteName":"spritesheet_107","isCountable":true,"countItems":2,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
+{"toolbarIndex":13,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":14,"empty":false,"name":"iron","spriteName":"spritesheet_333","isCountable":true,"countItems":2,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":2}
 {"toolbarIndex":15,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
-{"toolbarIndex":16,"empty":false,"name":"arrow_3","spriteName":"spritesheet_7","isCountable":true,"countItems":10,"isWeapon":false,"isBow":false,"isArrow":true,"damage":5,"goldValue":1}
+{"toolbarIndex":16,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":17,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":18,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":19,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
