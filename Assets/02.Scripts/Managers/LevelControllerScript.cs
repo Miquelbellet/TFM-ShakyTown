@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class LevelControllerScript : MonoBehaviour
@@ -60,7 +61,6 @@ public class LevelControllerScript : MonoBehaviour
             currentLevel = Levels.Level_1;
             player.GetComponent<PlayerHealthScript>().ResetPlayerLife();
         }
-        SaveGame();
         backgroundImage.GetComponent<Animator>().SetTrigger("fade_out");
     }
 
@@ -165,7 +165,7 @@ public class LevelControllerScript : MonoBehaviour
         }
     }
 
-    void SaveGame()
+    public void SaveGame()
     {
         GetComponent<ToolBarScript>().SaveBarTools();
         GameObject[] allChests = GameObject.FindGameObjectsWithTag("Chest");
@@ -173,5 +173,6 @@ public class LevelControllerScript : MonoBehaviour
         {
             chest.GetComponent<ChestScript>().SaveChestItems();
         }
+        AssetDatabase.Refresh();
     }
 }

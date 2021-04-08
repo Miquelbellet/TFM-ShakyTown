@@ -12,7 +12,7 @@
 {"toolbarIndex":11,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":12,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":13,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
-{"toolbarIndex":14,"empty":false,"name":"iron","spriteName":"spritesheet_333","isCountable":true,"countItems":2,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":2}
+{"toolbarIndex":14,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":15,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":16,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":17,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}

@@ -42,6 +42,7 @@ public class UIControllerScript : MonoBehaviour
     private void Start()
     {
         toolsSprites = Resources.LoadAll<Sprite>("Tools");
+        Time.timeScale = 1;
     }
 
     public void SetToolBarItem(Sprite toolSprite, Tool tool)
@@ -293,6 +294,7 @@ public class UIControllerScript : MonoBehaviour
 
     public void SaveAndReturnBtn()
     {
+        GetComponent<LevelControllerScript>().SaveGame();
         SceneManager.LoadScene("Menu");
     }
 }

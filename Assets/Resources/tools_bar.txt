@@ -1,8 +1,8 @@
-{"toolbarIndex":0,"empty":false,"name":"bow_2","spriteName":"spritesheet_69","isCountable":false,"countItems":0,"isWeapon":true,"isBow":true,"isArrow":false,"damage":4,"goldValue":5}
-{"toolbarIndex":1,"empty":false,"name":"wood","spriteName":"spritesheet_349","isCountable":true,"countItems":7,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
-{"toolbarIndex":2,"empty":false,"name":"arrow_3","spriteName":"spritesheet_7","isCountable":true,"countItems":9,"isWeapon":false,"isBow":false,"isArrow":true,"damage":5,"goldValue":1}
-{"toolbarIndex":3,"empty":false,"name":"iron","spriteName":"spritesheet_333","isCountable":true,"countItems":4,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":2}
-{"toolbarIndex":4,"empty":false,"name":"gold","spriteName":"spritesheet_107","isCountable":true,"countItems":4,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
+{"toolbarIndex":0,"empty":false,"name":"arrow_4","spriteName":"spritesheet_8","isCountable":true,"countItems":15,"isWeapon":false,"isBow":false,"isArrow":true,"damage":7,"goldValue":3}
+{"toolbarIndex":1,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
+{"toolbarIndex":2,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
+{"toolbarIndex":3,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
+{"toolbarIndex":4,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":5,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":6,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}
 {"toolbarIndex":7,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"damage":0,"goldValue":1}

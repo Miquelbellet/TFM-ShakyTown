@@ -73,8 +73,7 @@ public class ToolBarScript : MonoBehaviour
             if(toolNumberSelected == i) bordersObjectParent.transform.GetChild(i).transform.gameObject.SetActive(true);
             else bordersObjectParent.transform.GetChild(i).transform.gameObject.SetActive(false);
         }
-        try { attackItemScript.SetPlayerHandItem(JsonUtility.ToJson(toolsList[toolNumberSelected]), toolsSprites); }
-        catch { }
+        if(toolsList.Length > 0) attackItemScript.SetPlayerHandItem(JsonUtility.ToJson(toolsList[toolNumberSelected]), toolsSprites);
     }
 
     void SetToolbarItemUI(Tool tool)
@@ -88,7 +87,6 @@ public class ToolBarScript : MonoBehaviour
                     GetComponent<UIControllerScript>().SetToolBarItem(toolSp, tool);
                 }
             }
-            attackItemScript.SetPlayerHandItem(JsonUtility.ToJson(toolsList[toolNumberSelected]), toolsSprites);
         }
         else GetComponent<UIControllerScript>().SetToolBarItem(null, tool);
     }
@@ -121,6 +119,7 @@ public class ToolBarScript : MonoBehaviour
             toolsList[i] = tool;
             SetToolbarItemUI(tool);
         }
+        attackItemScript.SetPlayerHandItem(JsonUtility.ToJson(toolsList[toolNumberSelected]), toolsSprites);
         toolsBar.Close();
     }
 
@@ -144,6 +143,7 @@ public class ToolBarScript : MonoBehaviour
         {
             SetToolbarItemUI(toolsList[i]);
         }
+        attackItemScript.SetPlayerHandItem(JsonUtility.ToJson(toolsList[toolNumberSelected]), toolsSprites);
     }
 
     public void DropAllItems()
@@ -303,6 +303,7 @@ public class ToolBarScript : MonoBehaviour
                 }
             }
         }
+        attackItemScript.SetPlayerHandItem(JsonUtility.ToJson(toolsList[toolNumberSelected]), toolsSprites);
         DestroyGrabbingItem();
     }
 
@@ -331,6 +332,8 @@ public class ToolBarScript : MonoBehaviour
                 return true;
             }
         }
+
+        attackItemScript.SetPlayerHandItem(JsonUtility.ToJson(toolsList[toolNumberSelected]), toolsSprites);
         return false;
     }
 
@@ -381,8 +384,15 @@ public class ToolBarScript : MonoBehaviour
                 attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow
                 )
             {
-                bool playerHaveArrows = CheckPlayerForArrows();
-                if (playerHaveArrows) attackItemScript.GetComponent<AttackItemScript>().AttackEnemyBow();
+                PointerEventData pointer = new PointerEventData(EventSystem.current) { pointerId = -1 };
+                pointer.position = playerHandItem.GetComponent<AttackItemScript>().mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointer, results);
+                if (results.Count == 0)
+                {
+                    bool playerHaveArrows = CheckPlayerForArrows();
+                    if (playerHaveArrows) attackItemScript.GetComponent<AttackItemScript>().AttackEnemyBow();
+                }
             }
         }
     }
