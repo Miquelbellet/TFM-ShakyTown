@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
+    ResourcesManagmentScript resourcesManagmentScript;
 
     private GameObject gameController;
     private GameObject interactableObject;
@@ -17,6 +20,48 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
+        resourcesManagmentScript = new ResourcesManagmentScript();
+        SetPlayerSettings();
+    }
+
+    void SetPlayerSettings()
+    {
+        StreamReader playerSettings = resourcesManagmentScript.ReadDataFromResource("Assets/Resources/player_settings.txt");
+
+        string numLevelStr = playerSettings.ReadLine();
+        int.TryParse(numLevelStr, out int numLevel);
+        gameController.GetComponent<LevelControllerScript>().SetActiveLevel(numLevel);
+
+        string playerPosXStr = playerSettings.ReadLine();
+        float.TryParse(playerPosXStr, out float playerPosX);
+        string playerPosYStr = playerSettings.ReadLine();
+        float.TryParse(playerPosYStr, out float playerPosY);
+        transform.position = new Vector2(playerPosX, playerPosY);
+
+        string playerHealthStr = playerSettings.ReadLine();
+        float.TryParse(playerHealthStr, out float playerHealth);
+        GetComponent<PlayerHealthScript>().currentPlayerLifes = playerHealth;
+        GetComponent<PlayerHealthScript>().initLifes = playerHealth;
+        string playerFullHealthStr = playerSettings.ReadLine();
+        int.TryParse(playerFullHealthStr, out int playerFullHealth);
+        GetComponent<PlayerHealthScript>().actualFullPlayerLifes = playerFullHealth;
+        GetComponent<PlayerHealthScript>().SetPlayerHearts();
+
+        playerSettings.Close();
+    }
+
+    public void SavePlayerSettings()
+    {
+        string path = "Assets/Resources/player_settings.txt";
+        StreamWriter playerSettings = resourcesManagmentScript.WriteDataToResource(path);
+
+        playerSettings.WriteLine(gameController.GetComponent<LevelControllerScript>().currentLevelNumber);
+        playerSettings.WriteLine(transform.position.x);
+        playerSettings.WriteLine(transform.position.y);
+        playerSettings.WriteLine(GetComponent<PlayerHealthScript>().currentPlayerLifes);
+        playerSettings.WriteLine(GetComponent<PlayerHealthScript>().actualFullPlayerLifes);
+
+        playerSettings.Close();
     }
 
     public void InputAction(InputAction.CallbackContext context)
@@ -86,10 +131,6 @@ public class PlayerScript : MonoBehaviour
         {
             gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(3);
         }
-        else if (other.tag == "Trigger4")
-        {
-            gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(4);
-        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -112,6 +153,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if (other.tag == "Blacksmith")
         {
+            interactableObject.GetComponent<BlacksmithControllerScript>().CloseStore();
             blacksmithTalk = false;
             interactableObject = null;
         }

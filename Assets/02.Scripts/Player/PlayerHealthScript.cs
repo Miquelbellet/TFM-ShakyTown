@@ -16,17 +16,15 @@ public class PlayerHealthScript : MonoBehaviour
 
     [HideInInspector] public bool canRecieveDamage = true;
     [HideInInspector] public bool playerDead;
+    [HideInInspector] public float initLifes;
 
     private GameObject gameController;
     private int maxNumberLifes = 24;
-    private float initLifes;
     private bool immunePlayer;
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
-        initLifes = currentPlayerLifes;
-        SetPlayerHearts();
     }
 
     void Update()

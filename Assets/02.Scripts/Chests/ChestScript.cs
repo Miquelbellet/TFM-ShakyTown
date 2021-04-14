@@ -12,6 +12,7 @@ public class ChestScript : MonoBehaviour
     public GameObject droppedItemPrefab;
     [HideInInspector] public bool chestOpened;
     [HideInInspector] public Tool itemGrabbed;
+    [HideInInspector] public Tool[] chestObjectsList = new Tool[0];
 
     ResourcesManagmentScript resourcesManagmentScript;
     GameObject gameController;
@@ -19,7 +20,6 @@ public class ChestScript : MonoBehaviour
     GameObject playerHandItem;
     GameObject chestImagesPartentObject;
 
-    private Tool[] chestObjectsList = new Tool[0];
     private Sprite[] toolsSprites;
     private int numberTotalObjects = 23;
     private Animator chestAnimatorController;
@@ -34,6 +34,7 @@ public class ChestScript : MonoBehaviour
         resourcesManagmentScript = new ResourcesManagmentScript();
         chestAnimatorController = GetComponent<Animator>();
         toolsSprites = Resources.LoadAll<Sprite>("Tools");
+        SetChestItems();
     }
 
     void Update()
@@ -47,6 +48,24 @@ public class ChestScript : MonoBehaviour
             }
             catch { }
         }
+    }
+
+    void SetChestItems()
+    {
+        StreamReader chestObjects = resourcesManagmentScript.ReadDataFromResource("Assets/Resources/chests/chest_" + chestId + ".txt");
+        chestObjectsList = new Tool[numberTotalObjects + 1];
+        for (int i = 0; i <= numberTotalObjects; i++)
+        {
+            string toolStr = chestObjects.ReadLine();
+            Tool tool = Tool.CreateFromJSON(toolStr);
+            if (tool == null)
+            {
+                tool = new Tool();
+                tool.toolbarIndex = i;
+            }
+            chestObjectsList[i] = tool;
+        }
+        chestObjects.Close();
     }
 
     void SetChestToolUI(Tool tool)
@@ -82,38 +101,13 @@ public class ChestScript : MonoBehaviour
 
     public void OpenChest()
     {
-        if(chestObjectsList.Length == 0)
+        gameController.GetComponent<UIControllerScript>().ActivateChestUI();
+        chestAnimatorController.SetBool("open", true);
+        SetButtonsEvents();
+        chestOpened = true;
+        foreach (Tool tool in chestObjectsList)
         {
-            StreamReader chestObjects = resourcesManagmentScript.ReadDataFromResource("Assets/Resources/chests/chest_" + chestId + ".txt");
-            chestObjectsList = new Tool[numberTotalObjects + 1];
-            gameController.GetComponent<UIControllerScript>().ActivateChestUI();
-            chestAnimatorController.SetBool("open", true);
-            SetButtonsEvents();
-            chestOpened = true;
-            for (int i = 0; i <= numberTotalObjects; i++)
-            {
-                string toolStr = chestObjects.ReadLine();
-                Tool tool = Tool.CreateFromJSON(toolStr);
-                if(tool == null)
-                {
-                    tool = new Tool();
-                    tool.toolbarIndex = i;
-                }
-                chestObjectsList[i] = tool;
-                SetChestToolUI(tool);
-            }
-            chestObjects.Close();
-        }
-        else
-        {
-            gameController.GetComponent<UIControllerScript>().ActivateChestUI();
-            chestAnimatorController.SetBool("open", true);
-            SetButtonsEvents();
-            chestOpened = true;
-            foreach (Tool tool in chestObjectsList)
-            {
-                SetChestToolUI(tool);
-            }
+            SetChestToolUI(tool);
         }
     }
 
@@ -251,17 +245,5 @@ public class ChestScript : MonoBehaviour
         gameController.GetComponent<UIControllerScript>().DeactivateChestUI();
         chestAnimatorController.SetBool("open", false);
         chestOpened = false;
-    }
-
-    public void SaveChestItems()
-    {
-        string path = "Assets/Resources/chests/chest_" + chestId + ".txt";
-        StreamWriter chestObjects = resourcesManagmentScript.WriteDataToResource(path);
-        foreach (Tool toolObj in chestObjectsList)
-        {
-            string toolStr = Tool.CreateFromObject(toolObj);
-            chestObjects.WriteLine(toolStr);
-        }
-        chestObjects.Close();
     }
 }

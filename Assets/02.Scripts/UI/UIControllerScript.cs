@@ -295,6 +295,11 @@ public class UIControllerScript : MonoBehaviour
     public void SaveAndReturnBtn()
     {
         GetComponent<LevelControllerScript>().SaveGame();
+        Invoke("GoToMenu", 1f);
+    }
+
+    void GoToMenu()
+    {
         SceneManager.LoadScene("Menu");
     }
 }

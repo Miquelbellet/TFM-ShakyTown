@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,18 +23,22 @@ public class LevelControllerScript : MonoBehaviour
     public Vector2 playerPosLevel4_5;
     public Vector2 playerPosLevel5;
 
-    enum Levels { Level_1, Level_2, Level_3, Level_4, Level_5 };
-    Levels currentLevel;
+    [HideInInspector] public int currentLevelNumber;
+    
+    enum Levels { Level_1, Level_2, Level_3, Level_4 };
+    Levels currentLevel = Levels.Level_1;
+    ResourcesManagmentScript resourcesManagmentScript;
 
     private GameObject player;
     private bool changingLevel;
     private bool resetingPlayer;
     private int colliderNumber;
+    private bool savingGame;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        currentLevel = Levels.Level_1;
+        resourcesManagmentScript = new ResourcesManagmentScript();
     }
 
     public void PlayerChangedLevel(int numCollider)
@@ -51,7 +56,12 @@ public class LevelControllerScript : MonoBehaviour
 
     public void FadeInFinished()
     {
-        if(!resetingPlayer) SetNewLevel();
+        if (savingGame) { Time.timeScale = 1; }
+        else if (!resetingPlayer)
+        {
+            SetNewLevel();
+            backgroundImage.GetComponent<Animator>().SetTrigger("fade_out");
+        }
         else
         {
             resetingPlayer = false;
@@ -59,9 +69,11 @@ public class LevelControllerScript : MonoBehaviour
             player.transform.position = playerPosHouse;
             Camera.main.transform.position = new Vector3(playerPosHouse.x, playerPosHouse.y, Camera.main.transform.position.z);
             currentLevel = Levels.Level_1;
+            currentLevelNumber = 1;
             player.GetComponent<PlayerHealthScript>().ResetPlayerLife();
+            backgroundImage.GetComponent<Animator>().SetTrigger("fade_out");
         }
-        backgroundImage.GetComponent<Animator>().SetTrigger("fade_out");
+        
     }
 
     public void FadeOutFinished()
@@ -90,7 +102,6 @@ public class LevelControllerScript : MonoBehaviour
                 {
                     SetActiveLevel(2);
                     player.transform.position = playerPosLevel2_1;
-                    currentLevel = Levels.Level_2;
                 }
                 break;
             case Levels.Level_2:
@@ -98,19 +109,16 @@ public class LevelControllerScript : MonoBehaviour
                 {
                     SetActiveLevel(1);
                     player.transform.position = playerPosLevel1;
-                    currentLevel = Levels.Level_1;
                 }
                 else if (colliderNumber == 2)
                 {
                     SetActiveLevel(3);
                     player.transform.position = playerPosLevel3;
-                    currentLevel = Levels.Level_3;
                 }
                 else if (colliderNumber == 3)
                 {
                     SetActiveLevel(4);
                     player.transform.position = playerPosLevel4_3;
-                    currentLevel = Levels.Level_4;
                 }
                 break;
             case Levels.Level_3:
@@ -118,7 +126,6 @@ public class LevelControllerScript : MonoBehaviour
                 {
                     SetActiveLevel(2);
                     player.transform.position = playerPosLevel2_3;
-                    currentLevel = Levels.Level_2;
                 }
                 break;
             case Levels.Level_4:
@@ -126,28 +133,34 @@ public class LevelControllerScript : MonoBehaviour
                 {
                     SetActiveLevel(2);
                     player.transform.position = playerPosLevel2_4;
-                    currentLevel = Levels.Level_2;
-                }
-                else if (colliderNumber == 4)
-                {
-                    SetActiveLevel(5);
-                    player.transform.position = playerPosLevel5;
-                    currentLevel = Levels.Level_5;
-                }
-                break;
-            case Levels.Level_5:
-                if (colliderNumber == 4)
-                {
-                    SetActiveLevel(4);
-                    player.transform.position = playerPosLevel4_5;
-                    currentLevel = Levels.Level_4;
                 }
                 break;
         }
     }
-
-    void SetActiveLevel(int levelNum)
+    
+    public void SetActiveLevel(int levelNum)
     {
+        if (levelNum == 1)
+        {
+            currentLevel = Levels.Level_1;
+            currentLevelNumber = 1;
+        }
+        else if (levelNum == 2)
+        {
+            currentLevel = Levels.Level_2;
+            currentLevelNumber = 2;
+        }
+        else if (levelNum == 3)
+        {
+            currentLevel = Levels.Level_3;
+            currentLevelNumber = 3;
+        }
+        else if (levelNum == 4)
+        {
+            currentLevel = Levels.Level_4;
+            currentLevelNumber = 4;
+        }
+
         for (int i = 0; i < levelsObjects.Length; i++)
         {
             if (levelNum == i+1)
@@ -168,11 +181,29 @@ public class LevelControllerScript : MonoBehaviour
     public void SaveGame()
     {
         GetComponent<ToolBarScript>().SaveBarTools();
+        player.GetComponent<PlayerScript>().SavePlayerSettings();
+        SaveChestsItems();
+        AssetDatabase.Refresh();
+
+        savingGame = true;
+        backgroundImage.SetActive(true);
+        backgroundImage.GetComponent<Animator>().SetTrigger("fade_in");
+    }
+
+    private void SaveChestsItems()
+    {
         GameObject[] allChests = GameObject.FindGameObjectsWithTag("Chest");
         foreach (GameObject chest in allChests)
         {
-            chest.GetComponent<ChestScript>().SaveChestItems();
+            string path = "Assets/Resources/chests/chest_"+ chest.GetComponent<ChestScript>().chestId + ".txt";
+            StreamWriter chestObjects = resourcesManagmentScript.WriteDataToResource(path);
+            Tool[] chestObjectsList = chest.GetComponent<ChestScript>().chestObjectsList;
+            foreach (Tool toolObj in chestObjectsList)
+            {
+                string toolStr = Tool.CreateFromObject(toolObj);
+                chestObjects.WriteLine(toolStr);
+            }
+            chestObjects.Close();
         }
-        AssetDatabase.Refresh();
     }
 }

@@ -242,19 +242,22 @@ public class BlacksmithControllerScript : MonoBehaviour
             }
         }
 
-        Tool goldItem = new Tool();
-        goldItem.empty = false;
-        goldItem.name = "gold";
-        goldItem.spriteName = "spritesheet_107";
-        goldItem.isCountable = true;
-        goldItem.countItems = sellingValue;
-        SetNewToolbarItem(goldItem);
-        for (int i = 0; i < sellingItems.Length; i++)
+        if (sellingValue > 0)
         {
-            gameController.GetComponent<UIControllerScript>().SetSellingImageItem(new Tool(), sellingImagesItems.transform.GetChild(i));
+            Tool goldItem = new Tool();
+            goldItem.empty = false;
+            goldItem.name = "gold";
+            goldItem.spriteName = "spritesheet_107";
+            goldItem.isCountable = true;
+            goldItem.countItems = sellingValue;
+            SetNewToolbarItem(goldItem);
+            for (int i = 0; i < sellingItems.Length; i++)
+            {
+                gameController.GetComponent<UIControllerScript>().SetSellingImageItem(new Tool(), sellingImagesItems.transform.GetChild(i));
+            }
+            sellingValueObject.text = "0";
+            SetArraySellingItems();
         }
-        sellingValueObject.text = "0";
-        SetArraySellingItems();
     }
 
     public void ClearSellingItems()

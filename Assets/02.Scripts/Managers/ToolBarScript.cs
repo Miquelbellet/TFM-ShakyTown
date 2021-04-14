@@ -133,8 +133,6 @@ public class ToolBarScript : MonoBehaviour
             toolsBar.WriteLine(toolStr);
         }
         toolsBar.Close();
-        AssetDatabase.ImportAsset(path);
-        AssetDatabase.Refresh();
     }
 
     public void RefreshToolbarItems()
