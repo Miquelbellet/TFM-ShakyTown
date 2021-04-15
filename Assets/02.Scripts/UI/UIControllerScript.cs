@@ -192,13 +192,16 @@ public class UIControllerScript : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!mapActivated)
+            if (SceneManager.GetActiveScene().name != "InitTutorial")
             {
-                OpenMapBtn();
-            }
-            else
-            {
-                CloseMapBtn();
+                if (!mapActivated)
+                {
+                    OpenMapBtn();
+                }
+                else
+                {
+                    CloseMapBtn();
+                }
             }
         }
     }
@@ -207,11 +210,14 @@ public class UIControllerScript : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!menuActivated)
+            if (SceneManager.GetActiveScene().name != "InitTutorial")
             {
-                OpenMenuBtn();
+                if (!menuActivated)
+                {
+                    OpenMenuBtn();
+                }
+                else CloseMenuBtn();
             }
-            else CloseMenuBtn();
         }
     }
 
@@ -265,6 +271,7 @@ public class UIControllerScript : MonoBehaviour
         closeMenuBtn.SetActive(false);
         menuNotesObject.SetActive(true);
         closeNotesBtn.SetActive(true);
+        GetComponent<NotesMenuScript>().SetEnabledNotes();
     }
 
     public void CloseNotesMenu()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 public class NotesScript : MonoBehaviour
@@ -52,11 +53,24 @@ public class NotesScript : MonoBehaviour
             if (newNote.index == noteIndex) note = newNote;
         }
         notesDocument.Close();
+
+        if (!note.shown) gameObject.SetActive(true);
+        else gameObject.SetActive(false);
     }
 
     void SaveReadedNote()
     {
-
+        StreamWriter noteDocument = resourcesManagmentScript.WriteDataToResource("Assets/Resources/notes.txt");
+        Note[] notesList = gameController.GetComponent<NotesMenuScript>().allNotes;
+        noteDocument.WriteLine(notesList.Length);
+        foreach (Note noteObj in notesList)
+        {
+            if (noteObj.index == noteIndex) noteObj.shown = true;
+            string noteObjStr = Note.CreateFromObject(noteObj);
+            noteDocument.WriteLine(noteObjStr);
+        }
+        noteDocument.Close();
+        AssetDatabase.Refresh();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

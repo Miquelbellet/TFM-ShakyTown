@@ -7,12 +7,14 @@ public class Note
     public int index;
     public string name;
     public string text;
+    public bool shown;
 
     public Note()
     {
         index = 0;
         name = "";
         text = "";
+        shown = false;
     }
 
     public static Note CreateFromJSON(string jsonString)

@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         resourcesManagmentScript = new ResourcesManagmentScript();
-        SetPlayerSettings();
+        if(SceneManager.GetActiveScene().name != "InitTutorial") SetPlayerSettings();
     }
 
     void SetPlayerSettings()

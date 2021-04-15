@@ -17,7 +17,9 @@ public class MenuControllerScript : MonoBehaviour
 
     public void PlayGameBtn()
     {
-        SceneManager.LoadScene("Main");
+        string tutorial = PlayerPrefs.GetString("tutorial", "false");
+        if (tutorial == "false") SceneManager.LoadScene("InitTutorial");
+        else SceneManager.LoadScene("Main");
     }
 
     public void ExitGameBtn()

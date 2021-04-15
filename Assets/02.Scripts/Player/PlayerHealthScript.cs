@@ -25,6 +25,7 @@ public class PlayerHealthScript : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
+        SetPlayerHearts();
     }
 
     void Update()

@@ -1,4 +1,4 @@
 3
-{"index":0, "name":"shoreResources", "text":"In the north of the shore there are special resources."}
-{"index":1, "name":"forestChest", "text":"There is a hidden chest in the dark forest."}
-{"index":2, "name":"goWest", "text":"Go to the west to follow the road."}
+{"index":0,"name":"shoreResources","text":"In the north of the shore there are special resources.","shown":true}
+{"index":1,"name":"forestChest","text":"There is a hidden chest in the dark forest.","shown":false}
+{"index":2,"name":"goWest","text":"Go to the west to follow the road.","shown":true}
