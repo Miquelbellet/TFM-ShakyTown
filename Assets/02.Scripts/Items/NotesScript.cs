@@ -26,7 +26,7 @@ public class NotesScript : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
+        time += Time.unscaledDeltaTime;
         if (time < floatingTimer / 2)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - floatingAcceleration);

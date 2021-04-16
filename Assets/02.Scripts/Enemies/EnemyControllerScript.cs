@@ -6,10 +6,11 @@ using UnityEngine;
 public class EnemyControllerScript : MonoBehaviour
 {
     public EnemyType enemyType;
+    public EnemySettings batTutorialSettings;
     public EnemySettings batSettings;
     public GameObject droppedItemPrefab;
 
-    [HideInInspector] public enum EnemyType { Bat }
+    [HideInInspector] public enum EnemyType { BatTutorial, Bat }
     [HideInInspector] public EnemySettings enemySettings;
 
     [HideInInspector] public PatrolState patrolState;
@@ -30,12 +31,17 @@ public class EnemyControllerScript : MonoBehaviour
 
     void Update()
     {
+        if (currentState == null)
+        {
+            RespawnEnemy();
+        }
         currentState.UpdateState();
     }
 
     void InitializeEnemy()
     {
-        if (enemyType == EnemyType.Bat) enemySettings = batSettings;
+        if (enemyType == EnemyType.BatTutorial) enemySettings = batTutorialSettings;
+        else if (enemyType == EnemyType.Bat) enemySettings = batSettings;
 
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnimator = GetComponent<Animator>();
@@ -113,10 +119,6 @@ public class EnemyControllerScript : MonoBehaviour
     {
         enemylifes -= damage;
         currentState.Hit();
-        if (enemylifes <= 0)
-        {
-            EnemyDead();
-        }
     }
 
     public void RespawnEnemy()
@@ -129,11 +131,14 @@ public class EnemyControllerScript : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    void EnemyDead()
+    public void EnemyDead()
     {
-        dead = true;
-        gameObject.SetActive(false);
-        DropItem();
+        if (enemylifes <= 0)
+        {
+            dead = true;
+            gameObject.SetActive(false);
+            DropItem();
+        }
     }
 
     void DropItem()

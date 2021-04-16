@@ -20,13 +20,11 @@ public class LevelControllerScript : MonoBehaviour
     public Vector2 playerPosLevel2_4;
     public Vector2 playerPosLevel3;
     public Vector2 playerPosLevel4_3;
-    public Vector2 playerPosLevel4_5;
-    public Vector2 playerPosLevel5;
 
+    [HideInInspector] public enum Levels { Level_1, Level_2, Level_3, Level_4 };
+    [HideInInspector] public Levels currentLevel = Levels.Level_1;
     [HideInInspector] public int currentLevelNumber;
-    
-    enum Levels { Level_1, Level_2, Level_3, Level_4 };
-    Levels currentLevel = Levels.Level_1;
+
     ResourcesManagmentScript resourcesManagmentScript;
 
     private GameObject player;

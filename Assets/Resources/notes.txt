@@ -1,4 +1,7 @@
-3
-{"index":0,"name":"shoreResources","text":"In the north of the shore there are special resources.","shown":true}
-{"index":1,"name":"forestChest","text":"There is a hidden chest in the dark forest.","shown":false}
-{"index":2,"name":"goWest","text":"Go to the west to follow the road.","shown":true}
+6
+{"index":0,"name":"tutorial1","text":"This is a short tutorial to teach you how to fight, this notes will guide you. You can press the button ['Left Shift'] to make a dash.","shown":true}
+{"index":1,"name":"tutorial2","text":"You can open a chest by getting near one and pressing the action button ['E']. Grab the sword and fight the enemy!","shown":true}
+{"index":2,"name":"tutorial3","text":"Well done, now try with a bow and a few arrows. Change the selected item by rolling the mouse wheel. You need arrows with you if you want to shoot one.","shown":true}
+{"index":3,"name":"tutorial4","text":"Next time the enemies will move! Now you are prepared to explore the real world. Go to the end of the level to finish the tutorial.","shown":true}
+{"index":4,"name":"forestChest","text":"There is a hidden chest in the dark forest.","shown":false}
+{"index":5,"name":"goWest","text":"Go to the west to find the secret mine.","shown":false}

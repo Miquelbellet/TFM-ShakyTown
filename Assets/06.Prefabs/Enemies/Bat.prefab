@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
+  batTutorialSettings: {fileID: 11400000, guid: 8c25b80677085a94c8f165915fde2c3a, type: 2}
   batSettings: {fileID: 11400000, guid: 9aedaba29bc0a4041a7212778b2ba1cc, type: 2}
   droppedItemPrefab: {fileID: 7964616484997607905, guid: c777870699f6d7d49b2e59ec2ce08f9a, type: 3}
   enemySettings: {fileID: 0}

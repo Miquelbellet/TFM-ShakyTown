@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PatrolState : IEnemyState
 {
@@ -16,6 +17,7 @@ public class PatrolState : IEnemyState
 
     public void UpdateState()
     {
+        if(myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit")) myEnemy.enemyAnimator.SetBool("hit", false);
         if (myEnemy.enemySettings.canWalk)
         {
             GoToRandomPoint();
@@ -76,7 +78,7 @@ public class PatrolState : IEnemyState
     {
         myEnemy.enemyAnimator.SetBool("walk", false);
         myEnemy.enemyAnimator.SetBool("hit", true);
-        GoToAlertState();
+        if(SceneManager.GetActiveScene().name != "InitTutorial") GoToAlertState();
     }
 
     public void OnCollisionStay2D(Collision2D collision)

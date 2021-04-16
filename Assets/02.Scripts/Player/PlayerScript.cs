@@ -95,6 +95,12 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+        if (other.tag == "EndTutorialTrigger")
+        {
+            PlayerPrefs.SetString("tutorial", "true");
+            SceneManager.LoadScene("Main");
+        }
+
         if (other.tag == "Chest")
         {
             openChest = true;
