@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CameraBehaviourScript : MonoBehaviour
 {
-    [Header("Lerp Timer")]
-    public float lerpPositionsTimer;
+    [Header("Camera Config")]
+    public float lerpPlayerPosTimer;
+    public float earthquakesTimer;
+    public float earthquakeDuration;
+    public float earthquakesForce;
 
     [Header("Level 1 limits")]
     public float Lvl1_LeftX;
@@ -31,22 +34,26 @@ public class CameraBehaviourScript : MonoBehaviour
     public float Lvl4_BotY;
     public float Lvl4_TopY;
 
+
     private GameObject player;
     private GameObject gameController;
     private Vector3 playerPosition;
     private Vector3 velocity;
+    private float earthquakeTimer;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GameObject.FindGameObjectWithTag("GameController");
+        InvokeRepeating("Earthquake", earthquakesTimer, earthquakesTimer);
     }
 
     void LateUpdate()
     {
+        earthquakeTimer += Time.deltaTime;
         Vector2 targetPos = CheckCameraLimits();
         playerPosition = new Vector3(targetPos.x, targetPos.y, -20);
-        transform.position = Vector3.SmoothDamp(transform.position, playerPosition, ref velocity, lerpPositionsTimer, Mathf.Infinity, Time.unscaledDeltaTime);
+        transform.position = Vector3.SmoothDamp(transform.position, playerPosition, ref velocity, lerpPlayerPosTimer, Mathf.Infinity, Time.unscaledDeltaTime);
     }
 
     Vector2 CheckCameraLimits()
@@ -80,5 +87,21 @@ public class CameraBehaviourScript : MonoBehaviour
                 break;
         }
         return playerPos;
+    }
+
+    void Earthquake()
+    {
+        earthquakeTimer = 0;
+        StartCoroutine(ShakeCamera());
+    }
+
+    IEnumerator ShakeCamera()
+    {
+        for (float i = 0; i < Mathf.Infinity; i++)
+        {
+            transform.position = new Vector2(transform.position.x + Random.Range(-earthquakesForce, earthquakesForce), transform.position.y + Random.Range(-earthquakesForce, earthquakesForce));
+            yield return new WaitForSeconds(0.1f);
+            if (earthquakeTimer >= earthquakeDuration) i = Mathf.Infinity;
+        }
     }
 }

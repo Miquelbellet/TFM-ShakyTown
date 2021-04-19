@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
+    [HideInInspector] public bool blacksmithTalk;
+    [HideInInspector] public bool witchTalk;
+
     ResourcesManagmentScript resourcesManagmentScript;
 
     private GameObject gameController;
@@ -15,8 +18,6 @@ public class PlayerScript : MonoBehaviour
     private bool openChest;
     private bool momTalk;
     private bool bossTalk;
-    private bool blacksmithTalk;
-    private bool witchTalk;
 
     private void Start()
     {
@@ -42,7 +43,6 @@ public class PlayerScript : MonoBehaviour
         string playerHealthStr = playerSettings.ReadLine();
         float.TryParse(playerHealthStr, out float playerHealth);
         GetComponent<PlayerHealthScript>().currentPlayerLifes = playerHealth;
-        GetComponent<PlayerHealthScript>().initLifes = playerHealth;
         string playerFullHealthStr = playerSettings.ReadLine();
         int.TryParse(playerFullHealthStr, out int playerFullHealth);
         GetComponent<PlayerHealthScript>().actualFullPlayerLifes = playerFullHealth;
@@ -160,12 +160,13 @@ public class PlayerScript : MonoBehaviour
         }
         else if (other.tag == "Blacksmith")
         {
-            interactableObject.GetComponent<BlacksmithControllerScript>().CloseStore();
+            try{ interactableObject.GetComponent<BlacksmithControllerScript>().CloseStore(); } catch { }
             blacksmithTalk = false;
             interactableObject = null;
         }
         else if (other.tag == "Witch")
         {
+            try { interactableObject.GetComponent<WitchControllerScript>().CloseStore(); } catch { }
             witchTalk = false;
             interactableObject = null;
         }

@@ -130,7 +130,7 @@ public class BlacksmithControllerScript : MonoBehaviour
             }
         }
         currentItemCost = itemCost;
-        gameController.GetComponent<UIControllerScript>().SetConfirmBuy(itemCost, haveAllItemsCost);
+        gameController.GetComponent<UIControllerScript>().SetConfirmBlacksmithBuy(itemCost, haveAllItemsCost);
     }
 
     public void ConfirmBuyingItem()

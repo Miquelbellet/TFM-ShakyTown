@@ -24,9 +24,16 @@ public class UIControllerScript : MonoBehaviour
     [Header("Blacksmith Shop")]
     public GameObject blacksmithShop;
     public GameObject confirmBlacksmithBuy;
-    public GameObject confirmBuyButton;
-    public GameObject noteEnoughItemsText;
-    public GameObject[] costItemImages;
+    public GameObject confirmBlacksmithBuyButton;
+    public GameObject notEnoughItemsBlacksmithText;
+    public GameObject[] costBlacksmithItemImages;
+
+    [Header("Witch Shop")]
+    public GameObject witchShop;
+    public GameObject confirmWitchBuy;
+    public GameObject confirmWitchBuyButton;
+    public GameObject notEnoughWitchItemsText;
+    public GameObject[] costWitchItemImages;
 
     [Header("Dialog Text Objects")]
     public GameObject dialogTextParent;
@@ -121,7 +128,7 @@ public class UIControllerScript : MonoBehaviour
         }
     }
 
-    public void SetConfirmBuy(Tool[] costItem, bool haveItems)
+    public void SetConfirmBlacksmithBuy(Tool[] costItem, bool haveItems)
     {
         for (int i = 0; i < costItem.Length; i++)
         {
@@ -131,13 +138,13 @@ public class UIControllerScript : MonoBehaviour
                 {
                     if (toolSp.name == costItem[i].spriteName)
                     {
-                        costItemImages[i].GetComponent<Image>().sprite = toolSp;
+                        costBlacksmithItemImages[i].GetComponent<Image>().sprite = toolSp;
                         if (costItem[i].isCountable)
                         {
-                            costItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(true);
-                            costItemImages[i].transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
+                            costBlacksmithItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(true);
+                            costBlacksmithItemImages[i].transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
                         }
-                        else costItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(false);
+                        else costBlacksmithItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(false);
                     }
                 }
             }
@@ -145,13 +152,47 @@ public class UIControllerScript : MonoBehaviour
         confirmBlacksmithBuy.SetActive(true);
         if (haveItems)
         {
-            confirmBuyButton.GetComponent<Button>().interactable = true;
-            noteEnoughItemsText.SetActive(false);
+            confirmBlacksmithBuyButton.GetComponent<Button>().interactable = true;
+            notEnoughItemsBlacksmithText.SetActive(false);
         }
         else
         {
-            confirmBuyButton.GetComponent<Button>().interactable = false;
-            noteEnoughItemsText.SetActive(true);
+            confirmBlacksmithBuyButton.GetComponent<Button>().interactable = false;
+            notEnoughItemsBlacksmithText.SetActive(true);
+        }
+    }
+
+    public void SetConfirmWitchBuy(Tool[] costItem, bool haveItems)
+    {
+        for (int i = 0; i < costItem.Length; i++)
+        {
+            if (!costItem[i].empty)
+            {
+                foreach (Sprite toolSp in toolsSprites)
+                {
+                    if (toolSp.name == costItem[i].spriteName)
+                    {
+                        costWitchItemImages[i].GetComponent<Image>().sprite = toolSp;
+                        if (costItem[i].isCountable)
+                        {
+                            costWitchItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(true);
+                            costWitchItemImages[i].transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
+                        }
+                        else costWitchItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+        confirmWitchBuy.SetActive(true);
+        if (haveItems)
+        {
+            confirmWitchBuyButton.GetComponent<Button>().interactable = true;
+            notEnoughWitchItemsText.SetActive(false);
+        }
+        else
+        {
+            confirmWitchBuyButton.GetComponent<Button>().interactable = false;
+            notEnoughWitchItemsText.SetActive(true);
         }
     }
 
@@ -186,6 +227,11 @@ public class UIControllerScript : MonoBehaviour
     public void CloseConfirmBlacksmithBuy()
     {
         confirmBlacksmithBuy.SetActive(false);
+    }
+
+    public void CloseConfirmWitchBuy()
+    {
+        confirmWitchBuy.SetActive(false);
     }
 
     public void InputMap(InputAction.CallbackContext context)
@@ -291,6 +337,18 @@ public class UIControllerScript : MonoBehaviour
     public void CloseBlacksmithShop()
     {
         blacksmithShop.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OpenWitchShop()
+    {
+        Time.timeScale = 0;
+        witchShop.SetActive(true);
+    }
+
+    public void CloseWitchShop()
+    {
+        witchShop.SetActive(false);
         Time.timeScale = 1;
     }
 

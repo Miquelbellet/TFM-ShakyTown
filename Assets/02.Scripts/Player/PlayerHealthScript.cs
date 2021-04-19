@@ -16,7 +16,6 @@ public class PlayerHealthScript : MonoBehaviour
 
     [HideInInspector] public bool canRecieveDamage = true;
     [HideInInspector] public bool playerDead;
-    [HideInInspector] public float initLifes;
 
     private GameObject gameController;
     private int maxNumberLifes = 24;
@@ -43,14 +42,17 @@ public class PlayerHealthScript : MonoBehaviour
             if (i+1 <= currentPlayerLifes / 2)
             {
                 heartsParent.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = heartsSprites[0];
+                heartsParent.transform.GetChild(i).gameObject.SetActive(true);
             }
             else if (i+1 == (currentPlayerLifes / 2) + 0.5f)
             {
                 heartsParent.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = heartsSprites[1];
+                heartsParent.transform.GetChild(i).gameObject.SetActive(true);
             }
             else if (i+1 <= actualFullPlayerLifes / 2)
             {
                 heartsParent.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = heartsSprites[2];
+                heartsParent.transform.GetChild(i).gameObject.SetActive(true);
             }
             else
             {
@@ -95,7 +97,7 @@ public class PlayerHealthScript : MonoBehaviour
     public void ResetPlayerLife()
     {
         playerDead = false;
-        currentPlayerLifes = initLifes;
+        currentPlayerLifes = actualFullPlayerLifes;
         SetPlayerHearts();
     }
 
@@ -105,5 +107,39 @@ public class PlayerHealthScript : MonoBehaviour
         immunePlayer = false;
         StopAllCoroutines();
         GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public bool UseHealthPotion(int potionLevel)
+    {
+        switch(potionLevel)
+        {
+            case 1:
+                if (currentPlayerLifes < actualFullPlayerLifes)
+                {
+                    currentPlayerLifes += 1;
+                    SetPlayerHearts();
+                    return true;
+                }
+                else return false;
+            case 2:
+                if (currentPlayerLifes < actualFullPlayerLifes)
+                {
+                    currentPlayerLifes += 2;
+                    if (currentPlayerLifes > actualFullPlayerLifes) currentPlayerLifes = actualFullPlayerLifes;
+                    SetPlayerHearts();
+                    return true;
+                }
+                else return false;
+            case 3:
+                if(actualFullPlayerLifes < maxNumberLifes)
+                {
+                    actualFullPlayerLifes += 2;
+                    SetPlayerHearts();
+                    return true;
+                }
+                else return false;
+            default:
+                return false;
+        }
     }
 }

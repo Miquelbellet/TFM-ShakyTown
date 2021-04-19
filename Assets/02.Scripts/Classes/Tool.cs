@@ -13,6 +13,8 @@ public class Tool
     public bool isWeapon;
     public bool isBow;
     public bool isArrow;
+    public bool isPotion;
+    public int potionLevel;
     public int damage;
     public int goldValue;
 
@@ -27,6 +29,8 @@ public class Tool
         isWeapon = false;
         isBow = false;
         isArrow = false;
+        isPotion = false;
+        potionLevel = 0;
         damage = 0;
         goldValue = 1;
     }

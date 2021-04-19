@@ -1,0 +1,16 @@
+15
+potion_1
+{"toolbarIndex":0, "empty":false, "name":"potion_1", "spriteName":"spritesheet_237", "isCountable":true, "countItems":5, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":true, "potionLevel":1, "damage":0, "goldValue":2}
+{"empty":false, "name":"gold", "spriteName":"spritesheet_107", "isCountable":true, "countItems":3}
+{"empty":false, "name":"iron", "spriteName":"spritesheet_333", "isCountable":true, "countItems":1}
+{"empty":false, "name":"empty", "spriteName":"spritesheet_350", "isCountable":false}
+potion_2
+{"toolbarIndex":0, "empty":false, "name":"potion_2", "spriteName":"spritesheet_245", "isCountable":true, "countItems":5, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":true, "potionLevel":2, "damage":0, "goldValue":5}
+{"empty":false, "name":"gold", "spriteName":"spritesheet_107", "isCountable":true, "countItems":7}
+{"empty":false, "name":"iron", "spriteName":"spritesheet_333", "isCountable":true, "countItems":1}
+{"empty":false, "name":"empty", "spriteName":"spritesheet_350", "isCountable":false}
+potion_3
+{"toolbarIndex":0, "empty":false, "name":"potion_3", "spriteName":"spritesheet_248", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":true, "potionLevel":3, "damage":0, "goldValue":10}
+{"empty":false, "name":"gold", "spriteName":"spritesheet_107", "isCountable":true, "countItems":14}
+{"empty":false, "name":"iron", "spriteName":"spritesheet_333", "isCountable":true, "countItems":2}
+{"empty":false, "name":"blueGem", "spriteName":"spritesheet_224", "isCountable":true, "countItems":1}

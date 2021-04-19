@@ -17,10 +17,12 @@ public class ToolBarScript : MonoBehaviour
     [HideInInspector] public Tool[] toolsList;
 
     ResourcesManagmentScript resourcesManagmentScript;
+    GameObject player;
     GameObject playerHandItem;
     GameObject canvasObject;
     GameObject[] chestsInScene;
     GameObject blacksmithObject;
+    GameObject witchObject;
 
     private Sprite[] toolsSprites;
     private int numberOfToolsTotal;
@@ -31,10 +33,12 @@ public class ToolBarScript : MonoBehaviour
     {
         numberOfToolsTotal = bordersObjectParent.transform.childCount-1;
         resourcesManagmentScript = new ResourcesManagmentScript();
+        player = GameObject.FindGameObjectWithTag("Player");
         playerHandItem = GameObject.FindGameObjectWithTag("HandItem");
         canvasObject = GameObject.FindGameObjectWithTag("Canvas");
         chestsInScene = GameObject.FindGameObjectsWithTag("Chest");
         blacksmithObject = GameObject.FindGameObjectWithTag("Blacksmith");
+        witchObject = GameObject.FindGameObjectWithTag("Witch");
         toolsSprites = Resources.LoadAll<Sprite>("Tools");
         SetObjectBorders();
         SetToolsForBar();
@@ -366,7 +370,24 @@ public class ToolBarScript : MonoBehaviour
     {
         if (context.performed)
         {
-            if (GetComponent<UIControllerScript>().dialogActivated) GetComponent<UIControllerScript>().EndDialog();
+            if (GetComponent<UIControllerScript>().dialogActivated)
+            {
+                GetComponent<UIControllerScript>().EndDialog();
+                if (player.GetComponent<PlayerScript>().blacksmithTalk)
+                {
+                    if (!GetComponent<UIControllerScript>().dialogActivated)
+                    {
+                        blacksmithObject.GetComponent<BlacksmithControllerScript>().OpenStore();
+                    }
+                }
+                else if (player.GetComponent<PlayerScript>().witchTalk)
+                {
+                    if (!GetComponent<UIControllerScript>().dialogActivated)
+                    {
+                        witchObject.GetComponent<WitchControllerScript>().OpenStore();
+                    }
+                }
+            }
             else if (
                 attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemy && 
                 attackItemScript.GetComponent<AttackItemScript>().usingTool != null &&
@@ -390,6 +411,16 @@ public class ToolBarScript : MonoBehaviour
                 {
                     bool playerHaveArrows = CheckPlayerForArrows();
                     if (playerHaveArrows) attackItemScript.GetComponent<AttackItemScript>().AttackEnemyBow();
+                }
+            }
+            else if (toolsList[toolNumberSelected].isPotion)
+            {
+                bool used = player.GetComponent<PlayerHealthScript>().UseHealthPotion(toolsList[toolNumberSelected].potionLevel);
+                if (used)
+                {
+                    toolsList[toolNumberSelected].countItems -= 1;
+                    SetToolbarItemUI(toolsList[toolNumberSelected]);
+                    if (toolsList[toolNumberSelected].countItems == 0) RemoveItemFromToolbar(toolsList[toolNumberSelected].toolbarIndex);
                 }
             }
         }

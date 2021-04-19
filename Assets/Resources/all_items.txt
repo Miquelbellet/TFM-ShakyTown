@@ -1,28 +1,33 @@
 SWORDS
-{"toolbarIndex":0, "empty":false, "name":"sword_1", "spriteName":"spritesheet_334", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "damage":6, "goldValue":4}
-{"toolbarIndex":0, "empty":false, "name":"sword_2", "spriteName":"spritesheet_335", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "damage":8, "goldValue":5}
-{"toolbarIndex":0, "empty":false, "name":"sword_3", "spriteName":"spritesheet_336", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "damage":12, "goldValue":7}
-{"toolbarIndex":0, "empty":false, "name":"sword_4", "spriteName":"spritesheet_337", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "damage":15, "goldValue":9}
-{"toolbarIndex":0, "empty":false, "name":"sword_5", "spriteName":"spritesheet_338", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "damage":20, "goldValue":10}
+{"toolbarIndex":0, "empty":false, "name":"sword_1", "spriteName":"spritesheet_334", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":6, "goldValue":4}
+{"toolbarIndex":0, "empty":false, "name":"sword_2", "spriteName":"spritesheet_335", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":8, "goldValue":5}
+{"toolbarIndex":0, "empty":false, "name":"sword_3", "spriteName":"spritesheet_336", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":12, "goldValue":7}
+{"toolbarIndex":0, "empty":false, "name":"sword_4", "spriteName":"spritesheet_337", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":15, "goldValue":9}
+{"toolbarIndex":0, "empty":false, "name":"sword_5", "spriteName":"spritesheet_338", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":20, "goldValue":10}
 
 BOWS
-{"toolbarIndex":0, "empty":false, "name":"bow_1", "spriteName":"spritesheet_68", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "damage":3, "goldValue":4}
-{"toolbarIndex":0, "empty":false, "name":"bow_2", "spriteName":"spritesheet_69", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "damage":4, "goldValue":5}
-{"toolbarIndex":0, "empty":false, "name":"bow_3", "spriteName":"spritesheet_70", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "damage":5, "goldValue":7}
-{"toolbarIndex":0, "empty":false, "name":"bow_4", "spriteName":"spritesheet_71", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "damage":8, "goldValue":9}
-{"toolbarIndex":0, "empty":false, "name":"bow_5", "spriteName":"spritesheet_72", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "damage":10, "goldValue":10}
+{"toolbarIndex":0, "empty":false, "name":"bow_1", "spriteName":"spritesheet_68", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":3, "goldValue":4}
+{"toolbarIndex":0, "empty":false, "name":"bow_2", "spriteName":"spritesheet_69", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":4, "goldValue":5}
+{"toolbarIndex":0, "empty":false, "name":"bow_3", "spriteName":"spritesheet_70", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":5, "goldValue":7}
+{"toolbarIndex":0, "empty":false, "name":"bow_4", "spriteName":"spritesheet_71", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":8, "goldValue":9}
+{"toolbarIndex":0, "empty":false, "name":"bow_5", "spriteName":"spritesheet_72", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":true, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":10, "goldValue":10}
 
 ARROWS
-{"toolbarIndex":0, "empty":false, "name":"arrow_1", "spriteName":"spritesheet_5", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "damage":2, "goldValue":1}
-{"toolbarIndex":0, "empty":false, "name":"arrow_2", "spriteName":"spritesheet_6", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "damage":4, "goldValue":1}
-{"toolbarIndex":0, "empty":false, "name":"arrow_3", "spriteName":"spritesheet_7", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "damage":5, "goldValue":2}
-{"toolbarIndex":0, "empty":false, "name":"arrow_4", "spriteName":"spritesheet_8", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "damage":7, "goldValue":3}
-{"toolbarIndex":0, "empty":false, "name":"arrow_5", "spriteName":"spritesheet_9", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "damage":9, "goldValue":4}
+{"toolbarIndex":0, "empty":false, "name":"arrow_1", "spriteName":"spritesheet_5", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "isPotion":false, "potionLevel":0, "damage":2, "goldValue":1}
+{"toolbarIndex":0, "empty":false, "name":"arrow_2", "spriteName":"spritesheet_6", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "isPotion":false, "potionLevel":0, "damage":4, "goldValue":1}
+{"toolbarIndex":0, "empty":false, "name":"arrow_3", "spriteName":"spritesheet_7", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "isPotion":false, "potionLevel":0, "damage":5, "goldValue":2}
+{"toolbarIndex":0, "empty":false, "name":"arrow_4", "spriteName":"spritesheet_8", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "isPotion":false, "potionLevel":0, "damage":7, "goldValue":3}
+{"toolbarIndex":0, "empty":false, "name":"arrow_5", "spriteName":"spritesheet_9", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":true, "isPotion":false, "potionLevel":0, "damage":9, "goldValue":4}
+
+POTIONS
+{"toolbarIndex":0, "empty":false, "name":"potion_1", "spriteName":"spritesheet_237", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":true, "potionLevel":1, "damage":0, "goldValue":2}
+{"toolbarIndex":0, "empty":false, "name":"potion_2", "spriteName":"spritesheet_245", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":true, "potionLevel":2, "damage":0, "goldValue":5}
+{"toolbarIndex":0, "empty":false, "name":"potion_3", "spriteName":"spritesheet_248", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":true, "potionLevel":3, "damage":0, "goldValue":10}
 
 RESOURCES
-{"toolbarIndex":0, "empty":false, "name":"gold", "spriteName":"spritesheet_107", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "damage":0, "goldValue":1}
-{"toolbarIndex":0, "empty":false, "name":"wood", "spriteName":"spritesheet_349", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "damage":0, "goldValue":1}
-{"toolbarIndex":0, "empty":false, "name":"iron", "spriteName":"spritesheet_333", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "damage":0, "goldValue":2}
-{"toolbarIndex":0, "empty":false, "name":"goldGem", "spriteName":"spritesheet_150", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "damage":0, "goldValue":3}
-{"toolbarIndex":0, "empty":false, "name":"blueGem", "spriteName":"spritesheet_224", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "damage":0, "goldValue":4}
-{"toolbarIndex":0, "empty":false, "name":"rubiGem", "spriteName":"spritesheet_279", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "damage":0, "goldValue":5}
+{"toolbarIndex":0, "empty":false, "name":"gold", "spriteName":"spritesheet_107", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":0, "goldValue":1}
+{"toolbarIndex":0, "empty":false, "name":"wood", "spriteName":"spritesheet_349", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":0, "goldValue":1}
+{"toolbarIndex":0, "empty":false, "name":"iron", "spriteName":"spritesheet_333", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":0, "goldValue":2}
+{"toolbarIndex":0, "empty":false, "name":"goldGem", "spriteName":"spritesheet_150", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":0, "goldValue":3}
+{"toolbarIndex":0, "empty":false, "name":"blueGem", "spriteName":"spritesheet_224", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":0, "goldValue":4}
+{"toolbarIndex":0, "empty":false, "name":"rubiGem", "spriteName":"spritesheet_279", "isCountable":true, "countItems":1, "isWeapon":false, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":0, "goldValue":5}
