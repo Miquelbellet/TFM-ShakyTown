@@ -164,10 +164,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7937f694865a0814294db1c7d514131d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
+  droppedItemPrefab: {fileID: 7964616484997607905, guid: c777870699f6d7d49b2e59ec2ce08f9a, type: 3}
+  enemyType: 1
   batTutorialSettings: {fileID: 11400000, guid: 8c25b80677085a94c8f165915fde2c3a, type: 2}
   batSettings: {fileID: 11400000, guid: 9aedaba29bc0a4041a7212778b2ba1cc, type: 2}
-  droppedItemPrefab: {fileID: 7964616484997607905, guid: c777870699f6d7d49b2e59ec2ce08f9a, type: 3}
+  goblinSettings: {fileID: 11400000, guid: c3cd21906d172b6409afa635c5a2eda4, type: 2}
+  orcSettings: {fileID: 11400000, guid: 32f973a79a4633441bbe013ed9d223d7, type: 2}
+  ratSettings: {fileID: 11400000, guid: fc458c21128b7b44b83c8602c6925741, type: 2}
+  spiderSettings: {fileID: 11400000, guid: fbfbdd8a89107ec4081237c4f744fd36, type: 2}
+  trollSettings: {fileID: 11400000, guid: d1b056ded2955e04d87a48b00da871b1, type: 2}
   enemySettings: {fileID: 0}
   player: {fileID: 0}
   initEnemyPosition: {x: 0, y: 0}

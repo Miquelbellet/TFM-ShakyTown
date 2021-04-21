@@ -46700,6 +46700,8 @@ MonoBehaviour:
     isWeapon: 0
     isBow: 0
     isArrow: 0
+    isPotion: 0
+    potionLevel: 0
     damage: 0
     goldValue: 1
   toolsList: []
@@ -46757,12 +46759,14 @@ MonoBehaviour:
   chestImagesObjectsParent: {fileID: 1832064251}
   blacksmithShop: {fileID: 288661033}
   confirmBlacksmithBuy: {fileID: 1417432958}
-  confirmBuyButton: {fileID: 1140939455}
-  noteEnoughItemsText: {fileID: 436846150}
-  costItemImages:
-  - {fileID: 2066027246}
-  - {fileID: 1110747994}
-  - {fileID: 1833293058}
+  confirmBlacksmithBuyButton: {fileID: 0}
+  notEnoughItemsBlacksmithText: {fileID: 0}
+  costBlacksmithItemImages: []
+  witchShop: {fileID: 0}
+  confirmWitchBuy: {fileID: 0}
+  confirmWitchBuyButton: {fileID: 0}
+  notEnoughWitchItemsText: {fileID: 0}
+  costWitchItemImages: []
   dialogTextParent: {fileID: 1437716934}
   dialogTextObject: {fileID: 2047443459}
   dialogActivated: 0
@@ -46791,6 +46795,7 @@ MonoBehaviour:
   playerPosLevel2_4: {x: -0.74, y: 2.66}
   playerPosLevel3: {x: 9.65, y: 2.66}
   playerPosLevel4_3: {x: -1.39, y: 2.66}
+  currentLevel: 0
   currentLevelNumber: 0
 --- !u!1 &1218451635
 GameObject:
@@ -66468,8 +66473,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69f7ff199663a244be3d2fc6ac1dc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpPositionsTimer: 0.2
-  followPlayer: 1
+  lerpPlayerPosTimer: 0
+  earthquakesTimer: 0
+  earthquakeDuration: 0
+  earthquakesForce: 0
+  Lvl1_LeftX: 0
+  Lvl1_RightX: 0
+  Lvl1_BotY: 0
+  Lvl1_TopY: 0
+  Lvl2_LeftX: 0
+  Lvl2_RightX: 0
+  Lvl2_BotY: 0
+  Lvl2_TopY: 0
+  Lvl3_LeftX: 0
+  Lvl3_RightX: 0
+  Lvl3_BotY: 0
+  Lvl3_TopY: 0
+  Lvl4_LeftX: 0
+  Lvl4_RightX: 0
+  Lvl4_BotY: 0
+  Lvl4_TopY: 0
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -68371,6 +68394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1975737665}
     m_Modifications:
+    - target: {fileID: 825490066102978738, guid: 4b714cedcd56c8b469b23d13715f2148, type: 3}
+      propertyPath: enemyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4029846767414983788, guid: 4b714cedcd56c8b469b23d13715f2148, type: 3}
       propertyPath: m_Name
       value: Bat
@@ -84284,6 +84311,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1975737665}
     m_Modifications:
+    - target: {fileID: 825490066102978738, guid: 4b714cedcd56c8b469b23d13715f2148, type: 3}
+      propertyPath: enemyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4029846767414983788, guid: 4b714cedcd56c8b469b23d13715f2148, type: 3}
       propertyPath: m_Name
       value: Bat (1)

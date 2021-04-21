@@ -5,12 +5,20 @@ using UnityEngine;
 
 public class EnemyControllerScript : MonoBehaviour
 {
+    [Header("Enemy config")]
     public EnemyType enemyType;
-    public EnemySettings batTutorialSettings;
-    public EnemySettings batSettings;
     public GameObject droppedItemPrefab;
 
-    [HideInInspector] public enum EnemyType { BatTutorial, Bat }
+    [Header("Enemies Settings")]
+    public EnemySettings batTutorialSettings;
+    public EnemySettings batSettings;
+    public EnemySettings goblinSettings;
+    public EnemySettings orcSettings;
+    public EnemySettings ratSettings;
+    public EnemySettings spiderSettings;
+    public EnemySettings trollSettings;
+
+    [HideInInspector] public enum EnemyType { BatTutorial, Bat, Goblin, Orc, Rat, Spider, Troll }
     [HideInInspector] public EnemySettings enemySettings;
 
     [HideInInspector] public PatrolState patrolState;
@@ -42,6 +50,11 @@ public class EnemyControllerScript : MonoBehaviour
     {
         if (enemyType == EnemyType.BatTutorial) enemySettings = batTutorialSettings;
         else if (enemyType == EnemyType.Bat) enemySettings = batSettings;
+        else if (enemyType == EnemyType.Goblin) enemySettings = goblinSettings;
+        else if (enemyType == EnemyType.Orc) enemySettings = orcSettings;
+        else if (enemyType == EnemyType.Rat) enemySettings = ratSettings;
+        else if (enemyType == EnemyType.Spider) enemySettings = spiderSettings;
+        else if (enemyType == EnemyType.Troll) enemySettings = trollSettings;
 
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnimator = GetComponent<Animator>();
