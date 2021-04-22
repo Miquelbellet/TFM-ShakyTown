@@ -54,29 +54,33 @@ public class UIControllerScript : MonoBehaviour
 
     public void SetToolBarItem(Sprite toolSprite, Tool tool)
     {
-        toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetComponent<Image>().sprite = toolSprite;
+        toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetComponent<Image>().sprite = toolSprite;
+        if (toolSprite == null) toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetComponent<Image>().enabled = false;
+        else toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetComponent<Image>().enabled = true;
         if (tool.isCountable)
         {
-            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(true);
-            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
+            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetChild(0).gameObject.SetActive(true);
+            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
         }
         else
         {
-            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(false);
+            toolsImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetChild(0).gameObject.SetActive(false);
         }
     }
 
     public void SetChestToolBarItem(Sprite toolSprite, Tool tool)
     {
-        chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetComponent<Image>().sprite = toolSprite;
+        chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetComponent<Image>().sprite = toolSprite;
+        if (toolSprite == null) chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetComponent<Image>().enabled = false;
+        else chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetComponent<Image>().enabled = true;
         if (tool.isCountable)
         {
-            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(true);
-            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
+            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetChild(0).gameObject.SetActive(true);
+            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
         }
         else
         {
-            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).transform.GetChild(0).transform.gameObject.SetActive(false);
+            chestImagesObjectsParent.transform.GetChild(tool.toolbarIndex).GetChild(0).GetChild(0).gameObject.SetActive(false);
         }
     }
 
@@ -138,15 +142,22 @@ public class UIControllerScript : MonoBehaviour
                 {
                     if (toolSp.name == costItem[i].spriteName)
                     {
-                        costBlacksmithItemImages[i].GetComponent<Image>().sprite = toolSp;
+                        costBlacksmithItemImages[i].transform.GetChild(0).GetComponent<Image>().sprite = toolSp;
+                        costBlacksmithItemImages[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                         if (costItem[i].isCountable)
                         {
-                            costBlacksmithItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(true);
-                            costBlacksmithItemImages[i].transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
+                            costBlacksmithItemImages[i].transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                            costBlacksmithItemImages[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
                         }
-                        else costBlacksmithItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(false);
+                        else costBlacksmithItemImages[i].transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                     }
                 }
+            }
+            else
+            {
+                costBlacksmithItemImages[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                costBlacksmithItemImages[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+                costBlacksmithItemImages[i].transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
             }
         }
         confirmBlacksmithBuy.SetActive(true);
@@ -172,15 +183,22 @@ public class UIControllerScript : MonoBehaviour
                 {
                     if (toolSp.name == costItem[i].spriteName)
                     {
-                        costWitchItemImages[i].GetComponent<Image>().sprite = toolSp;
+                        costWitchItemImages[i].transform.GetChild(0).GetComponent<Image>().sprite = toolSp;
+                        costWitchItemImages[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                         if (costItem[i].isCountable)
                         {
-                            costWitchItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(true);
-                            costWitchItemImages[i].transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
+                            costWitchItemImages[i].transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+                            costWitchItemImages[i].transform.GetChild(0).GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = costItem[i].countItems.ToString();
                         }
-                        else costWitchItemImages[i].transform.GetChild(0).transform.gameObject.SetActive(false);
+                        else costWitchItemImages[i].transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(false);
                     }
                 }
+            }
+            else
+            {
+                costWitchItemImages[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                costWitchItemImages[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+                costWitchItemImages[i].transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
             }
         }
         confirmWitchBuy.SetActive(true);
@@ -204,23 +222,25 @@ public class UIControllerScript : MonoBehaviour
             {
                 if (toolSp.name == tool.spriteName)
                 {
-                    imageTransform.GetComponent<Image>().sprite = toolSp;
+                    imageTransform.GetChild(0).GetComponent<Image>().sprite = toolSp;
+                    imageTransform.GetChild(0).GetComponent<Image>().enabled = true;
                     if (tool.isCountable)
                     {
-                        imageTransform.GetChild(0).transform.gameObject.SetActive(true);
-                        imageTransform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
+                        imageTransform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                        imageTransform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = tool.countItems.ToString();
                     }
                     else
                     {
-                        imageTransform.GetChild(0).transform.gameObject.SetActive(false);
+                        imageTransform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                     }
                 }
             }
         }
         else
         {
-            imageTransform.GetComponent<Image>().sprite = null;
-            imageTransform.GetChild(0).transform.gameObject.SetActive(false);
+            imageTransform.GetChild(0).GetComponent<Image>().sprite = null;
+            imageTransform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+            imageTransform.GetChild(0).GetComponent<Image>().enabled = false;
         }
     }
 
