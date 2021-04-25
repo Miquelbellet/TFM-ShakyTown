@@ -51,6 +51,12 @@ public class PlayerScript : MonoBehaviour
         playerSettings.Close();
     }
 
+    public void ChangeToMainScene()
+    {
+        PlayerPrefs.SetString("tutorial", "true");
+        SceneManager.LoadScene("Main");
+    }
+
     public void SavePlayerSettings()
     {
         string path = "Assets/Resources/player_settings.txt";
@@ -97,8 +103,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.tag == "EndTutorialTrigger")
         {
-            PlayerPrefs.SetString("tutorial", "true");
-            SceneManager.LoadScene("Main");
+            gameController.GetComponent<LevelControllerScript>().FadeInAnimation();
         }
 
         if (other.tag == "Chest")

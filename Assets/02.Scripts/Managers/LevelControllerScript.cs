@@ -32,6 +32,7 @@ public class LevelControllerScript : MonoBehaviour
     private bool resetingPlayer;
     private int colliderNumber;
     private bool savingGame;
+    private bool endingTutorial;
 
     void Start()
     {
@@ -52,9 +53,17 @@ public class LevelControllerScript : MonoBehaviour
         }
     }
 
+    public void FadeInAnimation()
+    {
+        endingTutorial = true;
+        backgroundImage.SetActive(true);
+        backgroundImage.GetComponent<Animator>().SetTrigger("fade_in");
+    }
+
     public void FadeInFinished()
     {
         if (savingGame) { Time.timeScale = 1; }
+        else if (endingTutorial) { player.GetComponent<PlayerScript>().ChangeToMainScene(); }
         else if (!resetingPlayer)
         {
             SetNewLevel();

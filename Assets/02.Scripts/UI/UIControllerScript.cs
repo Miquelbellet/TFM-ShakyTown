@@ -14,6 +14,9 @@ public class UIControllerScript : MonoBehaviour
     public GameObject mapObject;
     public GameObject closeMapBtn;
     public GameObject mapLevelObject;
+    public TextMeshProUGUI titleLevelMap;
+    public Image levelImageObj;
+    public Sprite[] levelImages;
     public GameObject menuNotesObject;
     public GameObject closeNotesBtn;
 
@@ -290,6 +293,8 @@ public class UIControllerScript : MonoBehaviour
     public void OpenLevelSelected(int levelNumber)
     {
         mapObject.SetActive(false);
+        titleLevelMap.text = "Level "+ levelNumber +" Map";
+        levelImageObj.sprite = levelImages[levelNumber-1];
         mapLevelObject.SetActive(true);
     }
 
