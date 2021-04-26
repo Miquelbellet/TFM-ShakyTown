@@ -383,6 +383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99f65ba8b24caf44862a20efdd7dac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteObjPrefab: {fileID: 6558563275619215281, guid: d369064d6bc179b448542e5da2f424ad, type: 3}
+  blacksmithTalk: 0
+  witchTalk: 0
 --- !u!114 &3694852991388857895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,6 +567,8 @@ MonoBehaviour:
     isWeapon: 0
     isBow: 0
     isArrow: 0
+    isPotion: 0
+    potionLevel: 0
     damage: 0
     goldValue: 1
 --- !u!1 &9009034928727449107

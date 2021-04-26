@@ -74735,12 +74735,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69f7ff199663a244be3d2fc6ac1dc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpPlayerPosTimer: 0
-  earthquakesTimer: 0
+  lerpPlayerPosTimer: 0.2
+  earthquakesTimer: 1000
   earthquakeDuration: 0
   earthquakesForce: 0
-  Lvl1_LeftX: 0
-  Lvl1_RightX: 0
+  Lvl1_LeftX: 0.1
+  Lvl1_RightX: 6.82
   Lvl1_BotY: 0
   Lvl1_TopY: 0
   Lvl2_LeftX: 0

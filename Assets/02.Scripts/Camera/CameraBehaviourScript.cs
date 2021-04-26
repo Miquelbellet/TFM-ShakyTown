@@ -85,12 +85,16 @@ public class CameraBehaviourScript : MonoBehaviour
                 if (playerPos.y <= Lvl4_BotY) playerPos.y = Lvl4_BotY;
                 else if (playerPos.y >= Lvl4_TopY) playerPos.y = Lvl4_TopY;
                 break;
+            default:
+                gameController.GetComponent<LevelControllerScript>().currentLevelNumber = 1;
+                break;
         }
         return playerPos;
     }
 
     void Earthquake()
     {
+        if (PlayerPrefs.GetString("firstEarthquake", "false") == "false") Invoke("ShowNote", 1f);
         earthquakeTimer = 0;
         StartCoroutine(ShakeCamera());
     }
@@ -103,5 +107,11 @@ public class CameraBehaviourScript : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             if (earthquakeTimer >= earthquakeDuration) i = Mathf.Infinity;
         }
+    }
+
+    void ShowNote()
+    {
+        PlayerPrefs.SetString("firstEarthquake", "true");
+        player.GetComponent<PlayerScript>().DropNoteItem(4);
     }
 }

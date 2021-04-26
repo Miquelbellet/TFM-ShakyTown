@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
+
+    public GameObject noteObjPrefab;
+
     [HideInInspector] public bool blacksmithTalk;
     [HideInInspector] public bool witchTalk;
 
@@ -175,6 +178,12 @@ public class PlayerScript : MonoBehaviour
             witchTalk = false;
             interactableObject = null;
         }
+    }
+
+    public void DropNoteItem(int noteIndex)
+    {
+        GameObject noteObj = Instantiate(noteObjPrefab, transform.position, Quaternion.Euler(0,0,0));
+        noteObj.GetComponent<NotesScript>().noteIndex = noteIndex;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
