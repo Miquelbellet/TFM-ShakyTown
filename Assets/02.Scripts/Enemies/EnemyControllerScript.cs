@@ -7,6 +7,7 @@ public class EnemyControllerScript : MonoBehaviour
 {
     [Header("Enemy config")]
     public EnemyType enemyType;
+    public bool finalBoss;
     public GameObject droppedItemPrefab;
 
     [Header("Enemies Settings")]
@@ -151,13 +152,23 @@ public class EnemyControllerScript : MonoBehaviour
             dead = true;
             gameObject.SetActive(false);
             DropItem();
+            if (finalBoss)
+            {
+                player.GetComponent<PlayerScript>().DropNoteItem(22);
+                Invoke("ReturnToHouse", 0.2f);
+            }
         }
+    }
+
+    void ReturnToHouse()
+    {
+        player.GetComponent<PlayerScript>().ReturnToHouse();
     }
 
     void DropItem()
     {
-        int randomResource;
-        int randomNumber;
+        int randomResource = 0;
+        int randomNumber = 1;
         if (enemySettings.dificultyLevel == 1)
         {
             randomResource = Random.Range(0, 3);
@@ -178,11 +189,7 @@ public class EnemyControllerScript : MonoBehaviour
             randomResource = Random.Range(0, 7);
             randomNumber = Random.Range(4, 8);
         }
-        else
-        {
-            randomResource = 0;
-            randomNumber = 1;
-        }
+        else return;
 
         GameObject dropItem = Instantiate(droppedItemPrefab, transform.position, Quaternion.Euler(0, 0, 0));
         dropItem.GetComponent<DroppedItemScript>().droppedTool = resourcesList[randomResource];

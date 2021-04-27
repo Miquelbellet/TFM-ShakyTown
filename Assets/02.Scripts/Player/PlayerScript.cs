@@ -27,6 +27,11 @@ public class PlayerScript : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController");
         resourcesManagmentScript = new ResourcesManagmentScript();
         if(SceneManager.GetActiveScene().name != "InitTutorial") SetPlayerSettings();
+        if (PlayerPrefs.GetString("welcomeTown", "false") == "false")
+        {
+            DropNoteItem(5);
+            PlayerPrefs.SetString("welcomeTown", "true");
+        }
     }
 
     void SetPlayerSettings()
@@ -146,6 +151,11 @@ public class PlayerScript : MonoBehaviour
         {
             gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(3);
         }
+        else if (other.tag == "Trigger4")
+        {
+            if (gameController.GetComponent<LevelControllerScript>().CheckEnemiesInLevel(4)) gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(4);
+            else DropNoteItem(14);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -183,7 +193,13 @@ public class PlayerScript : MonoBehaviour
     public void DropNoteItem(int noteIndex)
     {
         GameObject noteObj = Instantiate(noteObjPrefab, transform.position, Quaternion.Euler(0,0,0));
+        noteObj.GetComponent<SpriteRenderer>().enabled = false;
         noteObj.GetComponent<NotesScript>().noteIndex = noteIndex;
+    }
+
+    public void ReturnToHouse()
+    {
+        gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(1);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

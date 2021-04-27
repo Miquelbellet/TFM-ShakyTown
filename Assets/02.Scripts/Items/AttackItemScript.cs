@@ -55,6 +55,7 @@ public class AttackItemScript : MonoBehaviour
         Tool tool = Tool.CreateFromJSON(toolJSON);
         if (tool.isWeapon)
         {
+            gameObject.SetActive(true);
             usingTool = tool;
             toolsItemSprites = toolsSprites;
             if (tool.isBow)
@@ -76,6 +77,7 @@ public class AttackItemScript : MonoBehaviour
         }
         else
         {
+            gameObject.SetActive(false);
             GetComponent<SpriteRenderer>().sprite = null;
             secondaryItem.SetActive(false);
             usingTool = null;

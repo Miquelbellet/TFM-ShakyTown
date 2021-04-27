@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DroppedItemScript : MonoBehaviour
 {
+    public bool isBowGift;
+    public bool isArrowGift;
     public float throwItemForce;
     public float floatingTimer;
     public float floatingAcceleration;
@@ -27,6 +29,8 @@ public class DroppedItemScript : MonoBehaviour
         if (!droppedTool.empty && droppedTool.spriteName != "")
         {
             SetItem(droppedTool);
+            if (isBowGift && PlayerPrefs.GetString("getBowGift", "false") == "true") Destroy(gameObject);
+            else if (isArrowGift && PlayerPrefs.GetString("getArrowGift", "false") == "true") Destroy(gameObject);
         }
     }
 
@@ -88,7 +92,12 @@ public class DroppedItemScript : MonoBehaviour
             if (!droppedTool.empty)
             {
                 bool pickedItem = gameManager.GetComponent<ToolBarScript>().SetNewItemTool(droppedTool);
-                if (pickedItem) Destroy(gameObject);
+                if (pickedItem)
+                {
+                    if (isBowGift) PlayerPrefs.SetString("getBowGift", "true");
+                    else if (isArrowGift) PlayerPrefs.SetString("getArrowGift", "true");
+                    Destroy(gameObject);
+                }
             }
         }
     }

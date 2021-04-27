@@ -97,15 +97,20 @@ public class UIControllerScript : MonoBehaviour
         chestImagesObjectsParent.SetActive(false);
     }
 
-    public void ShowDialogText(string text)
+    public bool ShowDialogText(string text)
     {
-        dialogActivated = true;
-        showingDialog = true;
-        dialogText = text;
-        dialogTextParent.SetActive(true);
-        Time.timeScale = 0;
-        StopAllCoroutines();
-        StartCoroutine(WriteSentence(text));
+        if (!dialogActivated)
+        {
+            dialogActivated = true;
+            showingDialog = true;
+            dialogText = text;
+            dialogTextParent.SetActive(true);
+            Time.timeScale = 0;
+            StopAllCoroutines();
+            StartCoroutine(WriteSentence(text));
+            return true;
+        }
+        else return false;
     }
 
     IEnumerator WriteSentence(string text)

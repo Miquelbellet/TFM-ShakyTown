@@ -34,6 +34,12 @@ public class CameraBehaviourScript : MonoBehaviour
     public float Lvl4_BotY;
     public float Lvl4_TopY;
 
+    [Header("Level 5 limits")]
+    public float Lvl5_LeftX;
+    public float Lvl5_RightX;
+    public float Lvl5_BotY;
+    public float Lvl5_TopY;
+
 
     private GameObject player;
     private GameObject gameController;
@@ -84,6 +90,12 @@ public class CameraBehaviourScript : MonoBehaviour
                 else if (playerPos.x >= Lvl4_RightX) playerPos.x = Lvl4_RightX;
                 if (playerPos.y <= Lvl4_BotY) playerPos.y = Lvl4_BotY;
                 else if (playerPos.y >= Lvl4_TopY) playerPos.y = Lvl4_TopY;
+                break;
+            case 5:
+                if (playerPos.x <= Lvl5_LeftX) playerPos.x = Lvl5_LeftX;
+                else if (playerPos.x >= Lvl5_RightX) playerPos.x = Lvl5_RightX;
+                if (playerPos.y <= Lvl5_BotY) playerPos.y = Lvl5_BotY;
+                else if (playerPos.y >= Lvl5_TopY) playerPos.y = Lvl5_TopY;
                 break;
             default:
                 gameController.GetComponent<LevelControllerScript>().currentLevelNumber = 1;

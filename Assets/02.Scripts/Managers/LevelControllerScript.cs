@@ -20,8 +20,14 @@ public class LevelControllerScript : MonoBehaviour
     public Vector2 playerPosLevel2_4;
     public Vector2 playerPosLevel3;
     public Vector2 playerPosLevel4_3;
+    public Vector2 playerPosLevel4_5;
+    public Vector2 playerPosLevel5;
 
-    [HideInInspector] public enum Levels { Level_1, Level_2, Level_3, Level_4 };
+    [Header("Final Level Enemy Objects")]
+    public GameObject bossObject;
+    public GameObject enemiesPartentObj;
+
+    [HideInInspector] public enum Levels { Level_1, Level_2, Level_3, Level_4, Level_5 };
     [HideInInspector] public Levels currentLevel = Levels.Level_1;
     [HideInInspector] public int currentLevelNumber;
 
@@ -88,6 +94,24 @@ public class LevelControllerScript : MonoBehaviour
         changingLevel = false;
         backgroundImage.SetActive(false);
         Time.timeScale = 1;
+        if (colliderNumber == 4) StartCoroutine(ShowDialog());
+    }
+
+    IEnumerator ShowDialog()
+    {
+        for (int i = 15; i <= 21; i++)
+        {
+            if(i == 21) Invoke("finalLine", 0.2f);
+            else player.GetComponent<PlayerScript>().DropNoteItem(i);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    void finalLine()
+    {
+        bossObject.SetActive(false);
+        enemiesPartentObj.SetActive(true);
+        player.GetComponent<PlayerScript>().DropNoteItem(21);
     }
 
     public void ResetPlayer()
@@ -141,32 +165,30 @@ public class LevelControllerScript : MonoBehaviour
                     SetActiveLevel(2);
                     player.transform.position = playerPosLevel2_4;
                 }
+                else if (colliderNumber == 4)
+                {
+                    SetActiveLevel(5);
+                    player.transform.position = playerPosLevel5;
+                }
+                break;
+            case Levels.Level_5:
+                if(colliderNumber == 1)
+                {
+                    SetActiveLevel(1);
+                    player.transform.position = playerPosHouse;
+                }
                 break;
         }
     }
     
     public void SetActiveLevel(int levelNum)
     {
-        if (levelNum == 1)
-        {
-            currentLevel = Levels.Level_1;
-            currentLevelNumber = 1;
-        }
-        else if (levelNum == 2)
-        {
-            currentLevel = Levels.Level_2;
-            currentLevelNumber = 2;
-        }
-        else if (levelNum == 3)
-        {
-            currentLevel = Levels.Level_3;
-            currentLevelNumber = 3;
-        }
-        else if (levelNum == 4)
-        {
-            currentLevel = Levels.Level_4;
-            currentLevelNumber = 4;
-        }
+        currentLevelNumber = levelNum;
+        if (levelNum == 1) currentLevel = Levels.Level_1;
+        else if (levelNum == 2) currentLevel = Levels.Level_2;
+        else if (levelNum == 3) currentLevel = Levels.Level_3;
+        else if (levelNum == 4) currentLevel = Levels.Level_4;
+        else if (levelNum == 5) currentLevel = Levels.Level_5;
 
         for (int i = 0; i < levelsObjects.Length; i++)
         {
@@ -183,6 +205,16 @@ public class LevelControllerScript : MonoBehaviour
                 levelsObjects[i].SetActive(false);
             }
         }
+    }
+
+    public bool CheckEnemiesInLevel(int levelNum)
+    {
+        bool allEnabled = true;
+        for (int i = 0; i < levelsEnemiesObjects[levelNum - 1].transform.childCount; i++)
+        {
+            if (levelsEnemiesObjects[levelNum - 1].transform.GetChild(i).gameObject.activeSelf) allEnabled = false;
+        }
+        return allEnabled;
     }
 
     public void SaveGame()

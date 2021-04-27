@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c6559a22073474ea83310808cf494f, type: 3}
   m_Name: TrollSettings
   m_EditorClassIdentifier: 
-  damage: 4
-  health: 50
-  dificultyLevel: 3
+  damage: 5
+  health: 55
+  dificultyLevel: 0
   canWalk: 1
   walkSpeed: 0.3
   runSpeed: 0.5
   walkableArea: 1
   maxTimeWalking: 6
-  playerDetectionRadius: 2
+  playerDetectionRadius: 3
