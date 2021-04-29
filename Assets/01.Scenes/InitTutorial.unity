@@ -53337,7 +53337,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 40f95d40447b99a499f24deb8d2d3d53, type: 3}
   menuNotesObject: {fileID: 299103566}
   closeNotesBtn: {fileID: 97004789}
+  toolBarObject: {fileID: 1128430980}
   toolsImagesObjectsParent: {fileID: 1393694137}
+  toolsBordersImagesObjectsParent: {fileID: 1685715700}
   chestImagesObjectsParent: {fileID: 1768702133}
   blacksmithShop: {fileID: 1228087242}
   confirmBlacksmithBuy: {fileID: 69449981}
@@ -53372,6 +53374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeChangingLevel: 1.5
   backgroundImage: {fileID: 181752988}
+  level4Obstacle: {fileID: 0}
   levelsObjects:
   - {fileID: 1449104282}
   levelsEnemiesObjects:
@@ -53383,8 +53386,13 @@ MonoBehaviour:
   playerPosLevel2_4: {x: -0.74, y: 2.66}
   playerPosLevel3: {x: 9.65, y: 2.66}
   playerPosLevel4_3: {x: -1.39, y: 2.66}
+  playerPosLevel4_5: {x: 0, y: 0}
+  playerPosLevel5: {x: 0, y: 0}
+  bossObject: {fileID: 0}
+  enemiesPartentObj: {fileID: 0}
   currentLevel: 0
   currentLevelNumber: 0
+  openLevel4Obstacle: 0
 --- !u!1 &1214714332
 GameObject:
   m_ObjectHideFlags: 0
@@ -74739,6 +74747,7 @@ MonoBehaviour:
   earthquakesTimer: 1000
   earthquakeDuration: 0
   earthquakesForce: 0
+  limitBottomPlayer: 0.5
   Lvl1_LeftX: 0.1
   Lvl1_RightX: 6.82
   Lvl1_BotY: 0
@@ -74755,6 +74764,10 @@ MonoBehaviour:
   Lvl4_RightX: 0
   Lvl4_BotY: 0
   Lvl4_TopY: 0
+  Lvl5_LeftX: 0
+  Lvl5_RightX: 0
+  Lvl5_BotY: 0
+  Lvl5_TopY: 0
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0

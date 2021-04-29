@@ -7,7 +7,7 @@ public class MenuControllerScript : MonoBehaviour
 {
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -17,8 +17,7 @@ public class MenuControllerScript : MonoBehaviour
 
     public void PlayGameBtn()
     {
-        string tutorial = PlayerPrefs.GetString("tutorial", "false");
-        if (tutorial == "false") SceneManager.LoadScene("InitTutorial");
+        if (PlayerPrefs.GetString("tutorial", "false") == "false") SceneManager.LoadScene("InitTutorial");
         else SceneManager.LoadScene("Main");
     }
 

@@ -164,6 +164,7 @@ public class ToolBarScript : MonoBehaviour
 
     public void SelectItemInToolbar(int itemIndex)
     {
+        Debug.Log("itemIndex: "+ itemIndex);
         toolNumberSelected = itemIndex;
         SetObjectBorders();
     }

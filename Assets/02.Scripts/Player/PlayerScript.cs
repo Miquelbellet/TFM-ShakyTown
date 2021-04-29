@@ -26,11 +26,14 @@ public class PlayerScript : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         resourcesManagmentScript = new ResourcesManagmentScript();
-        if(SceneManager.GetActiveScene().name != "InitTutorial") SetPlayerSettings();
-        if (PlayerPrefs.GetString("welcomeTown", "false") == "false")
+        if(SceneManager.GetActiveScene().name != "InitTutorial")
         {
-            DropNoteItem(5);
-            PlayerPrefs.SetString("welcomeTown", "true");
+            SetPlayerSettings();
+            if (PlayerPrefs.GetString("welcomeTown", "false") == "false")
+            {
+                DropNoteItem(5);
+                PlayerPrefs.SetString("welcomeTown", "true");
+            }
         }
     }
 

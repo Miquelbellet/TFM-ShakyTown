@@ -9,6 +9,7 @@ public class CameraBehaviourScript : MonoBehaviour
     public float earthquakesTimer;
     public float earthquakeDuration;
     public float earthquakesForce;
+    public float limitBottomPlayer;
 
     [Header("Level 1 limits")]
     public float Lvl1_LeftX;
@@ -65,37 +66,48 @@ public class CameraBehaviourScript : MonoBehaviour
     Vector2 CheckCameraLimits()
     {
         Vector2 playerPos = player.transform.position;
-        switch (gameController.GetComponent<LevelControllerScript>().currentLevelNumber)
+        int levelNumber = gameController.GetComponent<LevelControllerScript>().currentLevelNumber;
+        switch (levelNumber)
         {
             case 1:
                 if (playerPos.x <= Lvl1_LeftX) playerPos.x = Lvl1_LeftX;
                 else if (playerPos.x >= Lvl1_RightX) playerPos.x = Lvl1_RightX;
                 if (playerPos.y <= Lvl1_BotY) playerPos.y = Lvl1_BotY;
                 else if (playerPos.y >= Lvl1_TopY) playerPos.y = Lvl1_TopY;
+                if (player.transform.position.y < Lvl1_BotY - limitBottomPlayer) gameController.GetComponent<UIControllerScript>().ToolBarTransparency(true);
+                else gameController.GetComponent<UIControllerScript>().ToolBarTransparency(false);
                 break;
             case 2:
                 if (playerPos.x <= Lvl2_LeftX) playerPos.x = Lvl2_LeftX;
                 else if (playerPos.x >= Lvl2_RightX) playerPos.x = Lvl2_RightX;
                 if (playerPos.y <= Lvl2_BotY) playerPos.y = Lvl2_BotY;
                 else if (playerPos.y >= Lvl2_TopY) playerPos.y = Lvl2_TopY;
+                if (player.transform.position.y < Lvl2_BotY - limitBottomPlayer) gameController.GetComponent<UIControllerScript>().ToolBarTransparency(true);
+                else gameController.GetComponent<UIControllerScript>().ToolBarTransparency(false);
                 break;
             case 3:
                 if (playerPos.x <= Lvl3_LeftX) playerPos.x = Lvl3_LeftX;
                 else if (playerPos.x >= Lvl3_RightX) playerPos.x = Lvl3_RightX;
                 if (playerPos.y <= Lvl3_BotY) playerPos.y = Lvl3_BotY;
                 else if (playerPos.y >= Lvl3_TopY) playerPos.y = Lvl3_TopY;
+                if (player.transform.position.y < Lvl3_BotY - limitBottomPlayer) gameController.GetComponent<UIControllerScript>().ToolBarTransparency(true);
+                else gameController.GetComponent<UIControllerScript>().ToolBarTransparency(false);
                 break;
             case 4:
                 if (playerPos.x <= Lvl4_LeftX) playerPos.x = Lvl4_LeftX;
                 else if (playerPos.x >= Lvl4_RightX) playerPos.x = Lvl4_RightX;
                 if (playerPos.y <= Lvl4_BotY) playerPos.y = Lvl4_BotY;
                 else if (playerPos.y >= Lvl4_TopY) playerPos.y = Lvl4_TopY;
+                if (player.transform.position.y < Lvl4_BotY - limitBottomPlayer) gameController.GetComponent<UIControllerScript>().ToolBarTransparency(true);
+                else gameController.GetComponent<UIControllerScript>().ToolBarTransparency(false);
                 break;
             case 5:
                 if (playerPos.x <= Lvl5_LeftX) playerPos.x = Lvl5_LeftX;
                 else if (playerPos.x >= Lvl5_RightX) playerPos.x = Lvl5_RightX;
                 if (playerPos.y <= Lvl5_BotY) playerPos.y = Lvl5_BotY;
                 else if (playerPos.y >= Lvl5_TopY) playerPos.y = Lvl5_TopY;
+                if (player.transform.position.y < Lvl5_BotY - limitBottomPlayer) gameController.GetComponent<UIControllerScript>().ToolBarTransparency(true);
+                else gameController.GetComponent<UIControllerScript>().ToolBarTransparency(false);
                 break;
             default:
                 gameController.GetComponent<LevelControllerScript>().currentLevelNumber = 1;

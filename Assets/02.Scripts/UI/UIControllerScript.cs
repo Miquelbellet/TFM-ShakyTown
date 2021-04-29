@@ -21,7 +21,9 @@ public class UIControllerScript : MonoBehaviour
     public GameObject closeNotesBtn;
 
     [Header("Items Objects")]
+    public GameObject toolBarObject;
     public GameObject toolsImagesObjectsParent;
+    public GameObject toolsBordersImagesObjectsParent;
     public GameObject chestImagesObjectsParent;
 
     [Header("Blacksmith Shop")]
@@ -48,6 +50,7 @@ public class UIControllerScript : MonoBehaviour
     private bool mapActivated;
     private bool showingDialog;
     private string dialogText;
+    private bool toolbarTransparent;
 
     private void Start()
     {
@@ -260,6 +263,37 @@ public class UIControllerScript : MonoBehaviour
     public void CloseConfirmWitchBuy()
     {
         confirmWitchBuy.SetActive(false);
+    }
+
+    public void ToolBarTransparency(bool transparent)
+    {
+        if (transparent && !toolbarTransparent)
+        {
+            toolbarTransparent = true;
+            byte transparentNumber = 100;
+            toolBarObject.GetComponent<Image>().color = new Color32(255, 255, 255, transparentNumber);
+            for (int i = 0; i < toolsImagesObjectsParent.transform.childCount; i++)
+            {
+                toolsImagesObjectsParent.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, transparentNumber);
+            }
+            for (int i = 0; i < toolsBordersImagesObjectsParent.transform.childCount; i++)
+            {
+                toolsBordersImagesObjectsParent.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, transparentNumber);
+            }
+        }
+        else if (!transparent && toolbarTransparent)
+        {
+            toolbarTransparent = false;
+            toolBarObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            for (int i = 0; i < toolsImagesObjectsParent.transform.childCount; i++)
+            {
+                toolsImagesObjectsParent.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
+            for (int i = 0; i < toolsBordersImagesObjectsParent.transform.childCount; i++)
+            {
+                toolsBordersImagesObjectsParent.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
+        }
     }
 
     public void InputMap(InputAction.CallbackContext context)

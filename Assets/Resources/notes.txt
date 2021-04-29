@@ -4,7 +4,7 @@
 {"index":2,"name":"tutorial3","text":"Well done, now try with a bow and a few arrows. Change the selected item by rolling the mouse wheel. You need arrows with you if you want to shoot one.","shown":false}
 {"index":3,"name":"tutorial4","text":"Next time the enemies will move! Now you are prepared to explore the real world. Go to the end of the level to finish the tutorial.","shown":false}
 {"index":4,"name":"firstEathquake","text":"Be careful! Earthquakes happen very often in this town.","shown":false}
-{"index":5,"name":"townIntro","text":"Hello ARANT! Welcome to GRANDU, your town. Here is where you were born and grew up.","shown":false}
+{"index":5,"name":"townIntro","text":"Hello ARANT! Welcome to GRANDU, your town. Here is where you were born and grew up.","shown":true}
 {"index":6,"name":"motherIntro","text":"This is your mother DANA. She talks a lot about your missing dad.","shown":false}
 {"index":7,"name":"blacksmithIntro","text":"He is BARDEN the Blacksmith of the town. You can buy different types of weapons and sell items for gold.","shown":false}
 {"index":8,"name":"mayorIntro","text":"He is like the mayor of this little town, SHAX is called. He likes to keep control about everything that happens here.","shown":false}

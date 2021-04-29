@@ -8,6 +8,7 @@ public class NotesScript : MonoBehaviour
 {
 
     public int noteIndex;
+    public bool dadHelpNote;
     public float floatingTimer;
     public float floatingAcceleration;
 
@@ -79,6 +80,11 @@ public class NotesScript : MonoBehaviour
         {
             if (gameController.GetComponent<UIControllerScript>().ShowDialogText(note.text))
             {
+                if (dadHelpNote)
+                {
+                    PlayerPrefs.SetString("dadHelpNote", "true");
+                    gameController.GetComponent<LevelControllerScript>().openLevel4Obstacle = true;
+                }
                 SaveReadedNote();
                 Destroy(gameObject);
             }

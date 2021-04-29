@@ -9,6 +9,7 @@ public class LevelControllerScript : MonoBehaviour
     [Header("Levels settings")]
     public float timeChangingLevel;
     public GameObject backgroundImage;
+    public GameObject level4Obstacle;
     public GameObject[] levelsObjects;
     public GameObject[] levelsEnemiesObjects;
 
@@ -30,6 +31,7 @@ public class LevelControllerScript : MonoBehaviour
     [HideInInspector] public enum Levels { Level_1, Level_2, Level_3, Level_4, Level_5 };
     [HideInInspector] public Levels currentLevel = Levels.Level_1;
     [HideInInspector] public int currentLevelNumber;
+    [HideInInspector] public bool openLevel4Obstacle;
 
     ResourcesManagmentScript resourcesManagmentScript;
 
@@ -44,6 +46,7 @@ public class LevelControllerScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         resourcesManagmentScript = new ResourcesManagmentScript();
+        if (PlayerPrefs.GetString("dadHelpNote", "false") == "true") openLevel4Obstacle = true;
     }
 
     public void PlayerChangedLevel(int numCollider)
@@ -199,6 +202,12 @@ public class LevelControllerScript : MonoBehaviour
                     levelsEnemiesObjects[i].transform.GetChild(n).gameObject.GetComponent<EnemyControllerScript>().RespawnEnemy();
                 }
                 levelsObjects[i].SetActive(true);
+
+                if(levelNum == 2)
+                {
+                    if (openLevel4Obstacle) level4Obstacle.SetActive(false);
+                    else level4Obstacle.SetActive(true);
+                }
             }
             else
             {
