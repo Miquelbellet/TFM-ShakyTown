@@ -17,7 +17,6 @@ public class ChestScript : MonoBehaviour
     ResourcesManagmentScript resourcesManagmentScript;
     GameObject gameController;
     GameObject canvasObject;
-    GameObject playerHandItem;
     GameObject chestImagesPartentObject;
 
     private Sprite[] toolsSprites;
@@ -30,7 +29,6 @@ public class ChestScript : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         canvasObject = GameObject.FindGameObjectWithTag("Canvas");
-        playerHandItem = GameObject.FindGameObjectWithTag("HandItem");
         resourcesManagmentScript = new ResourcesManagmentScript();
         chestAnimatorController = GetComponent<Animator>();
         toolsSprites = Resources.LoadAll<Sprite>("Tools");
@@ -43,7 +41,7 @@ public class ChestScript : MonoBehaviour
         {
             try
             {
-                Vector2 mousePoistion = playerHandItem.GetComponent<AttackItemScript>().mousePosition;
+                Vector2 mousePoistion = gameController.GetComponent<ToolBarScript>().mousePosition;
                 grabbedItemObject.transform.position = mousePoistion;
             }
             catch { }
@@ -164,7 +162,7 @@ public class ChestScript : MonoBehaviour
     void DropItem()
     {
         PointerEventData pointer = new PointerEventData(EventSystem.current) { pointerId = -1 };
-        pointer.position = playerHandItem.GetComponent<AttackItemScript>().mousePosition;
+        pointer.position = gameController.GetComponent<ToolBarScript>().mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointer, results);
         bool itemDropped = false;

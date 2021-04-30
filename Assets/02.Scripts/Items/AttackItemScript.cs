@@ -8,11 +8,10 @@ public class AttackItemScript : MonoBehaviour
     public GameObject secondaryItem;
     public GameObject arrowShotPrefab;
 
-    [HideInInspector] public Vector2 mousePosition;
     [HideInInspector] public bool isSwordInEnemy;
     [HideInInspector] public Tool usingTool;
 
-    GameObject player;
+    GameObject gameController;
 
     private bool toolIsBow;
     private float swordAngleCorrection = 135;
@@ -23,7 +22,7 @@ public class AttackItemScript : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("GameController");
+        gameController = GameObject.FindGameObjectWithTag("GameController");
     }
 
     void Update()
@@ -34,6 +33,7 @@ public class AttackItemScript : MonoBehaviour
     void RotateObjectToMouse()
     {
         Vector3 object_pos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 mousePosition = gameController.GetComponent<ToolBarScript>().mousePosition;
         Vector2 newObjectPos = new Vector2(mousePosition.x - object_pos.x, mousePosition.y - object_pos.y);
         float angle = Mathf.Atan2(newObjectPos.y, newObjectPos.x) * Mathf.Rad2Deg;
 
@@ -99,30 +99,30 @@ public class AttackItemScript : MonoBehaviour
             arrowPrefab.GetComponent<ArrowShotScript>().arrow = bowArrow;
             arrowPrefab.GetComponent<ArrowShotScript>().bowObject = usingTool;
 
-            Tool[] newToolList = player.GetComponent<ToolBarScript>().toolsList;
+            Tool[] newToolList = gameController.GetComponent<ToolBarScript>().toolsList;
             bowArrow.countItems--;
             if(bowArrow.countItems > 0)
             {
                 newToolList[bowArrow.toolbarIndex] = bowArrow;
-                player.GetComponent<ToolBarScript>().toolsList = newToolList;
+                gameController.GetComponent<ToolBarScript>().toolsList = newToolList;
             }
             else
             {
                 Tool emptyTool = new Tool();
                 emptyTool.toolbarIndex = bowArrow.toolbarIndex;
                 newToolList[bowArrow.toolbarIndex] = emptyTool;
-                player.GetComponent<ToolBarScript>().toolsList = newToolList;
+                gameController.GetComponent<ToolBarScript>().toolsList = newToolList;
                 secondaryItem.SetActive(false);
                 bowArrow = null;
             }
             SetSecondaryItem();
-            player.GetComponent<ToolBarScript>().RefreshToolbarItems();
+            gameController.GetComponent<ToolBarScript>().RefreshToolbarItems();
         }
     }
 
     void SetSecondaryItem()
     {
-        Tool[] toolsList = player.GetComponent<ToolBarScript>().toolsList;
+        Tool[] toolsList = gameController.GetComponent<ToolBarScript>().toolsList;
         for (int n = 0; n < toolsList.Length; n++)
         {
             if (!toolsList[n].empty)
@@ -138,11 +138,6 @@ public class AttackItemScript : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void InputMousePosition(InputAction.CallbackContext context)
-    {
-        mousePosition = context.ReadValue<Vector2>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
 {
 
     public GameObject noteObjPrefab;
+    public GameObject dadFinalObject;
 
     [HideInInspector] public bool blacksmithTalk;
     [HideInInspector] public bool witchTalk;
@@ -33,6 +34,10 @@ public class PlayerScript : MonoBehaviour
             {
                 DropNoteItem(5);
                 PlayerPrefs.SetString("welcomeTown", "true");
+            }
+            if (PlayerPrefs.GetString("showDadInTown", "false") == "true")
+            {
+                dadFinalObject.SetActive(true);
             }
         }
     }
@@ -202,7 +207,9 @@ public class PlayerScript : MonoBehaviour
 
     public void ReturnToHouse()
     {
-        gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(1);
+        gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(1, true);
+        PlayerPrefs.SetString("showDadInTown", "true");
+        dadFinalObject.SetActive(true);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

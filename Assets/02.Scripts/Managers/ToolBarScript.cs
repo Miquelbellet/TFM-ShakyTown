@@ -9,9 +9,12 @@ using UnityEngine.UI;
 
 public class ToolBarScript : MonoBehaviour
 {
+
     public AttackItemScript attackItemScript;
     public GameObject bordersObjectParent;
     public GameObject droppedItemPrefab;
+
+    [HideInInspector] public Vector2 mousePosition;
     [HideInInspector] public bool grabbingItem;
     [HideInInspector] public Tool itemGrabbed;
     [HideInInspector] public Tool[] toolsList;
@@ -48,11 +51,7 @@ public class ToolBarScript : MonoBehaviour
     {
         if (grabbingItem)
         {
-            try {
-                Vector2 mousePoistion = playerHandItem.GetComponent<AttackItemScript>().mousePosition;
-                grabbedItemObject.transform.position = mousePoistion;
-            }
-            catch { }
+            grabbedItemObject.transform.position = mousePosition;
         }
     }
 
@@ -164,7 +163,6 @@ public class ToolBarScript : MonoBehaviour
 
     public void SelectItemInToolbar(int itemIndex)
     {
-        Debug.Log("itemIndex: "+ itemIndex);
         toolNumberSelected = itemIndex;
         SetObjectBorders();
     }
@@ -207,7 +205,7 @@ public class ToolBarScript : MonoBehaviour
     public void DropItem()
     {
         PointerEventData pointer = new PointerEventData(EventSystem.current) { pointerId = -1 };
-        pointer.position = playerHandItem.GetComponent<AttackItemScript>().mousePosition;
+        pointer.position = mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointer, results);
         bool itemDropped = false;
@@ -357,6 +355,11 @@ public class ToolBarScript : MonoBehaviour
         return haveArrows;
     }
 
+    public void InputMousePosition(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
+    }
+
     public void InputMouseScroll(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -405,7 +408,7 @@ public class ToolBarScript : MonoBehaviour
                 )
             {
                 PointerEventData pointer = new PointerEventData(EventSystem.current) { pointerId = -1 };
-                pointer.position = playerHandItem.GetComponent<AttackItemScript>().mousePosition;
+                pointer.position = mousePosition;
                 List<RaycastResult> results = new List<RaycastResult>();
                 EventSystem.current.RaycastAll(pointer, results);
                 if (results.Count == 0)

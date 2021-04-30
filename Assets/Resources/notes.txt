@@ -1,24 +1,25 @@
-23
+24
 {"index":0,"name":"tutorial1","text":"This is a short tutorial to teach you how to fight, these notes will guide you. You can press the button ['Left Shift'] to make a dash.","shown":false}
 {"index":1,"name":"tutorial2","text":"You can open a chest by getting near one and pressing the action button ['E']. Grab the sword and fight the enemy!","shown":false}
 {"index":2,"name":"tutorial3","text":"Well done, now try with a bow and a few arrows. Change the selected item by rolling the mouse wheel. You need arrows with you if you want to shoot one.","shown":false}
 {"index":3,"name":"tutorial4","text":"Next time the enemies will move! Now you are prepared to explore the real world. Go to the end of the level to finish the tutorial.","shown":false}
 {"index":4,"name":"firstEathquake","text":"Be careful! Earthquakes happen very often in this town.","shown":false}
-{"index":5,"name":"townIntro","text":"Hello ARANT! Welcome to GRANDU, your town. Here is where you were born and grew up.","shown":true}
-{"index":6,"name":"motherIntro","text":"This is your mother DANA. She talks a lot about your missing dad.","shown":false}
+{"index":5,"name":"townIntro","text":"Hello ARANT! Welcome to GRANDU, your town. Here is where you were born and grew up.","shown":false}
+{"index":6,"name":"motherIntro","text":"This is your mother DANA. She talks a lot about your missing dad. Go near anyone and press ['E'] to talk to her.","shown":true}
 {"index":7,"name":"blacksmithIntro","text":"He is BARDEN the Blacksmith of the town. You can buy different types of weapons and sell items for gold.","shown":false}
 {"index":8,"name":"mayorIntro","text":"He is like the mayor of this little town, SHAX is called. He likes to keep control about everything that happens here.","shown":false}
 {"index":9,"name":"witchIntro","text":"She is MITHA. She loves to make potions, is like a witch, but the good ones.","shown":false}
-{"index":10,"name":"firstHunt","text":"Grab your sword from your chest before leaving the town! You can find monsters out there.","shown":false}
+{"index":10,"name":"firstHunt","text":"Grab your sword from your chest before leaving the town! You can find monsters out there.","shown":true}
 {"index":11,"name":"goEast","text":"Go EAST and you will find some help.","shown":false}
 {"index":12,"name":"cabinChest","text":"Hello son... yes, I am your father. We can't see each other right now, but soon we will. There is something very strange happening in this city related to these earthquakes. I have a gift to help you with the monsters, remember years ago when we used to hunt.","shown":false}
 {"index":13,"name":"goWest","text":"In the WEST there is some strange cave. Weird noises came out of the entrance.","shown":false}
 {"index":14,"name":"killAllEnemies","text":"You have to kill all nervy enemies to enter the cave.","shown":false}
-{"index":15,"name":"finalTalk1","text":"Dad: SON!!! Don't come here! This is much worse than I thought!","shown":false}
-{"index":16,"name":"finalTalk2","text":"Mayor: Well, well... at least you found the cave. You take so long to come in here. At first I was just ignoring your curiosity, knowing how weak you are. But when I found out that your father was helping you... Then I wanted to will you both!","shown":false}
-{"index":17,"name":"finalTalk3","text":"Dad: You are not going to touch him! Son, for years, the mayor have been digging deep in this cave taking the minerals. He is the guilty for all the earthquakes that happen in the town.","shown":false}
-{"index":18,"name":"finalTalk4","text":"Mayor: Your dad ROFAST found out the truth some years ago, and I couldn't risk him telling the whole town and closing the cave. So I told him that if he went near any person in the town, all his family will die.","shown":false}
-{"index":19,"name":"finalTalk4","text":"Mayor: He He He... And just a few more earthquakes and the town will be destroyed by a landslide. Thank god you found the cave and you will SAVE THE WORLD!... Right?","shown":false}
-{"index":20,"name":"finalTalk5","text":"Dad: You are a monster! You were really going to let the whole town die for some minerals?","shown":false}
-{"index":21,"name":"finalTalk6","text":"Dad: Oh... Wait... You ARE really a monster!","shown":false}
-{"index":22,"name":"finalTalk6","text":"Dad: Son you did it! You saved the town! Sorry for getting you into this. Let's go with your mother, I miss her so much.","shown":false}
+{"index":15,"name":"finalTalk1","text":"Dad: SON!!! Don't come here! This is much worse than I thought!","shown":true}
+{"index":16,"name":"finalTalk2","text":"Mayor: Well, well... at least you found the cave. You take so long to come in here. At first I was just ignoring your curiosity, knowing how weak you are. But when I found out that your father was helping you... Then I wanted to will you both!","shown":true}
+{"index":17,"name":"finalTalk3","text":"Dad: You are not going to touch him! Son, for years, the mayor have been digging deep in this cave taking the minerals. He is the guilty for all the earthquakes that happen in the town.","shown":true}
+{"index":18,"name":"finalTalk4","text":"Mayor: Your dad ROFAST found out the truth some years ago, and I couldn't risk him telling the whole town and closing the cave. So I told him that if he went near any person in the town, all his family will die.","shown":true}
+{"index":19,"name":"finalTalk5","text":"Mayor: He He He... And just a few more earthquakes and the town will be destroyed by a landslide. Thank god you found the cave and you will SAVE THE WORLD!... Right?","shown":true}
+{"index":20,"name":"finalTalk6","text":"Dad: You are a monster! You were really going to let the whole town die for some minerals?","shown":true}
+{"index":21,"name":"finalTalk7","text":"Dad: Oh... Wait... You ARE really a monster! Watch out and go fight him son!","shown":true}
+{"index":22,"name":"finalTalk8","text":"Dad: Son you did it! You saved the town! Sorry for getting you into this. Let's go with your mother, I miss her so much.","shown":true}
+{"index":23,"name":"finalTalk9","text":"Mom: OH MY LOVE! Where have you been? I missed you so much. Thank you son for saving us from the monster!","shown":true}

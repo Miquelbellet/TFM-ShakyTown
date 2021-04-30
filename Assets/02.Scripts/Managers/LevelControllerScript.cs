@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelControllerScript : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class LevelControllerScript : MonoBehaviour
     private int colliderNumber;
     private bool savingGame;
     private bool endingTutorial;
+    private bool endGameAndReturn;
 
     void Start()
     {
@@ -49,8 +51,9 @@ public class LevelControllerScript : MonoBehaviour
         if (PlayerPrefs.GetString("dadHelpNote", "false") == "true") openLevel4Obstacle = true;
     }
 
-    public void PlayerChangedLevel(int numCollider)
+    public void PlayerChangedLevel(int numCollider, bool ending = default(bool))
     {
+        if (ending) endGameAndReturn = true;
         if (!changingLevel)
         {
             changingLevel = true;
@@ -98,6 +101,11 @@ public class LevelControllerScript : MonoBehaviour
         backgroundImage.SetActive(false);
         Time.timeScale = 1;
         if (colliderNumber == 4) StartCoroutine(ShowDialog());
+        if (endGameAndReturn)
+        {
+            player.GetComponent<PlayerScript>().DropNoteItem(23);
+            GetComponent<UIControllerScript>().SaveAndReturnBtn();
+        }
     }
 
     IEnumerator ShowDialog()
@@ -179,6 +187,7 @@ public class LevelControllerScript : MonoBehaviour
                 {
                     SetActiveLevel(1);
                     player.transform.position = playerPosHouse;
+                    
                 }
                 break;
         }

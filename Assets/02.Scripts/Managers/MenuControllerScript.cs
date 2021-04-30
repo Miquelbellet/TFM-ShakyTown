@@ -7,7 +7,7 @@ public class MenuControllerScript : MonoBehaviour
 {
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -17,6 +17,7 @@ public class MenuControllerScript : MonoBehaviour
 
     public void PlayGameBtn()
     {
+        //PlayerPrefs.DeleteAll();
         if (PlayerPrefs.GetString("tutorial", "false") == "false") SceneManager.LoadScene("InitTutorial");
         else SceneManager.LoadScene("Main");
     }
