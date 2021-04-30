@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject noteObjPrefab;
     public GameObject dadFinalObject;
+    public GameObject bossTownObject;
 
     [HideInInspector] public bool blacksmithTalk;
     [HideInInspector] public bool witchTalk;
@@ -21,7 +22,9 @@ public class PlayerScript : MonoBehaviour
     private GameObject interactableObject;
     private bool openChest;
     private bool momTalk;
+    private bool dadTalk;
     private bool bossTalk;
+    private bool killAllNote;
 
     private void Start()
     {
@@ -35,9 +38,10 @@ public class PlayerScript : MonoBehaviour
                 DropNoteItem(5);
                 PlayerPrefs.SetString("welcomeTown", "true");
             }
-            if (PlayerPrefs.GetString("showDadInTown", "false") == "true")
+            if (PlayerPrefs.GetString("gameEnded", "false") == "true")
             {
                 dadFinalObject.SetActive(true);
+                bossTownObject.SetActive(false);
             }
         }
     }
@@ -100,6 +104,10 @@ public class PlayerScript : MonoBehaviour
             {
                 interactableObject.GetComponent<MomControllerScript>().ShowDialog();
             }
+            else if (dadTalk)
+            {
+                interactableObject.GetComponent<DadControllerScript>().ShowDialog();
+            }
             else if (bossTalk)
             {
                 interactableObject.GetComponent<BossControllerScript>().ShowDialog();
@@ -132,6 +140,11 @@ public class PlayerScript : MonoBehaviour
             momTalk = true;
             interactableObject = other.gameObject;
         }
+        else if (other.tag == "Dad")
+        {
+            dadTalk = true;
+            interactableObject = other.gameObject;
+        }
         else if (other.tag == "Boss")
         {
             bossTalk = true;
@@ -162,7 +175,11 @@ public class PlayerScript : MonoBehaviour
         else if (other.tag == "Trigger4")
         {
             if (gameController.GetComponent<LevelControllerScript>().CheckEnemiesInLevel(4)) gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(4);
-            else DropNoteItem(14);
+            else if(!killAllNote)
+            {
+                killAllNote = true;
+                DropNoteItem(14);
+            }
         }
     }
 
@@ -177,6 +194,11 @@ public class PlayerScript : MonoBehaviour
         else if (other.tag == "Mom")
         {
             momTalk = false;
+            interactableObject = null;
+        }
+        else if (other.tag == "Dad")
+        {
+            dadTalk = false;
             interactableObject = null;
         }
         else if (other.tag == "Boss")
@@ -208,8 +230,10 @@ public class PlayerScript : MonoBehaviour
     public void ReturnToHouse()
     {
         gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(1, true);
-        PlayerPrefs.SetString("showDadInTown", "true");
+        PlayerPrefs.SetString("gameEnded", "true");
+        PlayerPrefs.SetString("showNewGameBtn", "true");
         dadFinalObject.SetActive(true);
+        bossTownObject.SetActive(false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

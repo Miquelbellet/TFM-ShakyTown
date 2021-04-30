@@ -23,10 +23,10 @@ Shader "TextMeshPro/Sprite"
 		Tags
 		{ 
 			"Queue"="Transparent" 
-			"IgnoreProjector"="True" 
+			"IgnoreProjector"="false" 
 			"RenderType"="Transparent" 
 			"PreviewType"="Plane"
-			"CanUseSpriteAtlas"="True"
+			"CanUseSpriteAtlas"="false"
 		}
 		
 		Stencil

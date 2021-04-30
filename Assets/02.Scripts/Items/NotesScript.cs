@@ -55,8 +55,7 @@ public class NotesScript : MonoBehaviour
         }
         notesDocument.Close();
 
-        if (!note.shown) gameObject.SetActive(true);
-        else gameObject.SetActive(false);
+        if (note.shown) Destroy(gameObject);
     }
 
     void SaveReadedNote()
@@ -71,7 +70,6 @@ public class NotesScript : MonoBehaviour
             noteDocument.WriteLine(noteObjStr);
         }
         noteDocument.Close();
-        AssetDatabase.Refresh();
     }
 
     private void OnTriggerStay2D(Collider2D collision)

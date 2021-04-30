@@ -1,0 +1,4 @@
+3
+{"index":0, "name":"arrowsAndBows", "text":"If you use different arrows with different bows the damage you deal will be the plus of the two."}
+{"index":1, "name":"noEarthquakes", "text":"Thanks to you theres no more earthquakes."}
+{"index":2, "name":"enterLevelAgain", "text":"You can collect materials quickly if you kill all the enemies of one level and enter in the same again."}

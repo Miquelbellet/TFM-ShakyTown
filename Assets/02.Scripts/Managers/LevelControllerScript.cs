@@ -104,8 +104,13 @@ public class LevelControllerScript : MonoBehaviour
         if (endGameAndReturn)
         {
             player.GetComponent<PlayerScript>().DropNoteItem(23);
-            GetComponent<UIControllerScript>().SaveAndReturnBtn();
+            Invoke("EndGameAndReturnToMenu", 0.2f);
         }
+    }
+
+    void EndGameAndReturnToMenu()
+    {
+        GetComponent<UIControllerScript>().SaveAndReturnBtn();
     }
 
     IEnumerator ShowDialog()
@@ -240,7 +245,6 @@ public class LevelControllerScript : MonoBehaviour
         GetComponent<ToolBarScript>().SaveBarTools();
         player.GetComponent<PlayerScript>().SavePlayerSettings();
         SaveChestsItems();
-        AssetDatabase.Refresh();
 
         savingGame = true;
         backgroundImage.SetActive(true);

@@ -118,9 +118,12 @@ public class CameraBehaviourScript : MonoBehaviour
 
     void Earthquake()
     {
-        if (PlayerPrefs.GetString("firstEarthquake", "false") == "false") Invoke("ShowNote", 1f);
-        earthquakeTimer = 0;
-        StartCoroutine(ShakeCamera());
+        if (PlayerPrefs.GetString("gameEnded", "false") == "false")
+        {
+            if (PlayerPrefs.GetString("firstEarthquake", "false") == "false") Invoke("ShowNote", 1f);
+            earthquakeTimer = 0;
+            StartCoroutine(ShakeCamera());
+        }
     }
 
     IEnumerator ShakeCamera()
