@@ -1,4 +1,16 @@
-3
+15
 {"index":0, "name":"buyWeapons", "text":"You can buy any weapon if you can pay for it."}
-{"index":1, "name":"swordsDamage", "text":"The swords deal more damage than some bows but you have to get closer to the enemie."}
+{"index":1, "name":"swordsDamage", "text":"The swords deal more damage than some bows and arrows, but you have to get closer to the enemy."}
 {"index":2, "name":"materialsAndPayment", "text":"If you want a new weapon you have to give me the materials and pay me for my work."}
+{"index":3, "name":"sellObjects", "text":"You can sell any object you want in my store! I will give you his value in gold."}
+{"index":4, "name":"bowAndArrows", "text":"The damage you can do with a bow is combined depending on what arrows are you using."}
+{"index":5, "name":"carryArrows", "text":"If you want to use the bow, you need to carry arrows with you."}
+{"index":6, "name":"swordTalent", "text":"If you are talented enough, you can go only with your sword, but it's difficult to not get hit."}
+{"index":7, "name":"dashAndAttack", "text":"It's very important to not get hit, dash the enemies and wait for the perfect time to attack."}
+{"index":8, "name":"materialsAndGold", "text":"To make your weapons I need the materials and some gold as a payment."}
+{"index":9, "name":"looseMaterials", "text":"It's important to keep saving the materials you collect in your chest or you are going to lose it all."}
+{"index":10, "name":"monsterDropObjects", "text":"When you kill a monster, it will give you a material depending on his level. When higher the level of the monster, better the object."}
+{"index":11, "name":"exclusiveMaterials", "text":"There are some exclusive materials that only the strongest monsters will drop when they die."}
+{"index":12, "name":"combineBowsArrows", "text":"You can combine different bows with different arrows."}
+{"index":13, "name":"farmEasy", "text":"You can collect materials easily if you enter into a new level, kill some monsters and run away."}
+{"index":14, "name":"itemsGround", "text":"When you die, your items will stay in the ground until you pick it or leave the game."}

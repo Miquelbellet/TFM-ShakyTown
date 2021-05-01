@@ -1,4 +1,16 @@
-3
+15
 {"index":0, "name":"prosperTogether", "text":"I have to control all the town so we can prosper together."}
 {"index":1, "name":"townNotWork", "text":"If it weren't for me, the town wouldn't work."}
-{"index":2, "name":"helpPeople", "text":"I can help all the people that lives in here."}
+{"index":2, "name":"helpPeople", "text":"I can help all the people that live in here."}
+{"index":3, "name":"earthquakes", "text":"These earthquakes have been going on for many years."}
+{"index":4, "name":"carefulMonsters", "text":"Everyone has to be very careful with the monsters, they are very dangerous."}
+{"index":5, "name":"cantExplore", "text":"You can't explore outside the town, the monster can kill you."}
+{"index":6, "name":"tellEverything", "text":"Everyone must tell me if he sees or hears something strange, so I can fix the problem."}
+{"index":7, "name":"producedEarthquakes", "text":"Earthquakes are produced by tectonic and volcanic activities."}
+{"index":8, "name":"lostFather", "text":"Your father was a very good man, he has been lost for a long time."}
+{"index":9, "name":"dangerousBeach", "text":"On the beach there are only monsters and it's a very dangerous place."}
+{"index":10, "name":"monstersRespect", "text":"I have killed some monsters log ago and they respect me if they see me."}
+{"index":11, "name":"usefulShops", "text":"In this town there are some useful shops thanks to my organization."}
+{"index":12, "name":"keppTrackResources", "text":"There are a lot of resources in barrels in this town and I keep track of all of them."}
+{"index":13, "name":"respectDecisions", "text":"Everyone respects my decisions because they know I want the best for this town."}
+{"index":14, "name":"tellSomething", "text":"If I tell you something, you have to do it in the safe of this town."}

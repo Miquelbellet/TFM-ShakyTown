@@ -1,4 +1,16 @@
-3
+15
 {"index":0, "name":"arrowsDamage", "text":"You can deal more damage depending on the arrows or bows that you use."}
-{"index":1, "name":"collectibles", "text":"You can collect some items to buy different weapons or potions."}
-{"index":2, "name":"rollAction", "text":"If you press the button 'shift' you can quickly roll to the direction you are facing."}
+{"index":1, "name":"collectibles", "text":"You can collect some resources to buy different weapons or potions."}
+{"index":2, "name":"rollAction", "text":"If you press the button ['Left Shift'] you can quickly dash to the direction you are facing."}
+{"index":3, "name":"readNotes", "text":"You have to read all the notes that you find on the floor, they might say something important."}
+{"index":4, "name":"monstersBeach", "text":"In the beach there are a lot of monsters, but I think that that is for a reason."}
+{"index":5, "name":"drinkPotions", "text":"You can buy potions and drink them when you are in problems out there."}
+{"index":6, "name":"skilledSword", "text":"If you are really skilled with the sword, you can save resources thanks to not buying so many arrows."}
+{"index":7, "name":"treesHide", "text":"I think I saw some trees moving in the forest. Be careful and think that the trees can hide something."}
+{"index":8, "name":"outrunMonsters", "text":"If you are in danger, think that you can always outrun the monsters and find a scape. They are very heavy to run fast."}
+{"index":9, "name":"hidingSomething", "text":"I don't like the way that SHAX talk. I think he is hiding something."}
+{"index":10, "name":"dadBeave", "text":"Your dad is the bravest man I have known, I know he is alive somewhere wishing to come back."}
+{"index":11, "name":"someoneWatching", "text":"Some nights I have the feeling that someone is watching us. Be careful if you go out there."}
+{"index":12, "name":"greenHairDad", "text":"I don't know if you remember your dad, he has green hair and green eyes. Beautiful as you."}
+{"index":13, "name":"dadTech", "text":"I loved when your dad use to teach you how to protect yourself and give you advices on how to hunt."}
+{"index":14, "name":"dadBuryObjects", "text":"Your dad loved to go to the beach, he said he knew a really good place in the north of the beach to bury objects."}

@@ -28,6 +28,7 @@ public class MenuControllerScript : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetString("showNewGameBtn", "true");
+        PlayerPrefs.SetString("tutorial", "true");
 
         //Restart tools bar items
         string path1 = "Assets/Resources/tools_bar.txt";

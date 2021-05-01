@@ -1,4 +1,16 @@
-3
-{"index":0, "name":"rareResources", "text":"To make potions you have to find rare resources."}
-{"index":1, "name":"resources", "text":"You can buy all the potions that you want if you have the resources."}
-{"index":2, "name":"rollAction", "text":"You can take the health potion to increase your health immediately."}
+15
+{"index":0, "name":"rareResources", "text":"To make potions I need rare resources, but I know that you could not find that so you can pay me with the equivalent in other resources."}
+{"index":1, "name":"resources", "text":"You can buy all the potions that you want if you have the resources and the gold."}
+{"index":2, "name":"takePotion", "text":"You can take the health potion to increase your health immediately."}
+{"index":3, "name":"smallOrBig", "text":"You can buy the small potion to heal half heart or the big potion to heal one full heart."}
+{"index":4, "name":"killSkilledMonsters", "text":"If you kill more skilled monsters, they will give you better resources to buy better things."}
+{"index":5, "name":"extraLimitLife", "text":"The special potion gives you an extra limit of hearths. Use it wisely."}
+{"index":6, "name":"twelveFullHearts", "text":"You can have a maximum of 12 full hearts. If you try to take a special potion with already full hearts, it will not work."}
+{"index":7, "name":"sellObjects", "text":"If you want to sell some objects, you have to go to the blacksmith shop. I don't have to gold to pay you."}
+{"index":8, "name":"casseroleExplodes", "text":"Sometimes the casserole explodes in my face and I have to heal for some days."}
+{"index":9, "name":"poisonedPlant", "text":"Your dad was a really good man, I think that some poisoned plant killed him. You have to be careful out there."}
+{"index":10, "name":"strangeObjects", "text":"The mayor SHAX have some really strange objects in his house, I don't know where he found that."}
+{"index":11, "name":"potionsFastDrink", "text":"The potions are really quick to drink. You can drink them in the middle of a fight, select your weapon and keep fighting."}
+{"index":12, "name":"botanicaPotions", "text":"If you know the secrets of botanicals, you can make all kinds of potions easily. But I only sell health potions because they are cheap to make."}
+{"index":13, "name":"strenghtPotions", "text":"I think I am going to sell strength potions in the future, but they are expensive to produce than health potions."}
+{"index":14, "name":"timedPotion", "text":"If you take a good timed potion, can save you from a certain death. But there are some times when there is nothing to do."}

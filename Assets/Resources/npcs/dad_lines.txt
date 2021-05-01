@@ -1,4 +1,16 @@
-3
+15
 {"index":0, "name":"arrowsAndBows", "text":"If you use different arrows with different bows the damage you deal will be the plus of the two."}
-{"index":1, "name":"noEarthquakes", "text":"Thanks to you theres no more earthquakes."}
-{"index":2, "name":"enterLevelAgain", "text":"You can collect materials quickly if you kill all the enemies of one level and enter in the same again."}
+{"index":1, "name":"noEarthquakes", "text":"Thanks to you there is no more earthquakes."}
+{"index":2, "name":"enterLevelAgain", "text":"You can collect materials quickly if you kill some enemies of one level and enter in the same again."}
+{"index":3, "name":"extraordinaryFeat", "text":"Every year we should have a celebration for your extraordinary feat."}
+{"index":4, "name":"missedYou", "text":"I missed you and your mother a lot. Every week I tried to get near the house and see if you were fine."}
+{"index":5, "name":"chargeTown", "text":"Now that we are safe, you should be in charge of this town."}
+{"index":6, "name":"huntMonsters", "text":"You have improved a lot hunting monsters."}
+{"index":7, "name":"IncreaseLifes", "text":"You can buy potions to increase the limit of your lives."}
+{"index":8, "name":"killAllHealth", "text":"I am sure that you can kill all the monsters of all the levels without losing any health."}
+{"index":9, "name":"getCornered", "text":"You can buy new weapons to kill monsters faster and don't get cornered."}
+{"index":10, "name":"dashToRun", "text":"You can use the dash ability to outrun the monsters and find a good place to fight."}
+{"index":11, "name":"motherAdvices", "text":"Your mother gives very good advices for you to find the truth."}
+{"index":12, "name":"trusThem", "text":"BARDEN and MITHA, the blacksmith and the witch, they are very good people. Trust in them."}
+{"index":13, "name":"exploreBeach", "text":"There are a lot of monsters on the beach, but you can ignore them and explore if they don't kill you."}
+{"index":14, "name":"goodWithSword", "text":"If you are very good with the sword, you can save a lot of resources buying arrows."}

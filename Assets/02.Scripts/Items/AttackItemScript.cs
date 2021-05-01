@@ -122,22 +122,26 @@ public class AttackItemScript : MonoBehaviour
 
     void SetSecondaryItem()
     {
-        Tool[] toolsList = gameController.GetComponent<ToolBarScript>().toolsList;
-        for (int n = 0; n < toolsList.Length; n++)
+        try
         {
-            if (!toolsList[n].empty)
+            Tool[] toolsList = gameController.GetComponent<ToolBarScript>().toolsList;
+            for (int n = 0; n < toolsList.Length; n++)
             {
-                if (toolsList[n].isArrow && toolsList[n].countItems > 0)
+                if (!toolsList[n].empty)
                 {
-                    secondaryItem.SetActive(true);
-                    bowArrow = toolsList[n];
-                    foreach (Sprite toolSp in toolsItemSprites)
+                    if (toolsList[n].isArrow && toolsList[n].countItems > 0)
                     {
-                        if (toolSp.name == toolsList[n].spriteName) secondaryItem.GetComponent<SpriteRenderer>().sprite = toolSp;
+                        secondaryItem.SetActive(true);
+                        bowArrow = toolsList[n];
+                        foreach (Sprite toolSp in toolsItemSprites)
+                        {
+                            if (toolSp.name == toolsList[n].spriteName) secondaryItem.GetComponent<SpriteRenderer>().sprite = toolSp;
+                        }
                     }
                 }
             }
         }
+        catch { }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

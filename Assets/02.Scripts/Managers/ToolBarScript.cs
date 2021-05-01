@@ -419,12 +419,19 @@ public class ToolBarScript : MonoBehaviour
             }
             else if (toolsList[toolNumberSelected].isPotion)
             {
-                bool used = player.GetComponent<PlayerHealthScript>().UseHealthPotion(toolsList[toolNumberSelected].potionLevel);
-                if (used)
+                PointerEventData pointer = new PointerEventData(EventSystem.current) { pointerId = -1 };
+                pointer.position = mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointer, results);
+                if (results.Count == 0)
                 {
-                    toolsList[toolNumberSelected].countItems -= 1;
-                    SetToolbarItemUI(toolsList[toolNumberSelected]);
-                    if (toolsList[toolNumberSelected].countItems == 0) RemoveItemFromToolbar(toolsList[toolNumberSelected].toolbarIndex);
+                    bool used = player.GetComponent<PlayerHealthScript>().UseHealthPotion(toolsList[toolNumberSelected].potionLevel);
+                    if (used)
+                    {
+                        toolsList[toolNumberSelected].countItems -= 1;
+                        SetToolbarItemUI(toolsList[toolNumberSelected]);
+                        if (toolsList[toolNumberSelected].countItems == 0) RemoveItemFromToolbar(toolsList[toolNumberSelected].toolbarIndex);
+                    }
                 }
             }
         }

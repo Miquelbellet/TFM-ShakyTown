@@ -1,4 +1,4 @@
-{"toolbarIndex":0,"empty":false,"name":"sword_1","spriteName":"spritesheet_334","isCountable":false,"countItems":0,"isWeapon":true,"isBow":false,"isArrow":false,"isPotion":false,"potionLevel":0,"damage":6,"goldValue":4}
+{"toolbarIndex":0,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"isPotion":false,"potionLevel":0,"damage":0,"goldValue":1}
 {"toolbarIndex":1,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"isPotion":false,"potionLevel":0,"damage":0,"goldValue":1}
 {"toolbarIndex":2,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"isPotion":false,"potionLevel":0,"damage":0,"goldValue":1}
 {"toolbarIndex":3,"empty":true,"name":"","spriteName":"","isCountable":false,"countItems":0,"isWeapon":false,"isBow":false,"isArrow":false,"isPotion":false,"potionLevel":0,"damage":0,"goldValue":1}
