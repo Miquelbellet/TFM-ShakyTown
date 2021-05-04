@@ -15,7 +15,7 @@ public class MenuControllerScript : MonoBehaviour
     void Start()
     {
         resourcesManagmentScript = new ResourcesManagmentScript();
-        if (PlayerPrefs.GetString("showNewGameBtn", "false") == "true") newGameBtn.SetActive(true);
+        if (resourcesManagmentScript.GetGameVariable("showNewGameBtn")) newGameBtn.SetActive(true);
         else newGameBtn.SetActive(false);
     }
 
@@ -26,10 +26,12 @@ public class MenuControllerScript : MonoBehaviour
 
     public void PlayNewGameBtn()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetString("showNewGameBtn", "true");
-        PlayerPrefs.SetString("tutorial", "true");
+        ClearResourcesTexts();
+        SceneManager.LoadScene("Main");
+    }
 
+    void ClearResourcesTexts()
+    {
         //Restart tools bar items
         string path1 = "Assets/Resources/tools_bar.txt";
         StreamWriter toolsBar = resourcesManagmentScript.WriteDataToResource(path1);
@@ -98,12 +100,35 @@ public class MenuControllerScript : MonoBehaviour
         }
         notesWritter.Close();
 
-        SceneManager.LoadScene("Main");
+        //Restart Game Variables
+        string path5 = "Assets/Resources/game_variables.txt";
+        StreamReader varsReader = resourcesManagmentScript.ReadDataFromResource(path5);
+        string numberVars = varsReader.ReadLine();
+        int.TryParse(numberVars, out int numVars);
+        GameVariable[] allVariables = new GameVariable[numVars];
+        for (int i = 0; i < numVars; i++)
+        {
+            string varStr = varsReader.ReadLine();
+            GameVariable variable = GameVariable.CreateFromJSON(varStr);
+            allVariables[i] = variable;
+        }
+        varsReader.Close();
+
+        StreamWriter varsWriter = resourcesManagmentScript.WriteDataToResource(path5);
+        varsWriter.WriteLine(allVariables.Length);
+        foreach (GameVariable vars in allVariables)
+        {
+            if(vars.name == "showNewGameBtn" || vars.name == "tutorial") vars.value = true;
+            else vars.value = false;
+            string varsStr = GameVariable.CreateFromObject(vars);
+            varsWriter.WriteLine(varsStr);
+        }
+        varsWriter.Close();
     }
 
     public void PlayGameBtn()
     {
-        if (PlayerPrefs.GetString("tutorial", "false") == "false") SceneManager.LoadScene("InitTutorial");
+        if (!resourcesManagmentScript.GetGameVariable("tutorial")) SceneManager.LoadScene("InitTutorial");
         else SceneManager.LoadScene("Main");
     }
 

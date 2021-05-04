@@ -80,8 +80,7 @@ public class NotesScript : MonoBehaviour
             {
                 if (dadHelpNote)
                 {
-                    PlayerPrefs.SetString("dadHelpNote", "true");
-                    gameController.GetComponent<LevelControllerScript>().openLevel4Obstacle = true;
+                    resourcesManagmentScript.SetGameVariable("dadHelpNote", true);
                 }
                 SaveReadedNote();
                 Destroy(gameObject);

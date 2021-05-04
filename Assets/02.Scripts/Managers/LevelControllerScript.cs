@@ -32,7 +32,6 @@ public class LevelControllerScript : MonoBehaviour
     [HideInInspector] public enum Levels { Level_1, Level_2, Level_3, Level_4, Level_5 };
     [HideInInspector] public Levels currentLevel = Levels.Level_1;
     [HideInInspector] public int currentLevelNumber;
-    [HideInInspector] public bool openLevel4Obstacle;
 
     ResourcesManagmentScript resourcesManagmentScript;
 
@@ -44,11 +43,14 @@ public class LevelControllerScript : MonoBehaviour
     private bool endingTutorial;
     private bool endGameAndReturn;
 
+    private void Awake()
+    {
+        resourcesManagmentScript = new ResourcesManagmentScript();
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        resourcesManagmentScript = new ResourcesManagmentScript();
-        if (PlayerPrefs.GetString("dadHelpNote", "false") == "true") openLevel4Obstacle = true;
     }
 
     public void PlayerChangedLevel(int numCollider, bool ending = default(bool))
@@ -104,7 +106,9 @@ public class LevelControllerScript : MonoBehaviour
         if (endGameAndReturn)
         {
             player.GetComponent<PlayerScript>().DropNoteItem(23);
-            Invoke("EndGameAndReturnToMenu", 0.2f);
+            GetComponent<ToolBarScript>().SaveBarTools();
+            player.GetComponent<PlayerScript>().SavePlayerSettings();
+            SaveChestsItems();
         }
     }
 
@@ -219,7 +223,7 @@ public class LevelControllerScript : MonoBehaviour
 
                 if(levelNum == 2)
                 {
-                    if (openLevel4Obstacle) level4Obstacle.SetActive(false);
+                    if (resourcesManagmentScript.GetGameVariable("dadHelpNote")) level4Obstacle.SetActive(false);
                     else level4Obstacle.SetActive(true);
                 }
             }

@@ -41,6 +41,7 @@ public class CameraBehaviourScript : MonoBehaviour
     public float Lvl5_BotY;
     public float Lvl5_TopY;
 
+    ResourcesManagmentScript resourcesManagmentScript;
 
     private GameObject player;
     private GameObject gameController;
@@ -50,6 +51,7 @@ public class CameraBehaviourScript : MonoBehaviour
 
     void Start()
     {
+        resourcesManagmentScript = new ResourcesManagmentScript();
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GameObject.FindGameObjectWithTag("GameController");
         InvokeRepeating("Earthquake", earthquakesTimer, earthquakesTimer);
@@ -118,9 +120,9 @@ public class CameraBehaviourScript : MonoBehaviour
 
     void Earthquake()
     {
-        if (PlayerPrefs.GetString("gameEnded", "false") == "false")
+        if (!resourcesManagmentScript.GetGameVariable("gameEnded"))
         {
-            if (PlayerPrefs.GetString("firstEarthquake", "false") == "false") Invoke("ShowNote", 1f);
+            if (!resourcesManagmentScript.GetGameVariable("firstEarthquake")) Invoke("ShowNote", 1f);
             earthquakeTimer = 0;
             StartCoroutine(ShakeCamera());
         }
@@ -138,7 +140,7 @@ public class CameraBehaviourScript : MonoBehaviour
 
     void ShowNote()
     {
-        PlayerPrefs.SetString("firstEarthquake", "true");
+        resourcesManagmentScript.SetGameVariable("firstEarthquake", true);
         player.GetComponent<PlayerScript>().DropNoteItem(4);
     }
 }

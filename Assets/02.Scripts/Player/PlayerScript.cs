@@ -33,12 +33,12 @@ public class PlayerScript : MonoBehaviour
         if(SceneManager.GetActiveScene().name != "InitTutorial")
         {
             SetPlayerSettings();
-            if (PlayerPrefs.GetString("welcomeTown", "false") == "false")
+            if (!resourcesManagmentScript.GetGameVariable("welcomeTown"))
             {
                 DropNoteItem(5);
-                PlayerPrefs.SetString("welcomeTown", "true");
+                resourcesManagmentScript.SetGameVariable("welcomeTown", true);
             }
-            if (PlayerPrefs.GetString("gameEnded", "false") == "true")
+            if (resourcesManagmentScript.GetGameVariable("gameEnded"))
             {
                 dadFinalObject.SetActive(true);
                 bossTownObject.SetActive(false);
@@ -73,7 +73,7 @@ public class PlayerScript : MonoBehaviour
 
     public void ChangeToMainScene()
     {
-        PlayerPrefs.SetString("tutorial", "true");
+        resourcesManagmentScript.SetGameVariable("tutorial", true);
         SceneManager.LoadScene("Main");
     }
 
@@ -230,8 +230,8 @@ public class PlayerScript : MonoBehaviour
     public void ReturnToHouse()
     {
         gameController.GetComponent<LevelControllerScript>().PlayerChangedLevel(1, true);
-        PlayerPrefs.SetString("gameEnded", "true");
-        PlayerPrefs.SetString("showNewGameBtn", "true");
+        resourcesManagmentScript.SetGameVariable("gameEnded", true);
+        resourcesManagmentScript.SetGameVariable("showNewGameBtn", true);
         dadFinalObject.SetActive(true);
         bossTownObject.SetActive(false);
     }

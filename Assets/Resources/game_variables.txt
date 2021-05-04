@@ -1,0 +1,9 @@
+8
+{"name":"showNewGameBtn","value":false}
+{"name":"tutorial","value":false}
+{"name":"dadHelpNote","value":false}
+{"name":"welcomeTown","value":false}
+{"name":"gameEnded","value":false}
+{"name":"firstEarthquake","value":false}
+{"name":"getBowGift","value":false}
+{"name":"getArrowGift","value":false}

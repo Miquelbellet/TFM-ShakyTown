@@ -13,6 +13,7 @@ public class DroppedItemScript : MonoBehaviour
 
     GameObject player;
     GameObject gameManager;
+    ResourcesManagmentScript resourcesManagmentScript;
 
     private float time;
     private Sprite[] toolsSprites;
@@ -26,11 +27,12 @@ public class DroppedItemScript : MonoBehaviour
 
     private void Start()
     {
+        resourcesManagmentScript = new ResourcesManagmentScript();
         if (!droppedTool.empty && droppedTool.spriteName != "")
         {
             SetItem(droppedTool);
-            if (isBowGift && PlayerPrefs.GetString("getBowGift", "false") == "true") Destroy(gameObject);
-            else if (isArrowGift && PlayerPrefs.GetString("getArrowGift", "false") == "true") Destroy(gameObject);
+            if (isBowGift && resourcesManagmentScript.GetGameVariable("getBowGift")) Destroy(gameObject);
+            else if (isArrowGift && resourcesManagmentScript.GetGameVariable("getArrowGift")) Destroy(gameObject);
         }
     }
 
@@ -94,8 +96,8 @@ public class DroppedItemScript : MonoBehaviour
                 bool pickedItem = gameManager.GetComponent<ToolBarScript>().SetNewItemTool(droppedTool);
                 if (pickedItem)
                 {
-                    if (isBowGift) PlayerPrefs.SetString("getBowGift", "true");
-                    else if (isArrowGift) PlayerPrefs.SetString("getArrowGift", "true");
+                    if (isBowGift) resourcesManagmentScript.SetGameVariable("getBowGift", true);
+                    else if (isArrowGift) resourcesManagmentScript.SetGameVariable("getArrowGift", true);
                     Destroy(gameObject);
                 }
             }

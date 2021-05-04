@@ -22,8 +22,8 @@ public class Note
         return JsonUtility.FromJson<Note>(jsonString);
     }
 
-    public static string CreateFromObject(Note toolObject)
+    public static string CreateFromObject(Note noteObject)
     {
-        return JsonUtility.ToJson(toolObject);
+        return JsonUtility.ToJson(noteObject);
     }
 }
