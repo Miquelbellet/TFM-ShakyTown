@@ -9,14 +9,27 @@ public class MenuControllerScript : MonoBehaviour
 {
 
     public GameObject newGameBtn;
+    public GameObject playBtn;
+    public GameObject configBtn;
+    public GameObject exitBtn;
+    public float reduceY;
 
     ResourcesManagmentScript resourcesManagmentScript;
 
     void Start()
     {
         resourcesManagmentScript = new ResourcesManagmentScript();
-        if (resourcesManagmentScript.GetGameVariable("showNewGameBtn")) newGameBtn.SetActive(true);
-        else newGameBtn.SetActive(false);
+        if (resourcesManagmentScript.GetGameVariable("showNewGameBtn"))
+        {
+            newGameBtn.SetActive(true);
+        }
+        else
+        {
+            newGameBtn.SetActive(false);
+            playBtn.transform.position = new Vector2(playBtn.transform.position.x, playBtn.transform.position.y + reduceY);
+            configBtn.transform.position = new Vector2(configBtn.transform.position.x, configBtn.transform.position.y + reduceY);
+            exitBtn.transform.position = new Vector2(exitBtn.transform.position.x, exitBtn.transform.position.y + reduceY);
+        }
     }
 
     void Update()

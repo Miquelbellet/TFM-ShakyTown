@@ -53394,7 +53394,6 @@ MonoBehaviour:
   enemiesPartentObj: {fileID: 0}
   currentLevel: 0
   currentLevelNumber: 0
-  openLevel4Obstacle: 0
 --- !u!1 &1214714332
 GameObject:
   m_ObjectHideFlags: 0
@@ -94985,6 +94984,14 @@ PrefabInstance:
       propertyPath: heartsParent
       value: 
       objectReference: {fileID: 1916736318}
+    - target: {fileID: 324603362, guid: 54bce89db489f1a4999cc9b6ac469733, type: 3}
+      propertyPath: currentPlayerLifes
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 324603362, guid: 54bce89db489f1a4999cc9b6ac469733, type: 3}
+      propertyPath: actualFullPlayerLifes
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3694852991388857888, guid: 54bce89db489f1a4999cc9b6ac469733, type: 3}
       propertyPath: m_RootOrder
       value: 6
