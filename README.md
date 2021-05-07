@@ -49,5 +49,5 @@ El juego, aunque tiene la mayor parte de funcionalidades acabadas, aún le falta
 Así como poder cambiar la **configuración del juego** tanto en el menú principal como en el menú del juego.
 
 ## Vídeo demostrativo
-Demo PEC3: [Link demo PEC3](https://youtu.be/AXBrAbZyjKY)\
+Demo PEC3: [Link demo PEC3](https://youtu.be/bPh163f2vaw)\
 Demo PEC2: [Link demo PEC2](https://youtu.be/AXBrAbZyjKY)
