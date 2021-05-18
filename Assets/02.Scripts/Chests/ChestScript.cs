@@ -99,6 +99,7 @@ public class ChestScript : MonoBehaviour
 
     public void OpenChest()
     {
+        gameController.GetComponent<SoundsControllerScript>().PlayChest();
         gameController.GetComponent<UIControllerScript>().ActivateChestUI();
         chestAnimatorController.SetBool("open", true);
         SetButtonsEvents();
@@ -240,8 +241,12 @@ public class ChestScript : MonoBehaviour
 
     public void CloseChest()
     {
-        gameController.GetComponent<UIControllerScript>().DeactivateChestUI();
-        chestAnimatorController.SetBool("open", false);
-        chestOpened = false;
+        if (chestOpened)
+        {
+            gameController.GetComponent<SoundsControllerScript>().PlayChest();
+            gameController.GetComponent<UIControllerScript>().DeactivateChestUI();
+            chestAnimatorController.SetBool("open", false);
+            chestOpened = false;
+        }
     }
 }

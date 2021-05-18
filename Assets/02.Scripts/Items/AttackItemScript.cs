@@ -94,6 +94,7 @@ public class AttackItemScript : MonoBehaviour
     {
         if(bowArrow != null)
         {
+            gameController.GetComponent<SoundsControllerScript>().PlayArrow();
             GameObject arrowPrefab = Instantiate(arrowShotPrefab, transform.position, secondaryItem.transform.rotation);
             arrowPrefab.GetComponent<SpriteRenderer>().sprite = secondaryItem.GetComponent<SpriteRenderer>().sprite;
             arrowPrefab.GetComponent<ArrowShotScript>().arrow = bowArrow;

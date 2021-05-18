@@ -121,13 +121,13 @@ public class LevelControllerScript : MonoBehaviour
     {
         for (int i = 15; i <= 21; i++)
         {
-            if(i == 21) Invoke("finalLine", 0.2f);
+            if(i == 21) Invoke("FinalLine", 0.2f);
             else player.GetComponent<PlayerScript>().DropNoteItem(i);
             yield return new WaitForSeconds(0.2f);
         }
     }
 
-    void finalLine()
+    void FinalLine()
     {
         bossObject.SetActive(false);
         enemiesPartentObj.SetActive(true);
@@ -204,6 +204,7 @@ public class LevelControllerScript : MonoBehaviour
     
     public void SetActiveLevel(int levelNum)
     {
+        GetComponent<SoundsControllerScript>().PlayMusicForLevel(levelNum);
         currentLevelNumber = levelNum;
         if (levelNum == 1) currentLevel = Levels.Level_1;
         else if (levelNum == 2) currentLevel = Levels.Level_2;

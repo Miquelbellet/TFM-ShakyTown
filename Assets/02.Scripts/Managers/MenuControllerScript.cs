@@ -12,6 +12,7 @@ public class MenuControllerScript : MonoBehaviour
     public GameObject playBtn;
     public GameObject configBtn;
     public GameObject exitBtn;
+    public GameObject configPanel;
     public float reduceY;
 
     ResourcesManagmentScript resourcesManagmentScript;
@@ -39,6 +40,7 @@ public class MenuControllerScript : MonoBehaviour
 
     public void PlayNewGameBtn()
     {
+        GetComponent<SoundsControllerScript>().PlaySoundUI1();
         ClearResourcesTexts();
         SceneManager.LoadScene("Main");
     }
@@ -141,12 +143,22 @@ public class MenuControllerScript : MonoBehaviour
 
     public void PlayGameBtn()
     {
+        GetComponent<SoundsControllerScript>().PlaySoundUI1();
         if (!resourcesManagmentScript.GetGameVariable("tutorial")) SceneManager.LoadScene("InitTutorial");
         else SceneManager.LoadScene("Main");
     }
 
+    public void ConfigPanel()
+    {
+        if (configPanel.activeSelf)
+        {
+            GetComponent<SoundsControllerScript>().PlaySoundUI1();
+        }
+    }
+
     public void ExitGameBtn()
     {
+        GetComponent<SoundsControllerScript>().PlaySoundUI1();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

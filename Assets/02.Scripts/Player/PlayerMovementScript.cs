@@ -13,6 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
     [HideInInspector] public bool stopRollMove;
 
     private Animator playerAnimator;
+    private GameObject gameController;
 
     private Vector2 playerMovement;
     private bool cooldownRoll;
@@ -20,6 +21,7 @@ public class PlayerMovementScript : MonoBehaviour
     void Start()
     {
         playerAnimator = transform.GetComponent<Animator>();
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         playerOrientation = new Vector2(0, -1);
     }
 
@@ -82,6 +84,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         if (context.performed && !cooldownRoll)
         {
+            gameController.GetComponent<SoundsControllerScript>().PlayDash();
             cooldownRoll = true;
             stopRollMove = false;
             Vector3 startPos = transform.position;

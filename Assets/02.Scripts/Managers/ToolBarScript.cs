@@ -43,7 +43,7 @@ public class ToolBarScript : MonoBehaviour
         blacksmithObject = GameObject.FindGameObjectWithTag("Blacksmith");
         witchObject = GameObject.FindGameObjectWithTag("Witch");
         toolsSprites = Resources.LoadAll<Sprite>("Tools");
-        SetObjectBorders();
+        SetObjectBorders(true);
         SetToolsForBar();
     }
 
@@ -69,8 +69,9 @@ public class ToolBarScript : MonoBehaviour
         SetObjectBorders();
     }
 
-    void SetObjectBorders()
+    void SetObjectBorders(bool notPlaySound = default(bool))
     {
+        if(!notPlaySound) GetComponent<SoundsControllerScript>().PlaySelectItem();
         for (int i = 0; i <= numberOfToolsTotal; i++)
         {
             if(toolNumberSelected == i) bordersObjectParent.transform.GetChild(i).transform.gameObject.SetActive(true);
@@ -393,13 +394,16 @@ public class ToolBarScript : MonoBehaviour
                 }
             }
             else if (
-                attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemy && 
                 attackItemScript.GetComponent<AttackItemScript>().usingTool != null &&
                 attackItemScript.GetComponent<AttackItemScript>().usingTool.isWeapon && 
                 !attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow
                 )
             {
-                attackItemScript.GetComponent<AttackItemScript>().AttackEnemySword();
+                GetComponent<SoundsControllerScript>().PlaySword();
+                if (attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemy)
+                {
+                    attackItemScript.GetComponent<AttackItemScript>().AttackEnemySword();
+                }
             }
             else if (
                 attackItemScript.GetComponent<AttackItemScript>().usingTool != null &&
