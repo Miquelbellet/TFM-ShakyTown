@@ -78,10 +78,8 @@ public class NotesScript : MonoBehaviour
         {
             if (gameController.GetComponent<UIControllerScript>().ShowDialogText(note.text))
             {
-                if (dadHelpNote)
-                {
-                    resourcesManagmentScript.SetGameVariable("dadHelpNote", true);
-                }
+                if (dadHelpNote) resourcesManagmentScript.SetGameVariable("dadHelpNote", true);
+                gameController.GetComponent<SoundsControllerScript>().PlayNote();
                 SaveReadedNote();
                 Destroy(gameObject);
             }

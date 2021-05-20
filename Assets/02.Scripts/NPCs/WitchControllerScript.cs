@@ -121,6 +121,7 @@ public class WitchControllerScript : MonoBehaviour
 
     public void ConfirmBuyingItem()
     {
+        gameController.GetComponent<SoundsControllerScript>().PlaySellItem();
         RefreshPlayerToolbar(currentItemCost);
         SetNewToolbarItem(buyedToolItem);
         gameController.GetComponent<UIControllerScript>().CloseConfirmWitchBuy();

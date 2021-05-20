@@ -53409,7 +53409,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c1d04a197f0cc13428bf9821af7f5951, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -53512,12 +53512,24 @@ MonoBehaviour:
   musicLevel3: {fileID: 0}
   musicLevel4: {fileID: 0}
   musicLevel5: {fileID: 0}
-  soundUI1: {fileID: 8300000, guid: c847b84f3ba33ab43a41a0e511049ae3, type: 3}
+  monsterDie1: {fileID: 8300000, guid: b823dec2000b06749a3d1d6e49090395, type: 3}
+  monsterDie2: {fileID: 8300000, guid: 017e1d4c19d350746b70bbe6f9cf1bcc, type: 3}
+  monsterDie3: {fileID: 8300000, guid: cd4d210f28a61ec499d5033331a06931, type: 3}
+  monsterDie4: {fileID: 8300000, guid: e1e498a4c31332544add6342230c851c, type: 3}
+  monsterDie5: {fileID: 8300000, guid: 3d4e0278958c3054aa1899bc188e2710, type: 3}
+  monsterDie6: {fileID: 8300000, guid: 7a6246d667b0b8748a9147f44c886a66, type: 3}
+  soundUI: {fileID: 8300000, guid: c847b84f3ba33ab43a41a0e511049ae3, type: 3}
   selectItem: {fileID: 8300000, guid: 8d51d4c2e4e7fd94e9a56adb573d40bd, type: 3}
   dash: {fileID: 8300000, guid: a268363e410e8134588d8740af66278c, type: 3}
   chest: {fileID: 8300000, guid: 7814b77f35c51c34ab998c2e7a412b84, type: 3}
   sword: {fileID: 8300000, guid: 54afc3e4e34dc10408ee18ea04b8c32a, type: 3}
   arrow: {fileID: 8300000, guid: cfec93753fd11434f949d864324109cb, type: 3}
+  dropItem: {fileID: 8300000, guid: ebe11b4e8922e864a90628b9bb9ad96d, type: 3}
+  potion: {fileID: 8300000, guid: 333f51ad08d68ea42a52fdb02f9e617b, type: 3}
+  buyItem: {fileID: 8300000, guid: 842d422f83c19df448ff3aa0695cd62f, type: 3}
+  sellItem: {fileID: 8300000, guid: 94e6be9342d65cf4eb175bd01527e1da, type: 3}
+  note: {fileID: 8300000, guid: 2cd4c88f2e2d63645a5cc7ebef33a18e, type: 3}
+  playerHit: {fileID: 8300000, guid: 72f045443736787458f6cd750d04c874, type: 3}
 --- !u!1 &1214714332
 GameObject:
   m_ObjectHideFlags: 0

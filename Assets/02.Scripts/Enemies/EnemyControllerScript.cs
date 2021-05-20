@@ -34,6 +34,7 @@ public class EnemyControllerScript : MonoBehaviour
     [HideInInspector] public bool dead;
 
     ResourcesManagmentScript resourcesManagmentScript;
+    GameObject gameController;
 
     private float enemylifes;
     private Tool[] resourcesList;
@@ -49,15 +50,33 @@ public class EnemyControllerScript : MonoBehaviour
 
     void InitializeEnemy()
     {
-        if (enemyType == EnemyType.BatTutorial) enemySettings = batTutorialSettings;
-        else if (enemyType == EnemyType.Bat) enemySettings = batSettings;
-        else if (enemyType == EnemyType.Goblin) enemySettings = goblinSettings;
-        else if (enemyType == EnemyType.Orc) enemySettings = orcSettings;
-        else if (enemyType == EnemyType.Rat) enemySettings = ratSettings;
-        else if (enemyType == EnemyType.Spider) enemySettings = spiderSettings;
-        else if (enemyType == EnemyType.Troll) enemySettings = trollSettings;
+        switch (enemyType)
+        {
+            case EnemyType.BatTutorial:
+                enemySettings = batTutorialSettings;
+                break;
+            case EnemyType.Bat:
+                enemySettings = batSettings;
+                break;
+            case EnemyType.Goblin:
+                enemySettings = goblinSettings;
+                break;
+            case EnemyType.Orc:
+                enemySettings = orcSettings;
+                break;
+            case EnemyType.Rat:
+                enemySettings = ratSettings;
+                break;
+            case EnemyType.Spider:
+                enemySettings = spiderSettings;
+                break;
+            case EnemyType.Troll:
+                enemySettings = trollSettings;
+                break;
+        }
 
         player = GameObject.FindGameObjectWithTag("Player");
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         enemyAnimator = GetComponent<Animator>();
         enemySprite = GetComponent<SpriteRenderer>();
         resourcesManagmentScript = new ResourcesManagmentScript();
@@ -149,6 +168,31 @@ public class EnemyControllerScript : MonoBehaviour
     {
         if (enemylifes <= 0)
         {
+            switch (enemyType)
+            {
+                case EnemyType.BatTutorial:
+                    gameController.GetComponent<SoundsControllerScript>().PlayMonsterDie(1);
+                    break;
+                case EnemyType.Bat:
+                    gameController.GetComponent<SoundsControllerScript>().PlayMonsterDie(1);
+                    break;
+                case EnemyType.Goblin:
+                    gameController.GetComponent<SoundsControllerScript>().PlayMonsterDie(2);
+                    break;
+                case EnemyType.Orc:
+                    gameController.GetComponent<SoundsControllerScript>().PlayMonsterDie(3);
+                    break;
+                case EnemyType.Rat:
+                    gameController.GetComponent<SoundsControllerScript>().PlayMonsterDie(4);
+                    break;
+                case EnemyType.Spider:
+                    gameController.GetComponent<SoundsControllerScript>().PlayMonsterDie(5);
+                    break;
+                case EnemyType.Troll:
+                    gameController.GetComponent<SoundsControllerScript>().PlayMonsterDie(6);
+                    break;
+            }
+
             dead = true;
             gameObject.SetActive(false);
             DropItem();

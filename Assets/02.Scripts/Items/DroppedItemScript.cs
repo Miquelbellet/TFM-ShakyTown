@@ -12,7 +12,7 @@ public class DroppedItemScript : MonoBehaviour
     public Tool droppedTool;
 
     GameObject player;
-    GameObject gameManager;
+    GameObject gameController;
     ResourcesManagmentScript resourcesManagmentScript;
 
     private float time;
@@ -21,7 +21,7 @@ public class DroppedItemScript : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         toolsSprites = Resources.LoadAll<Sprite>("Tools");
     }
 
@@ -93,9 +93,10 @@ public class DroppedItemScript : MonoBehaviour
         {
             if (!droppedTool.empty)
             {
-                bool pickedItem = gameManager.GetComponent<ToolBarScript>().SetNewItemTool(droppedTool);
+                bool pickedItem = gameController.GetComponent<ToolBarScript>().SetNewItemTool(droppedTool);
                 if (pickedItem)
                 {
+                    gameController.GetComponent<SoundsControllerScript>().PlayDropItem();
                     if (isBowGift) resourcesManagmentScript.SetGameVariable("getBowGift", true);
                     else if (isArrowGift) resourcesManagmentScript.SetGameVariable("getArrowGift", true);
                     Destroy(gameObject);

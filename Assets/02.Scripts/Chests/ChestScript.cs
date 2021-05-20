@@ -231,6 +231,7 @@ public class ChestScript : MonoBehaviour
     {
         if (!itemGrabbed.empty)
         {
+            gameController.GetComponent<SoundsControllerScript>().PlayDropItem();
             GameObject dropedItem = Instantiate(droppedItemPrefab);
             dropedItem.GetComponent<DroppedItemScript>().SetItem(itemGrabbed);
             dropedItem.GetComponent<DroppedItemScript>().ThrowItemToFloor();

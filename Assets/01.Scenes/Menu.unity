@@ -2739,7 +2739,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5645519ce4af2cd488a7c978b75b4eb1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2842,4 +2842,19 @@ MonoBehaviour:
   musicLevel3: {fileID: 0}
   musicLevel4: {fileID: 0}
   musicLevel5: {fileID: 0}
-  soundUI1: {fileID: 8300000, guid: c847b84f3ba33ab43a41a0e511049ae3, type: 3}
+  monsterDie1: {fileID: 0}
+  monsterDie2: {fileID: 0}
+  monsterDie3: {fileID: 0}
+  monsterDie4: {fileID: 0}
+  monsterDie5: {fileID: 0}
+  monsterDie6: {fileID: 0}
+  soundUI: {fileID: 0}
+  selectItem: {fileID: 0}
+  dash: {fileID: 0}
+  chest: {fileID: 0}
+  sword: {fileID: 0}
+  arrow: {fileID: 0}
+  dropItem: {fileID: 0}
+  potion: {fileID: 0}
+  buyItem: {fileID: 0}
+  sellItem: {fileID: 0}

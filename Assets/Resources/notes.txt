@@ -3,16 +3,16 @@
 {"index":1,"name":"tutorial2","text":"You can open a chest by getting near one and pressing the action button ['E']. Grab the sword and fight the enemy!","shown":true}
 {"index":2,"name":"tutorial3","text":"Well done, now try with a bow and a few arrows. Change the selected item by rolling the mouse wheel. You need arrows with you if you want to shoot one.","shown":true}
 {"index":3,"name":"tutorial4","text":"Next time the enemies will move! Now you are prepared to explore the real world. Go to the end of the level to finish the tutorial.","shown":true}
-{"index":4,"name":"firstEathquake","text":"Be careful! Earthquakes happen very often in this town.","shown":false}
+{"index":4,"name":"firstEathquake","text":"Be careful! Earthquakes happen very often in this town.","shown":true}
 {"index":5,"name":"townIntro","text":"Hello ARANT! Welcome to GRANDU, your town. Here is where you were born and grew up.","shown":true}
-{"index":6,"name":"motherIntro","text":"This is your mother DANA. She talks a lot about your missing dad. Go near anyone and press ['E'] to talk to her.","shown":false}
-{"index":7,"name":"blacksmithIntro","text":"He is BARDEN the Blacksmith of the town. You can buy different types of weapons and sell items for gold.","shown":false}
-{"index":8,"name":"mayorIntro","text":"He is like the mayor of this little town, SHAX is called. He likes to keep control about everything that happens here.","shown":false}
-{"index":9,"name":"witchIntro","text":"She is MITHA. She loves to make potions, is like a witch, but the good ones.","shown":false}
-{"index":10,"name":"firstHunt","text":"Grab your sword from your chest before leaving the town! You can find monsters out there. If you get killed, all your objects will stay there until you catch them.","shown":false}
-{"index":11,"name":"goEast","text":"Go EAST and you will find some help.","shown":false}
-{"index":12,"name":"cabinChest","text":"Hello son... yes, I am your father. We can't see each other right now, but soon we will. There is something very strange happening in this city related to these earthquakes. I have a gift to help you with the monsters, remember years ago when we used to hunt.","shown":false}
-{"index":13,"name":"goWest","text":"In the WEST there is some strange cave. Weird noises came out of the entrance.","shown":false}
+{"index":6,"name":"motherIntro","text":"This is your mother DANA. She talks a lot about your missing dad. Go near anyone and press ['E'] to talk to her.","shown":true}
+{"index":7,"name":"blacksmithIntro","text":"He is BARDEN the Blacksmith of the town. You can buy different types of weapons and sell items for gold.","shown":true}
+{"index":8,"name":"mayorIntro","text":"He is like the mayor of this little town, SHAX is called. He likes to keep control about everything that happens here.","shown":true}
+{"index":9,"name":"witchIntro","text":"She is MITHA. She loves to make potions, is like a witch, but the good ones.","shown":true}
+{"index":10,"name":"firstHunt","text":"Grab your sword from your chest before leaving the town! You can find monsters out there. If you get killed, all your objects will stay there until you catch them.","shown":true}
+{"index":11,"name":"goEast","text":"Go EAST and you will find some help.","shown":true}
+{"index":12,"name":"cabinChest","text":"Hello son... yes, I am your father. We can't see each other right now, but soon we will. There is something very strange happening in this city related to these earthquakes. I have a gift to help you with the monsters, remember years ago when we used to hunt.","shown":true}
+{"index":13,"name":"goWest","text":"In the WEST there is some strange cave. Weird noises came out of the entrance.","shown":true}
 {"index":14,"name":"killAllEnemies","text":"You have to kill all nervy enemies to enter the cave.","shown":false}
 {"index":15,"name":"finalTalk1","text":"Dad: SON!!! Don't come here! This is much worse than I thought!","shown":false}
 {"index":16,"name":"finalTalk2","text":"Mayor: Well, well... at least you found the cave. You take so long to come in here. At first I was just ignoring your curiosity, knowing how weak you are. But when I found out that your father was helping you... Then I wanted to will you both!","shown":false}

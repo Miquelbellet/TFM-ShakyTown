@@ -135,6 +135,7 @@ public class BlacksmithControllerScript : MonoBehaviour
 
     public void ConfirmBuyingItem()
     {
+        gameController.GetComponent<SoundsControllerScript>().PlayBuyItem();
         RefreshPlayerToolbar(currentItemCost);
         SetNewToolbarItem(buyedToolItem);
         gameController.GetComponent<UIControllerScript>().CloseConfirmBlacksmithBuy();
@@ -244,6 +245,7 @@ public class BlacksmithControllerScript : MonoBehaviour
 
         if (sellingValue > 0)
         {
+            gameController.GetComponent<SoundsControllerScript>().PlaySellItem();
             Tool goldItem = new Tool();
             goldItem.empty = false;
             goldItem.name = "gold";

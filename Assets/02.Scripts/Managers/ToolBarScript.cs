@@ -245,6 +245,7 @@ public class ToolBarScript : MonoBehaviour
 
     public void DropItemToFloor(bool droppedByKeyPress)
     {
+        GetComponent<SoundsControllerScript>().PlayDropItem();
         if (droppedByKeyPress)
         {
             if (!toolsList[toolNumberSelected].empty)
@@ -399,9 +400,10 @@ public class ToolBarScript : MonoBehaviour
                 !attackItemScript.GetComponent<AttackItemScript>().usingTool.isBow
                 )
             {
-                GetComponent<SoundsControllerScript>().PlaySword();
+                
                 if (attackItemScript.GetComponent<AttackItemScript>().isSwordInEnemy)
                 {
+                    GetComponent<SoundsControllerScript>().PlaySword();
                     attackItemScript.GetComponent<AttackItemScript>().AttackEnemySword();
                 }
             }
@@ -432,6 +434,7 @@ public class ToolBarScript : MonoBehaviour
                     bool used = player.GetComponent<PlayerHealthScript>().UseHealthPotion(toolsList[toolNumberSelected].potionLevel);
                     if (used)
                     {
+                        GetComponent<SoundsControllerScript>().PlayPotion();
                         toolsList[toolNumberSelected].countItems -= 1;
                         SetToolbarItemUI(toolsList[toolNumberSelected]);
                         if (toolsList[toolNumberSelected].countItems == 0) RemoveItemFromToolbar(toolsList[toolNumberSelected].toolbarIndex);

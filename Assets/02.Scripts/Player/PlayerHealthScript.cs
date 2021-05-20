@@ -78,10 +78,12 @@ public class PlayerHealthScript : MonoBehaviour
         SetPlayerHearts();
         if (currentPlayerLifes <= 0)
         {
+            gameController.GetComponent<SoundsControllerScript>().PlayPlayerDead();
             PlayerDied();
         }
         else
         {
+            gameController.GetComponent<SoundsControllerScript>().PlayPlayerHit();
             canRecieveDamage = false;
             Invoke("CanRecieveDamage", intervalBetweenDamage);
         }
