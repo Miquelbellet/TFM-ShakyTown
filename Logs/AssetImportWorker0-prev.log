@@ -15,11 +15,11 @@ D:/Unity/UnityProjects/TFM
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-64745
+64873
 Successfully changed project path to: D:/Unity/UnityProjects/TFM
 D:/Unity/UnityProjects/TFM
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 74.50 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 95.99 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.4f1 (becced5a802b)
 [Subsystems] Discovering subsystems at path D:/Unity/UnityHub/Unity Editors/2020.2.4f1/Editor/Data/Resources/UnitySubsystems
@@ -35,80 +35,101 @@ Initialize mono
 Mono path[0] = 'D:/Unity/UnityHub/Unity Editors/2020.2.4f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/UnityHub/Unity Editors/2020.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Unity/UnityHub/Unity Editors/2020.2.4f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56264
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56992
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Unity/UnityHub/Unity Editors/2020.2.4f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: D:/Unity/UnityHub/Unity Editors/2020.2.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001628 seconds.
+Registered in 0.002030 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 67.59 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 78.99 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.837 seconds
+- Completed reload, in  1.985 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001368 seconds.
+Registered in 0.001574 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 76.01 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 85.01 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.484 seconds
+- Completed reload, in  1.458 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.88 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3090 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 138.1 MB.
-System memory in use after: 135.8 MB.
+System memory in use after: 135.9 MB.
 
 Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 3501.
-Total: 4.312900 ms (FindLiveObjects: 0.353500 ms CreateObjectMapping: 0.188100 ms MarkObjects: 2.297900 ms  DeleteObjects: 1.472100 ms)
+Total: 4.294700 ms (FindLiveObjects: 0.367400 ms CreateObjectMapping: 0.199800 ms MarkObjects: 2.290500 ms  DeleteObjects: 1.436100 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/npcs/blacksmith_shop.txt
-  artifactKey: Guid(4f26ea505f524ce4b837efacde1cd41b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/npcs/blacksmith_shop.txt using Guid(4f26ea505f524ce4b837efacde1cd41b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac15f749492e32ee5d75912c1f8526a1') in 0.054018 seconds
-  Import took 0.071702 seconds .
+  path: Assets/01.Scenes/InitTutorial.unity
+  artifactKey: Guid(1c1604bcdcf4b384da78fa6f0377dabf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/01.Scenes/InitTutorial.unity using Guid(1c1604bcdcf4b384da78fa6f0377dabf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90bf624ff17837a0285f3bafb1be4314') in 0.020011 seconds
+  Import took 0.026555 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 37.858659 seconds.
+  path: Assets/Resources/game_variables.txt
+  artifactKey: Guid(cc007e3a9ec2c554ba765a0018525cc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/game_variables.txt using Guid(cc007e3a9ec2c554ba765a0018525cc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '212eaa944565f7217cde6f81f46f0964') in 0.047218 seconds
+  Import took 0.053258 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001867 seconds.
+Registered in 0.001893 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.59 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.044 seconds
+- Completed reload, in  1.126 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3000 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 133.9 MB.
 System memory in use after: 131.7 MB.
 
 Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 3504.
-Total: 4.259100 ms (FindLiveObjects: 0.357800 ms CreateObjectMapping: 0.156700 ms MarkObjects: 2.265000 ms  DeleteObjects: 1.478700 ms)
+Total: 8.196300 ms (FindLiveObjects: 0.753000 ms CreateObjectMapping: 0.387400 ms MarkObjects: 4.828100 ms  DeleteObjects: 2.225800 ms)
+
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 2.00 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 42 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 75.6 MB.
+System memory in use after: 73.4 MB.
+
+Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 3504.
+Total: 4.558100 ms (FindLiveObjects: 0.474900 ms CreateObjectMapping: 0.206900 ms MarkObjects: 2.340800 ms  DeleteObjects: 1.534400 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
