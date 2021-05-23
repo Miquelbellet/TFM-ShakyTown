@@ -8,6 +8,10 @@ Una vez descargado ya se puede jugar al juego con normalidad sin necesidad de ab
 La primera pantalla que se ve al abrir el juego es la pantalla del menú, donde se puede escoger si **jugar al juego**, acceder a la **configuración** o **salir**.\
 Una vez se haya completado el juego, aparecerá un botón adicional para volver a jugar una **nueva partida** y reiniciar todos los parámetros.
 
+## Configuración
+En el apartado de configuración del juego se puede modificar el nivel de dificultad del juego, permitiendo que el usuario pueda escoger el modo con el que se sienta más cómodo y mejorar su experiencia.
+También se puede cambiar el volumen de la música y de los efectos sonoros.
+
 ## Tutorial
 La primera vez que se presione el botón de jugar se enseña un corto tutorial al usuario para que aprenda las **mecánicas básicas de combate** y de utilización de los **cofres**.\
 El tutorial se basa en coger una espada de un cofre, atacar a un enemigo estático, coger un arco y flechas de otro y acabar con otro enemigo. Van apareciendo textos para **guiar al usuario** con qué botones tiene que presionar o las acciones que tiene que hacer.\
@@ -44,10 +48,6 @@ Para acabar te encuentras con el **“Troll”**, que es en lo que se transforma
 ## Final
 Una vez se completa la historia del juego, aparece un nuevo botón en el menú principal te permite **reiniciar el juego** des del principio volviendo a empezar de nuevo.
 
-## Implementaciones futuras
-El juego, aunque tiene la mayor parte de funcionalidades acabadas, aún le falta añadir la **música y los efectos sonoros** que darán mucha vida al mundo y crearán una mayor inmersión por parte del jugador.\
-Así como poder cambiar la **configuración del juego** tanto en el menú principal como en el menú del juego.
-
-## Vídeo demostrativo
+## Vídeos demostrativos
 Demo PEC3: [Link demo PEC3](https://youtu.be/bPh163f2vaw)\
 Demo PEC2: [Link demo PEC2](https://youtu.be/AXBrAbZyjKY)

@@ -1,8 +1,8 @@
 75
 sword_1
 {"toolbarIndex":0, "empty":false, "name":"sword_1", "spriteName":"spritesheet_334", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":6, "goldValue":4}
-{"empty":false, "name":"gold", "spriteName":"spritesheet_107", "isCountable":true, "countItems":2}
-{"empty":false, "name":"wood", "spriteName":"spritesheet_349", "isCountable":true, "countItems":4}
+{"empty":false, "name":"empty", "spriteName":"spritesheet_350", "isCountable":false}
+{"empty":false, "name":"empty", "spriteName":"spritesheet_350", "isCountable":false}
 {"empty":false, "name":"empty", "spriteName":"spritesheet_350", "isCountable":false}
 sword_2
 {"toolbarIndex":0, "empty":false, "name":"sword_2", "spriteName":"spritesheet_335", "isCountable":false, "countItems":0, "isWeapon":true, "isBow":false, "isArrow":false, "isPotion":false, "potionLevel":0, "damage":8, "goldValue":5}

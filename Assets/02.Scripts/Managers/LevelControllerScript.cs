@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelControllerScript : MonoBehaviour
 {
@@ -11,8 +12,13 @@ public class LevelControllerScript : MonoBehaviour
     public float timeChangingLevel;
     public GameObject backgroundImage;
     public GameObject level4Obstacle;
+    public AudioSource musicAS;
+    public AudioSource soundAS;
+    public Slider musicSlider;
+    public Slider soundsSlider;
     public GameObject[] levelsObjects;
     public GameObject[] levelsEnemiesObjects;
+    public Button[] levelsDifficulty;
 
     [Header("Player Level Positions")]
     public Vector2 playerPosHouse;
@@ -32,6 +38,9 @@ public class LevelControllerScript : MonoBehaviour
     [HideInInspector] public enum Levels { Level_1, Level_2, Level_3, Level_4, Level_5 };
     [HideInInspector] public Levels currentLevel = Levels.Level_1;
     [HideInInspector] public int currentLevelNumber;
+    [HideInInspector] public int levelDifficulty;
+    [HideInInspector] public float musicVolume;
+    [HideInInspector] public float soundVolume;
 
     ResourcesManagmentScript resourcesManagmentScript;
 
@@ -51,6 +60,61 @@ public class LevelControllerScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        GetConfigSettings();
+        SetLevelDiffButtons();
+        SetSoundVolume();
+    }
+
+    void GetConfigSettings()
+    {
+        string path = "Assets/Resources/player_settings.txt";
+        StreamReader playerSettingsReader = resourcesManagmentScript.ReadDataFromResource(path);
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        int.TryParse(playerSettingsReader.ReadLine(), out int levelDiff);
+        levelDifficulty = levelDiff;
+        float.TryParse(playerSettingsReader.ReadLine(), out float musicVol);
+        musicSlider.value = musicVolume = musicVol;
+        float.TryParse(playerSettingsReader.ReadLine(), out float soundVol);
+        soundsSlider.value = soundVolume = soundVol;
+        playerSettingsReader.Close();
+    }
+
+    private void SetSoundVolume()
+    {
+        musicAS.volume = musicVolume;
+        soundAS.volume = soundVolume;
+    }
+
+    public void ChangeDifficultyLevel(int level)
+    {
+        GetComponent<SoundsControllerScript>().PlaySoundUI1();
+        levelDifficulty = level;
+        SetLevelDiffButtons();
+    }
+
+    public void OnSliderMusicVolChange(float value)
+    {
+        musicVolume = value;
+        SetSoundVolume();
+    }
+
+    public void OnSliderSoundsVolChange(float value)
+    {
+        soundVolume = value;
+        SetSoundVolume();
+    }
+
+    private void SetLevelDiffButtons()
+    {
+        for (int i = 0; i < levelsDifficulty.Length; i++)
+        {
+            if (levelDifficulty == i) levelsDifficulty[i].interactable = false;
+            else levelsDifficulty[i].interactable = true;
+        }
     }
 
     public void PlayerChangedLevel(int numCollider, bool ending = default(bool))

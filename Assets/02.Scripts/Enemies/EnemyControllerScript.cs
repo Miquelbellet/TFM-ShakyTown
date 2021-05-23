@@ -10,14 +10,32 @@ public class EnemyControllerScript : MonoBehaviour
     public bool finalBoss;
     public GameObject droppedItemPrefab;
 
-    [Header("Enemies Settings")]
-    public EnemySettings batTutorialSettings;
-    public EnemySettings batSettings;
-    public EnemySettings goblinSettings;
-    public EnemySettings orcSettings;
-    public EnemySettings ratSettings;
-    public EnemySettings spiderSettings;
-    public EnemySettings trollSettings;
+    [Header("Enemies Settings Level Easy")]
+    public EnemySettings batTutorialSettingsEasy;
+    public EnemySettings batSettingsEasy;
+    public EnemySettings goblinSettingsEasy;
+    public EnemySettings orcSettingsEasy;
+    public EnemySettings ratSettingsEasy;
+    public EnemySettings spiderSettingsEasy;
+    public EnemySettings trollSettingsEasy;
+
+    [Header("Enemies Settings Level Normal")]
+    public EnemySettings batTutorialSettingsNormal;
+    public EnemySettings batSettingsNormal;
+    public EnemySettings goblinSettingsNormal;
+    public EnemySettings orcSettingsNormal;
+    public EnemySettings ratSettingsNormal;
+    public EnemySettings spiderSettingsNormal;
+    public EnemySettings trollSettingsNormal;
+
+    [Header("Enemies Settings Level Hard")]
+    public EnemySettings batTutorialSettingsHard;
+    public EnemySettings batSettingsHard;
+    public EnemySettings goblinSettingsHard;
+    public EnemySettings orcSettingsHard;
+    public EnemySettings ratSettingsHard;
+    public EnemySettings spiderSettingsHard;
+    public EnemySettings trollSettingsHard;
 
     [HideInInspector] public enum EnemyType { BatTutorial, Bat, Goblin, Orc, Rat, Spider, Troll }
     [HideInInspector] public EnemySettings enemySettings;
@@ -50,36 +68,94 @@ public class EnemyControllerScript : MonoBehaviour
 
     void InitializeEnemy()
     {
-        switch (enemyType)
-        {
-            case EnemyType.BatTutorial:
-                enemySettings = batTutorialSettings;
-                break;
-            case EnemyType.Bat:
-                enemySettings = batSettings;
-                break;
-            case EnemyType.Goblin:
-                enemySettings = goblinSettings;
-                break;
-            case EnemyType.Orc:
-                enemySettings = orcSettings;
-                break;
-            case EnemyType.Rat:
-                enemySettings = ratSettings;
-                break;
-            case EnemyType.Spider:
-                enemySettings = spiderSettings;
-                break;
-            case EnemyType.Troll:
-                enemySettings = trollSettings;
-                break;
-        }
-
+        resourcesManagmentScript = new ResourcesManagmentScript();
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GameObject.FindGameObjectWithTag("GameController");
         enemyAnimator = GetComponent<Animator>();
         enemySprite = GetComponent<SpriteRenderer>();
-        resourcesManagmentScript = new ResourcesManagmentScript();
+
+        if (gameController.GetComponent<LevelControllerScript>().levelDifficulty == 0)
+        {
+            switch (enemyType)
+            {
+                case EnemyType.BatTutorial:
+                    enemySettings = batTutorialSettingsEasy;
+                    break;
+                case EnemyType.Bat:
+                    enemySettings = batSettingsEasy;
+                    break;
+                case EnemyType.Goblin:
+                    enemySettings = goblinSettingsEasy;
+                    break;
+                case EnemyType.Orc:
+                    enemySettings = orcSettingsEasy;
+                    break;
+                case EnemyType.Rat:
+                    enemySettings = ratSettingsEasy;
+                    break;
+                case EnemyType.Spider:
+                    enemySettings = spiderSettingsEasy;
+                    break;
+                case EnemyType.Troll:
+                    enemySettings = trollSettingsEasy;
+                    break;
+            }
+        }
+        else if (gameController.GetComponent<LevelControllerScript>().levelDifficulty == 1)
+        {
+            switch (enemyType)
+            {
+                case EnemyType.BatTutorial:
+                    enemySettings = batTutorialSettingsNormal;
+                    break;
+                case EnemyType.Bat:
+                    enemySettings = batSettingsNormal;
+                    break;
+                case EnemyType.Goblin:
+                    enemySettings = goblinSettingsNormal;
+                    break;
+                case EnemyType.Orc:
+                    enemySettings = orcSettingsNormal;
+                    break;
+                case EnemyType.Rat:
+                    enemySettings = ratSettingsNormal;
+                    break;
+                case EnemyType.Spider:
+                    enemySettings = spiderSettingsNormal;
+                    break;
+                case EnemyType.Troll:
+                    enemySettings = trollSettingsNormal;
+                    break;
+            }
+        }
+        else if (gameController.GetComponent<LevelControllerScript>().levelDifficulty == 2)
+        {
+            switch (enemyType)
+            {
+                case EnemyType.BatTutorial:
+                    enemySettings = batTutorialSettingsHard;
+                    break;
+                case EnemyType.Bat:
+                    enemySettings = batSettingsHard;
+                    break;
+                case EnemyType.Goblin:
+                    enemySettings = goblinSettingsHard;
+                    break;
+                case EnemyType.Orc:
+                    enemySettings = orcSettingsHard;
+                    break;
+                case EnemyType.Rat:
+                    enemySettings = ratSettingsHard;
+                    break;
+                case EnemyType.Spider:
+                    enemySettings = spiderSettingsHard;
+                    break;
+                case EnemyType.Troll:
+                    enemySettings = trollSettingsHard;
+                    break;
+            }
+        }
+
         SetResourcesList();
         if (initEnemyPosition == Vector2.zero) initEnemyPosition = transform.position;
         enemylifes = enemySettings.health;

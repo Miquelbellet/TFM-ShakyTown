@@ -87,7 +87,9 @@ public class PlayerScript : MonoBehaviour
         playerSettings.WriteLine(transform.position.y);
         playerSettings.WriteLine(GetComponent<PlayerHealthScript>().currentPlayerLifes);
         playerSettings.WriteLine(GetComponent<PlayerHealthScript>().actualFullPlayerLifes);
-
+        playerSettings.WriteLine(gameController.GetComponent<LevelControllerScript>().levelDifficulty);
+        playerSettings.WriteLine(gameController.GetComponent<LevelControllerScript>().musicVolume);
+        playerSettings.WriteLine(gameController.GetComponent<LevelControllerScript>().soundVolume);
         playerSettings.Close();
     }
 

@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuControllerScript : MonoBehaviour
 {
@@ -14,8 +15,17 @@ public class MenuControllerScript : MonoBehaviour
     public GameObject exitBtn;
     public GameObject configPanel;
     public float reduceY;
+    public Slider musicSlider;
+    public AudioSource musicAS;
+    public Slider soundsSlider;
+    public AudioSource soundAS;
+    public Button[] levelsDifficulty;
 
     ResourcesManagmentScript resourcesManagmentScript;
+
+    private int levelDifficulty;
+    private float musicVolume;
+    private float soundVolume;
 
     void Start()
     {
@@ -31,16 +41,72 @@ public class MenuControllerScript : MonoBehaviour
             configBtn.transform.position = new Vector2(configBtn.transform.position.x, configBtn.transform.position.y + reduceY);
             exitBtn.transform.position = new Vector2(exitBtn.transform.position.x, exitBtn.transform.position.y + reduceY);
         }
+
+        GetConfigSettings();
+        SetLevelDiffButtons();
+        SetSoundVolume();
     }
 
-    void Update()
+    void GetConfigSettings()
     {
-        
+        string path = "Assets/Resources/player_settings.txt";
+        StreamReader playerSettingsReader = resourcesManagmentScript.ReadDataFromResource(path);
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        int.TryParse(playerSettingsReader.ReadLine(), out int levelDiff);
+        levelDifficulty = levelDiff;
+        float.TryParse(playerSettingsReader.ReadLine(), out float musicVol);
+        musicSlider.value = musicVolume = musicVol;
+        float.TryParse(playerSettingsReader.ReadLine(), out float soundVol);
+        soundsSlider.value = soundVolume = soundVol;
+        playerSettingsReader.Close();
+    }
+
+    void SetConfigSettings()
+    {
+        string path = "Assets/Resources/player_settings.txt";
+        StreamReader playerSettingsReader = resourcesManagmentScript.ReadDataFromResource(path);
+        var value1 = playerSettingsReader.ReadLine();
+        var value2 = playerSettingsReader.ReadLine();
+        var value3 = playerSettingsReader.ReadLine();
+        var value4 = playerSettingsReader.ReadLine();
+        var value5 = playerSettingsReader.ReadLine();
+        playerSettingsReader.Close();
+
+        StreamWriter playerSettings = resourcesManagmentScript.WriteDataToResource(path);
+        playerSettings.WriteLine(value1);
+        playerSettings.WriteLine(value2);
+        playerSettings.WriteLine(value3);
+        playerSettings.WriteLine(value4);
+        playerSettings.WriteLine(value5);
+        playerSettings.WriteLine(levelDifficulty);
+        playerSettings.WriteLine(musicVolume);
+        playerSettings.WriteLine(soundVolume);
+        playerSettings.Close();
+    }
+
+    private void SetLevelDiffButtons()
+    {
+        for (int i = 0; i < levelsDifficulty.Length; i++)
+        {
+            if (levelDifficulty == i) levelsDifficulty[i].interactable = false;
+            else levelsDifficulty[i].interactable = true;
+        }
+    }
+
+    private void SetSoundVolume()
+    {
+        musicAS.volume = musicVolume;
+        soundAS.volume = soundVolume;
     }
 
     public void PlayNewGameBtn()
     {
         GetComponent<SoundsControllerScript>().PlaySoundUI1();
+        SetConfigSettings();
         ClearResourcesTexts();
         SceneManager.LoadScene("Main");
     }
@@ -61,12 +127,26 @@ public class MenuControllerScript : MonoBehaviour
 
         //Restart Player Settings
         string path2 = "Assets/Resources/player_settings.txt";
+        StreamReader playerSettingsReader = resourcesManagmentScript.ReadDataFromResource(path2);
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        playerSettingsReader.ReadLine();
+        int.TryParse(playerSettingsReader.ReadLine(), out int levelDifficulty);
+        float.TryParse(playerSettingsReader.ReadLine(), out float musicVolume);
+        float.TryParse(playerSettingsReader.ReadLine(), out float soundVolume);
+        playerSettingsReader.Close();
+
         StreamWriter playerSettings = resourcesManagmentScript.WriteDataToResource(path2);
         playerSettings.WriteLine("1");
         playerSettings.WriteLine("1,3");
         playerSettings.WriteLine("-2,6");
         playerSettings.WriteLine("6");
         playerSettings.WriteLine("6");
+        playerSettings.WriteLine(levelDifficulty);
+        playerSettings.WriteLine(musicVolume);
+        playerSettings.WriteLine(soundVolume);
         playerSettings.Close();
 
         //Restart Initial Chest
@@ -144,6 +224,7 @@ public class MenuControllerScript : MonoBehaviour
     public void PlayGameBtn()
     {
         GetComponent<SoundsControllerScript>().PlaySoundUI1();
+        SetConfigSettings();
         if (!resourcesManagmentScript.GetGameVariable("tutorial")) SceneManager.LoadScene("InitTutorial");
         else SceneManager.LoadScene("Main");
     }
@@ -156,9 +237,29 @@ public class MenuControllerScript : MonoBehaviour
         }
     }
 
+    public void SetLevelDifficulty(int level)
+    {
+        GetComponent<SoundsControllerScript>().PlaySoundUI1();
+        levelDifficulty = level;
+        SetLevelDiffButtons();
+    }
+
+    public void OnMusicVolumeChange(float value)
+    {
+        musicVolume = value;
+        SetSoundVolume();
+    }
+
+    public void OnSoundsVolumeChange(float value)
+    {
+        soundVolume = value;
+        SetSoundVolume();
+    }
+
     public void ExitGameBtn()
     {
         GetComponent<SoundsControllerScript>().PlaySoundUI1();
+        SetConfigSettings();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

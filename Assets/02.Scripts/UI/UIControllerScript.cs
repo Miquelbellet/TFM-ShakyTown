@@ -19,6 +19,8 @@ public class UIControllerScript : MonoBehaviour
     public Sprite[] levelImages;
     public GameObject menuNotesObject;
     public GameObject closeNotesBtn;
+    public GameObject configurationObject;
+    public GameObject configCloseObject;
 
     [Header("Items Objects")]
     public GameObject toolBarObject;
@@ -295,6 +297,7 @@ public class UIControllerScript : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name != "InitTutorial")
             {
+                GetComponent<SoundsControllerScript>().PlaySoundUI1();
                 if (!mapActivated)
                 {
                     OpenMapBtn();
@@ -313,6 +316,7 @@ public class UIControllerScript : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name != "InitTutorial")
             {
+                GetComponent<SoundsControllerScript>().PlaySoundUI1();
                 if (!menuActivated)
                 {
                     OpenMenuBtn();
@@ -364,6 +368,8 @@ public class UIControllerScript : MonoBehaviour
         closeMenuBtn.SetActive(false);
         menuNotesObject.SetActive(false);
         closeNotesBtn.SetActive(false);
+        configurationObject.SetActive(false);
+        configCloseObject.SetActive(false);
         menuActivated = false;
         Time.timeScale = 1;
     }
@@ -407,11 +413,6 @@ public class UIControllerScript : MonoBehaviour
     {
         witchShop.SetActive(false);
         Time.timeScale = 1;
-    }
-
-    public void ConfigurationBtn()
-    {
-
     }
 
     public void SaveAndReturnBtn()

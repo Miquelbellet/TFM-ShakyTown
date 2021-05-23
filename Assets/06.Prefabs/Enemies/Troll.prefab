@@ -165,14 +165,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 6
+  finalBoss: 0
   droppedItemPrefab: {fileID: 7964616484997607905, guid: c777870699f6d7d49b2e59ec2ce08f9a, type: 3}
-  batTutorialSettings: {fileID: 11400000, guid: 8c25b80677085a94c8f165915fde2c3a, type: 2}
-  batSettings: {fileID: 11400000, guid: 9aedaba29bc0a4041a7212778b2ba1cc, type: 2}
-  goblinSettings: {fileID: 11400000, guid: c3cd21906d172b6409afa635c5a2eda4, type: 2}
-  orcSettings: {fileID: 11400000, guid: 32f973a79a4633441bbe013ed9d223d7, type: 2}
-  ratSettings: {fileID: 11400000, guid: fc458c21128b7b44b83c8602c6925741, type: 2}
-  spiderSettings: {fileID: 11400000, guid: fbfbdd8a89107ec4081237c4f744fd36, type: 2}
-  trollSettings: {fileID: 11400000, guid: d1b056ded2955e04d87a48b00da871b1, type: 2}
+  batTutorialSettingsEasy: {fileID: 11400000, guid: 8c25b80677085a94c8f165915fde2c3a, type: 2}
+  batSettingsEasy: {fileID: 11400000, guid: 9aedaba29bc0a4041a7212778b2ba1cc, type: 2}
+  goblinSettingsEasy: {fileID: 11400000, guid: c3cd21906d172b6409afa635c5a2eda4, type: 2}
+  orcSettingsEasy: {fileID: 11400000, guid: 32f973a79a4633441bbe013ed9d223d7, type: 2}
+  ratSettingsEasy: {fileID: 11400000, guid: fc458c21128b7b44b83c8602c6925741, type: 2}
+  spiderSettingsEasy: {fileID: 11400000, guid: fbfbdd8a89107ec4081237c4f744fd36, type: 2}
+  trollSettingsEasy: {fileID: 11400000, guid: d1b056ded2955e04d87a48b00da871b1, type: 2}
+  batTutorialSettingsNormal: {fileID: 11400000, guid: 0dd27fe7288472c4a9a0b9eda1275813, type: 2}
+  batSettingsNormal: {fileID: 11400000, guid: 35ca05c0b0de5e2458ebf67bcf7f1b46, type: 2}
+  goblinSettingsNormal: {fileID: 11400000, guid: d52e819ad9355a74baaf56419e4e65ac, type: 2}
+  orcSettingsNormal: {fileID: 11400000, guid: 09caa9b17eaac7649bd9456dc8e2fdc1, type: 2}
+  ratSettingsNormal: {fileID: 11400000, guid: 6674fbc002782a34e8f4e950e426082d, type: 2}
+  spiderSettingsNormal: {fileID: 11400000, guid: 2bdcf82ecb1ca174baec8f6bb98375a1, type: 2}
+  trollSettingsNormal: {fileID: 11400000, guid: b9e01cd594b7f53448850db129ab8005, type: 2}
+  batTutorialSettingsHard: {fileID: 11400000, guid: 3fc211256acb7a244a59b0dd3b11150b, type: 2}
+  batSettingsHard: {fileID: 11400000, guid: f17c14ca7c2eba94f86b7399c51ca421, type: 2}
+  goblinSettingsHard: {fileID: 11400000, guid: af712c50381f4f9489454b4a20eb8053, type: 2}
+  orcSettingsHard: {fileID: 11400000, guid: 9e86e76c6e4e8014db84eda1fade6187, type: 2}
+  ratSettingsHard: {fileID: 11400000, guid: 1f25491f77a618246add2ab14f15858f, type: 2}
+  spiderSettingsHard: {fileID: 11400000, guid: e6ff28cbccd58674c96a27e8d7b56597, type: 2}
+  trollSettingsHard: {fileID: 11400000, guid: 77866971287f01d46a5425f5f0bfb4ed, type: 2}
   enemySettings: {fileID: 0}
   player: {fileID: 0}
   initEnemyPosition: {x: 0, y: 0}

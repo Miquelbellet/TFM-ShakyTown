@@ -1,9 +1,9 @@
 8
-{"name":"showNewGameBtn","value":true}
-{"name":"tutorial","value":true}
-{"name":"dadHelpNote","value":true}
-{"name":"welcomeTown","value":true}
+{"name":"showNewGameBtn","value":false}
+{"name":"tutorial","value":false}
+{"name":"dadHelpNote","value":false}
+{"name":"welcomeTown","value":false}
 {"name":"gameEnded","value":false}
-{"name":"firstEarthquake","value":true}
-{"name":"getBowGift","value":true}
-{"name":"getArrowGift","value":true}
+{"name":"firstEarthquake","value":false}
+{"name":"getBowGift","value":false}
+{"name":"getArrowGift","value":false}
