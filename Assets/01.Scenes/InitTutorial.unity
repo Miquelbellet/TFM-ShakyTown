@@ -49506,8 +49506,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 29
+  m_fontSizeBase: 29
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -54813,6 +54813,7 @@ MonoBehaviour:
   - {fileID: 1449104282}
   levelsEnemiesObjects:
   - {fileID: 1975737664}
+  levelsDifficulty: []
   playerPosHouse: {x: 1.5, y: -2.8}
   playerPosLevel1: {x: 4.35, y: -0.22}
   playerPosLevel2_1: {x: 4.35, y: 0.3}
@@ -54826,6 +54827,9 @@ MonoBehaviour:
   enemiesPartentObj: {fileID: 0}
   currentLevel: 0
   currentLevelNumber: 0
+  levelDifficulty: 0
+  musicVolume: 0
+  soundVolume: 0
 --- !u!82 &1213273571
 AudioSource:
   m_ObjectHideFlags: 0
