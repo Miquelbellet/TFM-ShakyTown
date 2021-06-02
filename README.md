@@ -1,8 +1,10 @@
 # Shaky Town
-**Shaky Town** es un juego de rol-acción donde te pones en la piel de un joven el cual su padre desapareció hace años. Tienes que ir encontrando pistas y acabando con muchos monstruos mientras el pueblo sufre un constante acoso de terremotos. Será el protagonista el que intente salvar este pueblo de su destrucción.\
-Para jugar al juego se tiene que descargar el archivo ***“ShakyTownInstaller.exe”*** que contiene un instalador para descargar el juego. Lo puede encontrar en el repositorio del proyecto.\
-Es **totalmente seguro** de descargar, aunque Windows Defender intente prohibir su descarga debido a que es un archivo ejecutable.\
-Una vez descargado ya se puede jugar al juego con normalidad sin necesidad de abrir el proyecto en Unity.
+**Shaky Town** es un juego de **Acción-Aventura** donde te pones en la piel de un joven el cual su padre desapareció hace años. Tienes que ir encontrando pistas y acabando con muchos monstruos mientras el pueblo sufre un constante acoso de terremotos. Será el protagonista el que intente salvar este pueblo de su destrucción.\
+Para jugar al juego se tiene que descargar el siguiente archivo dependiendo del sistema operativo. Puede encontrar estos archivos en el repositorio del proyecto.\
+**Windows:** Descargar el archivo ***“ShakyTownInstaller.exe”*** que contiene un instalador para descargar el juego y seguir las instrucciones indicadas. Es **totalmente seguro** de descargar, aunque Windows Defender intente prohibir su descarga debido a que es un archivo ejecutable.\
+**IOS:** Descargar el archivo comprimido ***"IosGame.zip"***, descomprimirlo y abrir el juego de dentro de la carpeta.
+Es importante no mover ni modificar los archivos de dentro de las carpetas descargadas ya que podrian dejar inservible el juego.
+Una vez descargado ya se puede jugar con normalidad abriendo el ejecutable sin necesidad de abrir el proyecto en Unity.
 
 ## Menú
 La primera pantalla que se ve al abrir el juego es la pantalla del menú, donde se puede escoger si **jugar al juego**, acceder a la **configuración** o **salir**.\
@@ -49,5 +51,7 @@ Para acabar te encuentras con el **“Troll”**, que es en lo que se transforma
 Una vez se completa la historia del juego, aparece un nuevo botón en el menú principal te permite **reiniciar el juego** des del principio volviendo a empezar de nuevo.
 
 ## Vídeos demostrativos
+Demo PEC2: [Link demo PEC2](https://youtu.be/AXBrAbZyjKY)\
 Demo PEC3: [Link demo PEC3](https://youtu.be/bPh163f2vaw)\
-Demo PEC2: [Link demo PEC2](https://youtu.be/AXBrAbZyjKY)
+Gameplay: [Link del gameplay]()\
+Trailer: [Trailer del juego]()
