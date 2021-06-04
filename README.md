@@ -51,7 +51,7 @@ Para acabar te encuentras con el **“Troll”**, que es en lo que se transforma
 Una vez se completa la historia del juego, aparece un nuevo botón en el menú principal te permite **reiniciar el juego** des del principio volviendo a empezar de nuevo.
 
 ## Vídeos demostrativos
-Demo PEC2: [Link demo PEC2](https://youtu.be/AXBrAbZyjKY)\
+Trailer: [Trailer del juego](https://youtu.be/RSdITcxYGjk)\
+Gameplay: [Link del gameplay](https://youtu.be/nEKEFHgax8M)\
 Demo PEC3: [Link demo PEC3](https://youtu.be/bPh163f2vaw)\
-Gameplay: [Link del gameplay]()\
-Trailer: [Trailer del juego]()
+Demo PEC2: [Link demo PEC2](https://youtu.be/AXBrAbZyjKY)\
