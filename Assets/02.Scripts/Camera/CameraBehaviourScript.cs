@@ -124,6 +124,18 @@ public class CameraBehaviourScript : MonoBehaviour
         {
             if (!resourcesManagmentScript.GetGameVariable("firstEarthquake")) Invoke("ShowNote", 1f);
             earthquakeTimer = 0;
+            GameObject[] allEmenies = GameObject.FindGameObjectsWithTag("Enemy");
+            string enemyType = "";
+            foreach (GameObject enemy in allEmenies)
+            {
+                if(enemy.GetComponent<EnemyControllerScript>().enemyType.ToString() != enemyType)
+                {
+                    enemyType = enemy.GetComponent<EnemyControllerScript>().enemyType.ToString();
+                    enemy.GetComponent<EnemyControllerScript>().enemySettings.walkSpeed /= 2f;
+                    enemy.GetComponent<EnemyControllerScript>().enemySettings.runSpeed /= 2f;
+                }
+            }
+            player.transform.GetComponent<PlayerMovementScript>().playerSpeed /= 2f;
             StartCoroutine(ShakeCamera());
         }
     }
@@ -134,7 +146,23 @@ public class CameraBehaviourScript : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x + Random.Range(-earthquakesForce, earthquakesForce), transform.position.y + Random.Range(-earthquakesForce, earthquakesForce));
             yield return new WaitForSeconds(0.1f);
-            if (earthquakeTimer >= earthquakeDuration) i = Mathf.Infinity;
+            if (earthquakeTimer >= earthquakeDuration)
+            {
+                i = Mathf.Infinity;
+                GameObject[] allEmenies = GameObject.FindGameObjectsWithTag("Enemy");
+                string enemyType = "";
+                foreach (GameObject enemy in allEmenies)
+                {
+                    if (enemy.GetComponent<EnemyControllerScript>().enemyType.ToString() != enemyType)
+                    {
+                        enemyType = enemy.GetComponent<EnemyControllerScript>().enemyType.ToString();
+                        enemy.GetComponent<EnemyControllerScript>().enemySettings.walkSpeed *= 2f;
+                        enemy.GetComponent<EnemyControllerScript>().enemySettings.runSpeed *= 2f;
+                    }
+                    
+                }
+                player.GetComponent<PlayerMovementScript>().playerSpeed *= 2f;
+            }
         }
     }
 
