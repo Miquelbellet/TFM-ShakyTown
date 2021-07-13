@@ -41,6 +41,8 @@ public class CameraBehaviourScript : MonoBehaviour
     public float Lvl5_BotY;
     public float Lvl5_TopY;
 
+    [HideInInspector] public bool earthquakeHappening;
+
     ResourcesManagmentScript resourcesManagmentScript;
 
     private GameObject player;
@@ -124,18 +126,13 @@ public class CameraBehaviourScript : MonoBehaviour
         {
             if (!resourcesManagmentScript.GetGameVariable("firstEarthquake")) Invoke("ShowNote", 1f);
             earthquakeTimer = 0;
+            earthquakeHappening = true;
             GameObject[] allEmenies = GameObject.FindGameObjectsWithTag("Enemy");
-            string enemyType = "";
             foreach (GameObject enemy in allEmenies)
             {
-                if(enemy.GetComponent<EnemyControllerScript>().enemyType.ToString() != enemyType)
-                {
-                    enemyType = enemy.GetComponent<EnemyControllerScript>().enemyType.ToString();
-                    enemy.GetComponent<EnemyControllerScript>().enemySettings.walkSpeed /= 2f;
-                    enemy.GetComponent<EnemyControllerScript>().enemySettings.runSpeed /= 2f;
-                }
+                enemy.GetComponent<EnemyControllerScript>().multiplicatorVelocity = 0.5f;
             }
-            player.transform.GetComponent<PlayerMovementScript>().playerSpeed /= 2f;
+            player.transform.GetComponent<PlayerMovementScript>().multiplicatorVelocity = 0.5f;
             StartCoroutine(ShakeCamera());
         }
     }
@@ -149,19 +146,13 @@ public class CameraBehaviourScript : MonoBehaviour
             if (earthquakeTimer >= earthquakeDuration)
             {
                 i = Mathf.Infinity;
+                earthquakeHappening = false;
                 GameObject[] allEmenies = GameObject.FindGameObjectsWithTag("Enemy");
-                string enemyType = "";
                 foreach (GameObject enemy in allEmenies)
                 {
-                    if (enemy.GetComponent<EnemyControllerScript>().enemyType.ToString() != enemyType)
-                    {
-                        enemyType = enemy.GetComponent<EnemyControllerScript>().enemyType.ToString();
-                        enemy.GetComponent<EnemyControllerScript>().enemySettings.walkSpeed *= 2f;
-                        enemy.GetComponent<EnemyControllerScript>().enemySettings.runSpeed *= 2f;
-                    }
-                    
+                    enemy.GetComponent<EnemyControllerScript>().multiplicatorVelocity = 1f;
                 }
-                player.GetComponent<PlayerMovementScript>().playerSpeed *= 2f;
+                player.GetComponent<PlayerMovementScript>().multiplicatorVelocity = 1f;
             }
         }
     }

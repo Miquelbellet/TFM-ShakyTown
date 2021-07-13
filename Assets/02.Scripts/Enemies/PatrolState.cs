@@ -42,7 +42,7 @@ public class PatrolState : IEnemyState
     void GoToRandomPoint()
     {
         time += Time.deltaTime;
-        myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, newPos, myEnemy.enemySettings.walkSpeed * Time.deltaTime);
+        myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, newPos, myEnemy.enemySettings.walkSpeed * myEnemy.multiplicatorVelocity * Time.deltaTime);
         if (Vector2.Distance(myEnemy.transform.position, newPos) < 0.2 || time > myEnemy.enemySettings.maxTimeWalking)
         {
             SetNewPosition();

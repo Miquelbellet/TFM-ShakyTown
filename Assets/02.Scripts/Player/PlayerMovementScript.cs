@@ -11,6 +11,7 @@ public class PlayerMovementScript : MonoBehaviour
     public float rollCooldownTimer;
     [HideInInspector] public Vector2 playerOrientation;
     [HideInInspector] public bool stopRollMove;
+    [HideInInspector] public float multiplicatorVelocity = 1;
 
     private Animator playerAnimator;
     private GameObject gameController;
@@ -37,8 +38,8 @@ public class PlayerMovementScript : MonoBehaviour
             SetPlayerAnimations(playerMovement);
             playerOrientation = playerMovement;
             transform.position = new Vector2(
-                transform.position.x + (playerMovement.x * Time.deltaTime * playerSpeed),
-                transform.position.y + (playerMovement.y * Time.deltaTime * playerSpeed)
+                transform.position.x + (playerMovement.x * playerSpeed * multiplicatorVelocity * Time.deltaTime),
+                transform.position.y + (playerMovement.y * playerSpeed * multiplicatorVelocity * Time.deltaTime)
             );
         }
         else

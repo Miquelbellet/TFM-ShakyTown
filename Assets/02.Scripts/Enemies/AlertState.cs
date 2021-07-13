@@ -15,7 +15,7 @@ public class AlertState : IEnemyState
     {
         if (!myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && !myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit") && !myEnemy.dead)
         {
-            myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, myEnemy.player.transform.position, myEnemy.enemySettings.runSpeed * Time.deltaTime);
+            myEnemy.transform.position = Vector2.MoveTowards(myEnemy.transform.position, myEnemy.player.transform.position, myEnemy.enemySettings.runSpeed * myEnemy.multiplicatorVelocity * Time.deltaTime);
             myEnemy.CheckPlayerDirection(myEnemy.player.transform.position);
         }
         else if (myEnemy.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsTag("hit") && !myEnemy.dead)

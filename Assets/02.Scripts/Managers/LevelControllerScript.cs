@@ -297,6 +297,16 @@ public class LevelControllerScript : MonoBehaviour
                 levelsObjects[i].SetActive(false);
             }
         }
+        GameObject[] allEmenies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in allEmenies)
+        {
+            if(Camera.main.transform.GetComponent<CameraBehaviourScript>().earthquakeHappening) enemy.GetComponent<EnemyControllerScript>().multiplicatorVelocity = 0.5f;
+            else enemy.GetComponent<EnemyControllerScript>().multiplicatorVelocity = 1f;
+        }
+        try {
+            if (Camera.main.transform.GetComponent<CameraBehaviourScript>().earthquakeHappening) player.GetComponent<PlayerMovementScript>().multiplicatorVelocity = 0.5f;
+            else player.GetComponent<PlayerMovementScript>().multiplicatorVelocity = 1f;
+        } catch { }
     }
 
     public bool CheckEnemiesInLevel(int levelNum)

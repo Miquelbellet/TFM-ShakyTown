@@ -49,6 +49,7 @@ public class EnemyControllerScript : MonoBehaviour
     [HideInInspector] public Vector2 initEnemyPosition = Vector2.zero;
     [HideInInspector] public Animator enemyAnimator;
     [HideInInspector] public SpriteRenderer enemySprite;
+    [HideInInspector] public float multiplicatorVelocity = 1;
     [HideInInspector] public bool dead;
 
     ResourcesManagmentScript resourcesManagmentScript;
