@@ -54,11 +54,20 @@ public class PlayerScript : MonoBehaviour
         int.TryParse(numLevelStr, out int numLevel);
         gameController.GetComponent<LevelControllerScript>().SetActiveLevel(numLevel);
 
-        string playerPosXStr = playerSettings.ReadLine();
-        float.TryParse(playerPosXStr, out float playerPosX);
-        string playerPosYStr = playerSettings.ReadLine();
-        float.TryParse(playerPosYStr, out float playerPosY);
-        transform.position = new Vector2(playerPosX, playerPosY);
+        if (!resourcesManagmentScript.GetGameVariable("setPlayerPos"))
+        {
+            playerSettings.ReadLine();
+            playerSettings.ReadLine();
+            transform.position = new Vector2(1.3f, -2.6f);
+        }
+        else
+        {
+            string playerPosXStr = playerSettings.ReadLine();
+            float.TryParse(playerPosXStr, out float playerPosX);
+            string playerPosYStr = playerSettings.ReadLine();
+            float.TryParse(playerPosYStr, out float playerPosY);
+            transform.position = new Vector2(playerPosX, playerPosY);
+        }
 
         string playerHealthStr = playerSettings.ReadLine();
         float.TryParse(playerHealthStr, out float playerHealth);
@@ -79,9 +88,9 @@ public class PlayerScript : MonoBehaviour
 
     public void SavePlayerSettings()
     {
+        resourcesManagmentScript.SetGameVariable("setPlayerPos", true);
         string path = "Assets/Resources/player_settings.txt";
         StreamWriter playerSettings = resourcesManagmentScript.WriteDataToResource(path);
-
         playerSettings.WriteLine(gameController.GetComponent<LevelControllerScript>().currentLevelNumber);
         playerSettings.WriteLine(transform.position.x);
         playerSettings.WriteLine(transform.position.y);
