@@ -1,6 +1,8 @@
 # Shaky Town
 **Shaky Town** es un juego de **Acción-Aventura** donde te pones en la piel de un joven el cual su padre desapareció hace años. Tienes que ir encontrando pistas y acabando con muchos monstruos mientras el pueblo sufre un constante acoso de terremotos. Será el protagonista el que intente salvar este pueblo de su destrucción.\
-Para jugar al juego se tiene que descargar el siguiente archivo, se ha de tener en cuenta que solo se puede jugar en ordenadores **Windows**. Puede encontrar estos archivos en el repositorio del proyecto.\
+
+## Descarga
+Para jugar al juego se puede descargar des de la página: [https://miquelbellet.itch.io/shaky-town](https://miquelbellet.itch.io/shaky-town) o se puede descargar el siguiente archivo, se ha de tener en cuenta que solo se puede jugar en ordenadores **Windows**. Puede encontrar estos archivos en el repositorio del proyecto.\
 **Windows:** Descargar el archivo ***“ShakyTownInstaller.exe”*** que contiene un instalador para descargar el juego y seguir las instrucciones indicadas.\
 Los dos archivos son **totalmente seguros** de descargar, aunque el navegador o el mismo sistema operativo intente prohibir su descarga y ejecución debido a que es un archivo ejecutable.\
 Es importante no mover ni modificar los archivos de dentro de las carpetas descargadas ya que podrian dejar inservible el juego.
